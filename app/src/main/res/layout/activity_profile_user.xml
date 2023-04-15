@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.profile.ProfileUserActivity">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        android:layout_margin="15dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/edithead"
+            android:text="Edit Profile"
+            android:layout_marginTop="10dp"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            android:layout_marginLeft="110dp"
+            android:layout_marginRight="90dp"
+            />
+
+        <ImageView
+            android:id="@+id/image_edit_profile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            app:srcCompat="@drawable/img_3" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/text_edit_name"
+            android:layout_below="@+id/edithead"
+            android:text="Full name"
+            android:textColor="#555555"
+            android:padding="6dp"
+            android:textSize="16sp"
+            android:layout_marginTop="150dp"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/edt_edit_name"
+            android:hint="Enter your full name"
+            android:inputType="textPersonName"
+            android:textSize="16sp"
+            android:padding="6dp"
+            android:layout_below="@+id/text_edit_name"
+            android:background="@drawable/boder"/>
+
+        <!--        mật khẩu-->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/text_edit_pass"
+            android:layout_below="@+id/edt_edit_name"
+            android:text="Password"
+            android:textColor="#555555"
+            android:padding="6dp"
+            android:textSize="16sp"
+            android:layout_marginTop="10dp"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/edt_edit_pass"
+            android:hint="Enter your password"
+            android:inputType="textPersonName"
+            android:textSize="16sp"
+            android:padding="6dp"
+            android:layout_below="@+id/text_edit_pass"
+            android:background="@drawable/boder"/>
+
+        <!--        Nhập lại mật khẩu-->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/text_edit_confirmpass"
+            android:layout_below="@+id/edt_edit_pass"
+            android:text="Confirm Password"
+            android:textColor="#555555"
+            android:padding="6dp"
+            android:textSize="16sp"
+            android:layout_marginTop="10dp"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/edt_edit_confirmpass"
+            android:hint="Enter your confirm password"
+            android:inputType="textPersonName"
+            android:textSize="16sp"
+            android:padding="6dp"
+            android:layout_below="@+id/text_edit_confirmpass"
+            android:background="@drawable/boder"/>
+
+        <!--        Email-->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/text_edit_email"
+            android:layout_below="@+id/edt_edit_confirmpass"
+            android:text="Email"
+            android:textColor="#555555"
+            android:padding="6dp"
+            android:textSize="16sp"
+            android:layout_marginTop="10dp"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/edt_edit_email"
+            android:hint="Enter your email"
+            android:inputType="textPersonName"
+            android:textSize="16sp"
+            android:padding="6dp"
+            android:layout_below="@+id/text_edit_email"
+            android:background="@drawable/boder"/>
+        <!--        Phone-->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/text_edit_phone"
+            android:layout_below="@+id/edt_edit_email"
+            android:text="Phone"
+            android:textColor="#555555"
+            android:padding="6dp"
+            android:textSize="16sp"
+            android:layout_marginTop="10dp"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/edt_edit_phone"
+            android:hint="Enter your phone"
+            android:inputType="textPersonName"
+            android:textSize="16sp"
+            android:padding="6dp"
+            android:layout_below="@+id/text_edit_phone"
+            android:background="@drawable/boder"/>
+
+        <!--        Địa chỉ-->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/text_edit_address"
+            android:layout_below="@+id/edt_edit_phone"
+            android:text="Address"
+            android:textColor="#555555"
+            android:padding="6dp"
+            android:textSize="16sp"
+            android:layout_marginTop="10dp"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/edt_edit_address"
+            android:hint="Enter your address"
+            android:inputType="textPersonName"
+            android:textSize="16sp"
+            android:padding="6dp"
+            android:layout_below="@+id/text_edit_address"
+            android:background="@drawable/boder"/>
+
+        <!--        button-->
+        <Button
+            android:id="@+id/btn_save_edit_profile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="70dp"
+            android:layout_marginRight="70dp"
+            android:layout_below="@id/edt_edit_address"
+            android:layout_marginTop="50dp"
+            android:text="Save"
+            android:onClick="showAlertEdit"/>
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/progressBar"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:elevation="10dp"
+            android:visibility="gone"/>
+
+    </RelativeLayout>
+
+</ScrollView>

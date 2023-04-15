@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.book_doctor.BookDoctorActivity">
+    <RelativeLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="15dp"
+        android:layout_margin="25dp"
+        android:background="@color/background">
+
+        <TextView
+            android:id="@+id/txt_title"
+            android:layout_marginLeft="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Đặt lịch hẹn"
+            android:layout_marginTop="10dp"
+            android:textSize="20dp"
+            />
+
+        <ImageView
+            android:id="@+id/image_calender"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:srcCompat="@drawable/lich" />
+
+
+
+        <RelativeLayout
+            android:id="@+id/layout_symptom"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/image_calender"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/txt_title_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Triệu chứng"
+                android:textSize="18dp"
+                android:layout_marginTop="5dp"/>
+
+            <EditText
+                android:id="@+id/edt_day"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/boder2"
+                android:layout_below="@+id/txt_title_title"
+                android:hint="Nhập triệu chứng"
+                android:height="60dp"
+                android:textSize="17dp"
+                android:padding="10dp" />
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/layout_date"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/layout_symptom"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/txt_title_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Chọn ngày"
+                android:textSize="18dp"
+                android:layout_marginTop="5dp"/>
+
+            <EditText
+                android:id="@+id/date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Chọn ngày"
+                android:height="60dp"
+                android:background="@drawable/boder2"
+                android:layout_below="@id/txt_title_date"
+                android:focusable="false"
+                android:onClick="selectDate"/>
+
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/layout_time"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/layout_date"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/txt_title_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Chọn giờ"
+                android:textSize="18dp"
+                android:layout_marginTop="5dp"/>
+
+            <Button
+                android:id="@+id/timeButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txt_title_time"
+                android:text="Select Time"
+                android:onClick="selectTime"/>
+
+            <EditText
+                android:id="@+id/timeEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Select Time"
+                android:layout_below="@id/txt_title_time"
+                android:focusable="false"
+                android:onClick="selectTime"/>
+
+
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/layout_btn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/layout_time"
+            android:gravity="center"
+            android:layout_marginTop="260dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_book"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="showAlertEdit"
+                    android:text="Đặt lịch"/>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+
+
+    </RelativeLayout>
+
+</ScrollView>

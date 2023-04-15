@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.profile.ProfileDoctorActivity"
+    android:background="@color/background">
+
+    <RelativeLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="15dp"
+        android:layout_margin="25dp"
+        android:background="@color/background"
+        android:minHeight="400dp">
+
+        <ImageView
+            android:id="@+id/image_doctor"
+            android:layout_width="319dp"
+            android:layout_height="235dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="14dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="14dp"
+            app:srcCompat="@drawable/bs" />
+
+
+        <TextView
+            android:id="@+id/txt_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/image_doctor"
+            android:layout_marginTop="15dp"
+            android:text="Phòng khám nhi- Dinh dưỡng chuyên sâu"
+            android:gravity="center"
+            android:textSize="18dp"
+            />
+
+        <LinearLayout
+            android:id="@+id/layout_vote_doctor"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/txt_title"
+            android:gravity="center">
+
+            <RatingBar
+                android:id="@+id/ratingBar_comment"
+                style="@style/Widget.AppCompat.RatingBar.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:numStars="5"
+                android:rating="5"
+                android:progressTint="@android:color/holo_orange_dark"
+                android:stepSize="1" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/layout_address_doctor"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/layout_vote_doctor"
+            android:minHeight="40dp">
+
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="0dp"
+                app:srcCompat="@drawable/address" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="59 Phan Thanh, Thạc Gián, Đà nẵng"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="50dp"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/layout_date_doctor"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/layout_address_doctor"
+            android:minHeight="40dp">
+
+            <ImageView
+                android:id="@+id/image_time"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="0dp"
+                app:srcCompat="@drawable/clock" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="7h00-21h00"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="50dp"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/layout_phone_doctor"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/layout_date_doctor"
+            android:minHeight="40dp">
+
+            <ImageView
+                android:id="@+id/image_phone"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="0dp"
+                app:srcCompat="@drawable/phone" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+84366009104"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="50dp"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/layout_education_doctor"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/layout_phone_doctor"
+            android:minHeight="40dp">
+
+            <ImageView
+                android:id="@+id/image_education"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="0dp"
+                app:srcCompat="@drawable/education" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tốt nghiệm bác sĩ trường đại học y huế"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="50dp"/>
+        </RelativeLayout>
+
+
+        <LinearLayout
+            android:layout_below="@id/layout_education_doctor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="100dp">
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Đặt lịch hẹn"/>
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+</ScrollView>

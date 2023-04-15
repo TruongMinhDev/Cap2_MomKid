@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.profile.ProflieKidActivity">
+
+    <ImageView
+        android:id="@+id/img_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/Logo"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="16dp" />
+
+    <ImageView
+        android:id="@+id/img_hinhtron1"
+        android:layout_width="193dp"
+        android:layout_height="138dp"
+        app:srcCompat="@drawable/eclip1"
+        tools:layout_editor_absoluteX="326dp"
+        tools:layout_editor_absoluteY="-5dp"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/img_hinhtron2"
+        android:layout_width="123dp"
+        android:layout_height="113dp"
+        android:rotationX="-8"
+        app:srcCompat="@drawable/eclip2"
+        tools:layout_editor_absoluteX="372dp"
+        tools:layout_editor_absoluteY="-5dp"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/img_hinhnen"
+        android:layout_width="833dp"
+        android:layout_height="648dp"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/rectangel"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="-44dp"
+        tools:layout_editor_absoluteY="108dp" />
+
+    <EditText
+        android:id="@+id/edt_nhapchieucao"
+        android:layout_width="318dp"
+        android:layout_height="66dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:padding="6dp"
+        android:text="Nhập chiều cao"
+        tools:layout_editor_absoluteX="30dp"
+        tools:layout_editor_absoluteY="510dp"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/editTextTextPersonName5"
+        android:layout_width="318dp"
+        android:layout_height="66dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:padding="6dp"
+        android:text="Nhập cân nặng"
+        tools:layout_editor_absoluteX="30dp"
+        tools:layout_editor_absoluteY="595dp"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/txt_thongtinbe"
+        android:layout_width="216dp"
+        android:layout_height="39dp"
+        android:text="THÔNG TIN BÉ"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="97dp"
+        tools:layout_editor_absoluteY="178dp"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/edt_nhaphovatenbe"
+        android:layout_width="318dp"
+        android:layout_height="66dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:padding="6dp"
+        android:text="Nhập Họ và Tên Bé"
+        tools:layout_editor_absoluteX="34dp"
+        tools:layout_editor_absoluteY="241dp"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/edt_nhapngaysinh"
+        android:layout_width="318dp"
+        android:layout_height="66dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:padding="6dp"
+        android:text="Nhập ngày sinh"
+        tools:layout_editor_absoluteX="34dp"
+        tools:layout_editor_absoluteY="332dp"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/txt_gioitinh"
+        android:layout_width="131dp"
+        android:layout_height="51dp"
+        android:text="Giới Tính"
+        android:textSize="24sp"
+        tools:layout_editor_absoluteX="34dp"
+        tools:layout_editor_absoluteY="424dp"
+        tools:ignore="MissingConstraints" />
+
+    <RadioButton
+        android:id="@+id/radioButton"
+        android:layout_width="80dp"
+        android:layout_height="38dp"
+        android:text="Nam"
+        android:textSize="20sp"
+        tools:layout_editor_absoluteX="165dp"
+        tools:layout_editor_absoluteY="424dp"
+        tools:ignore="MissingConstraints" />
+
+    <RadioButton
+        android:id="@+id/radioButton2"
+        android:layout_width="80dp"
+        android:layout_height="48dp"
+        android:text="Nữ"
+        android:textSize="20sp"
+        tools:layout_editor_absoluteX="268dp"
+        tools:layout_editor_absoluteY="421dp"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/btn_luu"
+        android:layout_width="189dp"
+        android:layout_height="53dp"
+        android:backgroundTint="#E91E63"
+        android:text="LƯU"
+        android:textSize="20sp"
+        tools:layout_editor_absoluteX="124dp"
+        tools:layout_editor_absoluteY="683dp"
+        tools:ignore="MissingConstraints" />
+</androidx.constraintlayout.widget.ConstraintLayout>

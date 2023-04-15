@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.blog.BlogActivity">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:background="@color/nono">
+
+        <RelativeLayout
+            android:id="@+id/header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="50dp"
+            >
+
+
+            <ImageView
+                android:id="@+id/menu"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                app:srcCompat="@drawable/menu"
+                android:minHeight="60dp"
+                />
+
+
+            <TextView
+                android:layout_width="153dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dp"
+                android:layout_marginTop="5.5dp"
+                android:text="MOMKIDS"
+                android:textSize="25dp"/>
+
+            <ImageView
+                android:id="@+id/notification"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="262dp"
+                app:srcCompat="@drawable/notifications_active_24" />
+
+            <ImageView
+                android:id="@+id/person"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="312dp"
+                app:srcCompat="@drawable/baseline_person_24" />
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/container_post"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/header"
+            android:minHeight="100dp">
+
+            <RelativeLayout
+                android:id="@+id/post_blogs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="60dp">
+
+
+                <ImageView
+                    android:id="@+id/person_post"
+                    android:layout_width="56dp"
+                    android:layout_height="60dp"
+                    app:srcCompat="@drawable/baseline_person_24" />
+
+                <Button
+                    android:id="@+id/button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:minHeight="50dp"
+                    android:layout_marginLeft="270dp"
+                    android:layout_marginTop="5dp"
+                    android:text="Đăng" />
+
+                <EditText
+                    android:layout_width="208dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="55dp"
+                    android:height="60dp"
+                    android:background="@drawable/boder"
+                    android:hint="Bạn muốn đăng gi?" />
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/post_blogs"
+                android:minHeight="50dp">
+
+                <RelativeLayout
+                    android:id="@+id/image"
+                    android:layout_width="180dp"
+                    android:layout_height="match_parent"
+                    android:minWidth="100dp"
+                    android:minHeight="50dp">
+
+
+                    <ImageView
+                        android:id="@+id/img_image"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:srcCompat="@drawable/baseline_image_24"
+                        android:minHeight="40dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="30dp"
+                        android:minWidth="40dp"/>
+
+                    <TextView
+                        android:id="@+id/content_image"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:height="30dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="70dp"
+                        android:textSize="20dp"
+                        android:text="Hình ảnh" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/video"
+                    android:layout_width="180dp"
+                    android:layout_marginLeft="181dp"
+                    android:layout_height="match_parent"
+                    android:minWidth="100dp"
+                    android:minHeight="50dp">
+
+                    <ImageView
+                        android:id="@+id/img_video"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:minHeight="40dp"
+                        android:minWidth="40dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="30dp"
+                        app:srcCompat="@drawable/baseline_video_library_24" />
+
+                    <TextView
+                        android:id="@+id/content_video"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:height="30dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="70dp"
+                        android:textSize="20dp"
+                        android:text="Video" />
+                </RelativeLayout>
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/none"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/container_post"
+            android:minHeight="10dp"
+            android:background="@color/pink">
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/blogs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/none"
+            >
+            <RelativeLayout
+                android:id="@+id/header_blog"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="50dp">
+
+
+                <ImageView
+                    android:id="@+id/img_avatar"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    app:srcCompat="@drawable/avt" />
+
+                <TextView
+                    android:id="@+id/txt_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="50dp"
+                    android:textSize="20dp"
+                    android:layout_marginTop="10dp"
+                    android:text="TayPS" />
+
+                <ImageView
+                    android:id="@+id/img_more"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:minHeight="40dp"
+                    android:minWidth="40dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="315dp"
+                    app:srcCompat="@drawable/baseline_more_horiz_24" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/body_blog"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/header_blog"
+                android:background="@drawable/boder"
+                android:padding="5dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Hiện nat có một số trẻ em bị mắc chứng bện hô hấp , và mooth số bệnh viện đang theo giỏi để biết tình hình bệnh của các trẻ em nhỏ."
+                    android:textSize="16dp"
+                    />
+
+                <ImageView
+                    android:id="@+id/imageView12"
+                    android:layout_width="400dp"
+                    android:layout_height="300dp"
+                    android:layout_marginTop="50dp"
+                    app:srcCompat="@drawable/img_3" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/end_blogs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/body_blog"
+                android:minHeight="50dp">
+
+                <RelativeLayout
+                    android:id="@+id/like"
+                    android:layout_width="180dp"
+                    android:layout_height="match_parent"
+                    android:minWidth="100dp"
+                    android:minHeight="50dp">
+
+
+                    <ImageView
+                        android:id="@+id/img_like"
+                        android:layout_width="49dp"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginTop="5dp"
+                        android:minWidth="20dp"
+                        android:minHeight="20dp"
+                        app:srcCompat="@drawable/lv" />
+
+                    <TextView
+                        android:id="@+id/content_img_like"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="100dp"
+                        android:layout_marginTop="10dp"
+                        android:height="30dp"
+                        android:text="Thích"
+                        android:textSize="20dp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/comment"
+                    android:layout_width="180dp"
+                    android:layout_marginLeft="181dp"
+                    android:layout_height="match_parent"
+                    android:minWidth="100dp"
+                    android:minHeight="50dp">
+
+                    <TextView
+                        android:id="@+id/content_img_comment"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:height="30dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="90dp"
+                        android:textSize="20dp"
+                        android:text="Comment" />
+
+                    <ImageView
+                        android:id="@+id/img_comment"
+                        android:layout_width="63dp"
+                        android:layout_height="38dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="5dp"
+                        android:minWidth="40dp"
+                        android:minHeight="40dp"
+                        app:srcCompat="@drawable/cm" />
+                </RelativeLayout>
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/end_blogs">
+
+                <EditText
+                    android:layout_width="287dp"
+                    android:layout_height="match_parent"
+                    android:hint="Viết bình luận..." />
+
+                <ImageView
+                    android:id="@+id/img_send"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="330dp"
+                    android:minHeight="30dp"
+                    android:minWidth="30dp"
+                    android:layout_marginTop="10dp"
+                    app:srcCompat="@drawable/baseline_send_24" />
+
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+</ScrollView>
