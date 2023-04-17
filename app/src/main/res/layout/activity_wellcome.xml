@@ -22,7 +22,7 @@
         android:id="@+id/img_hinhtron"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/Circles"
+        app:srcCompat="@drawable/circles"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="0dp"
         tools:ignore="MissingConstraints" />
@@ -31,7 +31,7 @@
         android:id="@+id/img_tron2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/Circles"
+        app:srcCompat="@drawable/circles"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="88dp"
         tools:ignore="MissingConstraints" />
