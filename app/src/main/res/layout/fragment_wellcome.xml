@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.wellcome.WellcomeActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.wellcome.WellcomeFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
     <ImageView
         android:id="@+id/img_hinhnenchinh"
         android:layout_width="409dp"
@@ -12,7 +15,7 @@
         android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
@@ -22,27 +25,30 @@
         android:id="@+id/img_hinhtron"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/circles"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp"
         tools:ignore="MissingConstraints" />
 
     <ImageView
         android:id="@+id/img_tron2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/img_hinhtron"
         app:srcCompat="@drawable/circles"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="88dp"
         tools:ignore="MissingConstraints" />
 
     <ImageView
         android:id="@+id/img_momandkid"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="88dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/img_hinhnenchinh"
         app:srcCompat="@drawable/momandkid"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="113dp"
         tools:ignore="MissingConstraints" />
 
     <TextView
@@ -54,9 +60,10 @@
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="10dp"
-        tools:layout_editor_absoluteY="455dp"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="455dp" />
 
     <Button
         android:id="@+id/btn_next"
@@ -65,7 +72,10 @@
         android:backgroundTint="#E91E63"
         android:text="TIẾP TỤC"
         android:textSize="16sp"
-        tools:layout_editor_absoluteX="105dp"
-        tools:layout_editor_absoluteY="532dp"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintBottom_toBottomOf="@+id/img_hinhnenchinh"
+        app:layout_constraintTop_toBottomOf="@+id/txt_chaomung"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="105dp" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
