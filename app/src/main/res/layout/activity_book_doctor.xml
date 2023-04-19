@@ -4,14 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.book_doctor.BookDoctorActivity">
+    tools:context=".ui.book_doctor.BookDoctorActivity"
+    android:background="@drawable/backgrondchung">
     <RelativeLayout
         android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="15dp"
         android:layout_margin="25dp"
-        android:background="@color/background">
+        >
 
         <TextView
             android:id="@+id/txt_title"
@@ -19,6 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Đặt lịch hẹn"
+            android:textStyle="bold"
             android:layout_marginTop="10dp"
             android:textSize="20dp"
             />
@@ -43,8 +45,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Triệu chứng"
+                android:textStyle="bold"
                 android:textSize="18dp"
-                android:layout_marginTop="5dp"/>
+                android:layout_marginTop="10dp"/>
 
             <EditText
                 android:id="@+id/edt_day"
@@ -53,6 +56,7 @@
                 android:background="@drawable/boder2"
                 android:layout_below="@+id/txt_title_title"
                 android:hint="Nhập triệu chứng"
+                android:layout_marginTop="5dp"
                 android:height="60dp"
                 android:textSize="17dp"
                 android:padding="10dp" />
@@ -72,13 +76,15 @@
                 android:layout_height="wrap_content"
                 android:text="Chọn ngày"
                 android:textSize="18dp"
-                android:layout_marginTop="5dp"/>
+                android:textStyle="bold"
+                android:layout_marginTop="10dp"/>
 
             <EditText
                 android:id="@+id/date"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Chọn ngày"
+                android:layout_marginTop="5dp"
                 android:height="60dp"
                 android:background="@drawable/boder2"
                 android:layout_below="@id/txt_title_date"
@@ -102,24 +108,118 @@
                 android:layout_height="wrap_content"
                 android:text="Chọn giờ"
                 android:textSize="18dp"
-                android:layout_marginTop="5dp"/>
+                android:textStyle="bold"
+                android:layout_marginTop="10dp"/>
 
-            <Button
-                android:id="@+id/timeButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <TableLayout
+                android:layout_marginTop="10dp"
                 android:layout_below="@id/txt_title_time"
-                android:text="Select Time"
-                android:onClick="selectTime"/>
-
-            <EditText
-                android:id="@+id/timeEditText"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Select Time"
-                android:layout_below="@id/txt_title_time"
-                android:focusable="false"
-                android:onClick="selectTime"/>
+                android:layout_height="wrap_content">
+
+
+                <TableRow
+                    android:id="@+id/row_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:text="8:00"
+                        android:background="@drawable/boder1"
+                        android:layout_weight="1"
+                        android:onClick="onSeatClicked" />
+
+                    <Button
+                        android:text="9:00"
+                        android:background="@drawable/boder1"
+                        android:layout_weight="1"
+                        android:onClick="onSeatClicked" />
+
+                    <Button
+                        android:text="10:00"
+                        android:background="@drawable/boder1"
+                        android:layout_weight="1"
+                        android:onClick="onSeatClicked"
+                         />
+                    <Button
+                        android:text="11:00"
+                        android:background="@drawable/boder1"
+                        android:layout_weight="1"
+                        android:onClick="onSeatClicked"
+                        />
+
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/row_2"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:text="13:00"
+                        android:background="@drawable/boder1"
+                        android:layout_weight="1"
+                        android:onClick="onSeatClicked" />
+
+                    <Button
+                        android:text="14:00"
+                        android:background="@drawable/boder1"
+                        android:layout_weight="1"
+                        android:onClick="onSeatClicked" />
+
+                    <Button
+                        android:text="15:00"
+                        android:background="@drawable/boder1"
+                        android:layout_weight="1"
+                        android:onClick="onSeatClicked"
+                        />
+                    <Button
+                        android:text="16:00"
+                        android:background="@drawable/boder1"
+                        android:layout_weight="1"
+                        android:onClick="onSeatClicked"
+                        />
+
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/row_3"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:text="18:00"
+                        android:background="@drawable/boder1"
+                        android:layout_weight="1"
+                        android:onClick="onSeatClicked" />
+
+                    <Button
+                        android:text="19:00"
+                        android:background="@drawable/boder1"
+                        android:layout_weight="1"
+                        android:onClick="onSeatClicked" />
+
+                    <Button
+                        android:text="20:00"
+                        android:background="@drawable/boder1"
+                        android:layout_weight="1"
+                        android:onClick="onSeatClicked"
+                        />
+                    <Button
+                        android:text="21:00"
+                        android:background="@drawable/boder1"
+                        android:layout_weight="1"
+                        android:onClick="onSeatClicked"
+                        />
+
+                </TableRow>
+
+
+                <!-- Các hàng khác tương tự -->
+
+            </TableLayout>
 
 
 
@@ -132,7 +232,7 @@
             android:layout_height="match_parent"
             android:layout_below="@+id/layout_time"
             android:gravity="center"
-            android:layout_marginTop="260dp">
+            android:layout_marginTop="50dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -144,6 +244,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:backgroundTint="@color/pink"
                     android:onClick="showAlertEdit"
                     android:text="Đặt lịch"/>
 
