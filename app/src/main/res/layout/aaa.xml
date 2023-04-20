@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="Screen"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_weight="1" />
+
+            <TextView
+                android:text="A"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_weight="1" />
+
+            <TextView
+                android:text="B"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_weight="1" />
+
+            <TextView
+                android:text="C"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_weight="1" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="1"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_weight="1" />
+
+            <Button
+                android:text=" "
+                android:background="@drawable/seat_available"
+                android:layout_weight="1"
+                android:onClick="onSeatClicked" />
+
+            <Button
+                android:text=" "
+                android:background="@drawable/seat_available"
+                android:layout_weight="1"
+                android:onClick="onSeatClicked" />
+
+            <Button
+                android:text=" "
+                android:background="@drawable/seat_unavailable"
+                android:layout_weight="1"
+                android:enabled="false" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="2"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_weight="1" />
+
+            <Button
+                android:text=" "
+                android:background="@drawable/seat_available"
+                android:layout_weight="1"
+                android:onClick="onSeatClicked" />
+
+            <Button
+                android:text=" "
+                android:background="@drawable/seat_unavailable"
+                android:layout_weight="1"
+                android:enabled="false" />
+
+            <Button
+                android:text=" "
+                android:background="@drawable/seat_unavailable"
+                android:layout_weight="1"
+                android:enabled="false" />
+
+        </TableRow>
+
+        <!-- Các hàng khác tương tự -->
+
+    </TableLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
