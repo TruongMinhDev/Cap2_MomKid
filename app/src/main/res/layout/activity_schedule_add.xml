@@ -1,152 +1,162 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.schedule.ScheduleAddActivity">
+    android:animationCache="true"
+    android:background="@drawable/testbackground"
+    android:gravity="center"
+    android:orientation="vertical">
 
-    <RelativeLayout
-        android:id="@+id/container"
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="15dp"
-        android:layout_margin="25dp"
-        android:background="@color/background">
-
-        <TextView
-            android:id="@+id/header"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Thêm lịch trình"
-            android:textSize="25dp"
-            android:gravity="center"
-            android:textStyle="bold" />
+        android:layout_margin="30dp"
+        app:cardCornerRadius="30dp"
+        app:cardElevation="20dp">
 
         <LinearLayout
-            android:id="@+id/linear_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/header"
-            android:layout_marginTop="10dp">
+            android:layout_gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="24dp">
 
             <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:textSize="16dp"
-                android:gravity="center"
-                android:text="Giờ bắt đầu"/>
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Thêm lịch mới"
+                android:textAlignment="center"
+                android:textColor="@color/lavender"
+                android:textSize="36sp"
+                android:textStyle="bold" />
 
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:textSize="16dp"
-                android:gravity="center"
-                android:text="Giờ kết thúc"/>
+            <LinearLayout
+                android:id="@+id/linear_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/header"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Giờ bắt đầu"
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Giờ kết thúc"
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linear_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/linear_title"
+                android:layout_marginTop="10dp"
+                android:minHeight="35dp">
+
+                <EditText
+                    android:id="@+id/edt_time_start"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/boder1"
+                    android:gravity="center"
+                    android:hint="0:00 AM"
+                    android:inputType="datetime"
+                    android:textSize="16dp" />
+
+                <EditText
+                    android:id="@+id/edt_time_end"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/boder1"
+                    android:gravity="center"
+                    android:hint="0:00 AM"
+                    android:inputType="datetime"
+                    android:textSize="16dp" />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/date_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/linear_content"
+                android:layout_marginTop="30dp">
+
+                <TextView
+                    android:id="@+id/input_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Ngày"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/edt_day"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/input_title"
+                    android:layout_marginTop="20dp"
+                    android:height="60dp"
+                    android:background="@drawable/boder2"
+                    android:hint="Nhập ngày : VD 01/01/2023"
+                    android:padding="10dp"
+                    android:textSize="17dp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/content_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/date_container"
+                android:layout_marginTop="30dp">
+
+                <TextView
+                    android:id="@+id/input_title_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Nội dung"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/edt_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/input_title_content"
+                    android:layout_marginTop="20dp"
+                    android:height="60dp"
+                    android:background="@drawable/boder2"
+                    android:hint="Nhập nội dung"
+                    android:padding="10dp"
+                    android:textSize="17dp" />
+
+            </RelativeLayout>
+
+            <Button
+                android:id="@+id/signup_button"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="30dp"
+                android:backgroundTint="@color/lavender"
+                android:text="Lưu"
+                android:textSize="18sp"
+                app:cornerRadius="20dp" />
+
         </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/linear_content"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/linear_title"
-            android:layout_marginTop="10dp"
-            android:minHeight="35dp">
-
-            <EditText
-                android:id="@+id/edt_time_start"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:hint="0:00 AM"
-                android:layout_weight="1"
-                android:inputType="datetime"
-                android:background="@drawable/boder1"
-                android:textSize="16dp" />
-
-            <EditText
-                android:id="@+id/edt_time_end"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:textSize="16dp"
-                android:layout_weight="1"
-                android:inputType="datetime"
-                android:background="@drawable/boder1"
-                android:gravity="center"
-                android:hint="0:00 AM"/>
-        </LinearLayout>
-
-        <RelativeLayout
-            android:id="@+id/date_container"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/linear_content"
-            android:layout_marginTop="30dp">
-
-            <TextView
-                android:id="@+id/input_title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Ngày"
-                android:textSize="20dp"
-                />
-
-            <EditText
-                android:id="@+id/edt_day"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/boder2"
-                android:layout_below="@+id/input_title"
-                android:hint="Nhập ngày : VD 01/01/2023"
-                android:height="60dp"
-                android:layout_marginTop="20dp"
-                android:textSize="17dp"
-                android:padding="10dp" />
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/content_container"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/date_container"
-            android:layout_marginTop="30dp">
-
-            <TextView
-                android:id="@+id/input_title_content"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Nội dung"
-                android:textSize="20dp"
-                />
-
-            <EditText
-                android:id="@+id/edt_content"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/boder2"
-                android:layout_below="@+id/input_title_content"
-                android:hint="Nhập nội dung"
-                android:height="60dp"
-                android:layout_marginTop="20dp"
-                android:textSize="17dp"
-                android:padding="10dp" />
-
-        </RelativeLayout>
-
-
-        <Button
-            android:id="@+id/btn_save"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@id/content_container"
-            android:layout_marginTop="60dp"
-            android:height="70dp"
-            android:text="Lưu"
-            android:onClick="showAlert"/>
-
-    </RelativeLayout>
-
-</ScrollView>
+    </androidx.cardview.widget.CardView>
+</LinearLayout>
