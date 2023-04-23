@@ -86,7 +86,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginLeft="55dp"
                     android:height="60dp"
-                    android:background="@drawable/boder"
+                    android:background="@drawable/background_edt"
                     android:hint="Bạn muốn đăng gi?" />
 
             </RelativeLayout>
@@ -201,15 +201,15 @@
                     android:minHeight="40dp"
                     android:minWidth="40dp"
                     android:layout_marginTop="5dp"
-                    android:layout_marginLeft="315dp"
-                    app:srcCompat="@drawable/baseline_more_horiz_24" />
+                    android:layout_marginLeft="315dp"/>
+<!--                    app:srcCompat="@drawable/baseline_more_horiz_24" />-->
             </RelativeLayout>
             <RelativeLayout
                 android:id="@+id/body_blog"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/header_blog"
-                android:background="@drawable/boder"
+                android:background="@drawable/backgroud_boder"
                 android:padding="5dp">
 
                 <TextView

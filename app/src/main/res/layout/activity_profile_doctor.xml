@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.profile.ProfileDoctorActivity"
-    android:background="@color/background">
+    >
 
     <RelativeLayout
         android:id="@+id/container"
@@ -13,7 +13,7 @@
         android:layout_height="match_parent"
         android:padding="15dp"
         android:layout_margin="25dp"
-        android:background="@color/background"
+
         android:minHeight="400dp">
 
         <ImageView

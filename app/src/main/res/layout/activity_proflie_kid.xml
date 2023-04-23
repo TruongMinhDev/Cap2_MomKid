@@ -19,7 +19,6 @@
         android:id="@+id/img_hinhtron1"
         android:layout_width="193dp"
         android:layout_height="138dp"
-        app:srcCompat="@drawable/eclip1"
         tools:layout_editor_absoluteX="326dp"
         tools:layout_editor_absoluteY="-5dp"
         tools:ignore="MissingConstraints" />
@@ -29,7 +28,6 @@
         android:layout_width="123dp"
         android:layout_height="113dp"
         android:rotationX="-8"
-        app:srcCompat="@drawable/eclip2"
         tools:layout_editor_absoluteX="372dp"
         tools:layout_editor_absoluteY="-5dp"
         tools:ignore="MissingConstraints" />
@@ -39,7 +37,6 @@
         android:layout_width="833dp"
         android:layout_height="648dp"
         android:scaleType="centerCrop"
-        app:srcCompat="@drawable/rectangel"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="-44dp"
         tools:layout_editor_absoluteY="108dp" />

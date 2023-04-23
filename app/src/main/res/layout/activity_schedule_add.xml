@@ -10,17 +10,16 @@
         android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="15dp"
         android:layout_margin="25dp"
-        android:background="@color/background">
+        android:padding="15dp">
 
         <TextView
             android:id="@+id/header"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:text="Thêm lịch trình"
             android:textSize="25dp"
-            android:gravity="center"
             android:textStyle="bold" />
 
         <LinearLayout
@@ -34,17 +33,17 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:textSize="16dp"
                 android:gravity="center"
-                android:text="Giờ bắt đầu"/>
+                android:text="Giờ bắt đầu"
+                android:textSize="16dp" />
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:textSize="16dp"
                 android:gravity="center"
-                android:text="Giờ kết thúc"/>
+                android:text="Giờ kết thúc"
+                android:textSize="16dp" />
         </LinearLayout>
 
         <LinearLayout
@@ -59,23 +58,23 @@
                 android:id="@+id/edt_time_start"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/background_edt"
                 android:gravity="center"
                 android:hint="0:00 AM"
-                android:layout_weight="1"
                 android:inputType="datetime"
-                android:background="@drawable/boder1"
                 android:textSize="16dp" />
 
             <EditText
                 android:id="@+id/edt_time_end"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:textSize="16dp"
                 android:layout_weight="1"
-                android:inputType="datetime"
-                android:background="@drawable/boder1"
+                android:background="@drawable/background_edt"
                 android:gravity="center"
-                android:hint="0:00 AM"/>
+                android:hint="0:00 AM"
+                android:inputType="datetime"
+                android:textSize="16dp" />
         </LinearLayout>
 
         <RelativeLayout
@@ -90,20 +89,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Ngày"
-                android:textSize="20dp"
-                />
+                android:textSize="20dp" />
 
             <EditText
                 android:id="@+id/edt_day"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/boder2"
                 android:layout_below="@+id/input_title"
-                android:hint="Nhập ngày : VD 01/01/2023"
-                android:height="60dp"
                 android:layout_marginTop="20dp"
-                android:textSize="17dp"
-                android:padding="10dp" />
+                android:height="60dp"
+                android:background="@drawable/background_edt"
+                android:hint="Nhập ngày : VD 01/01/2023"
+                android:padding="10dp"
+                android:textSize="17dp" />
 
         </RelativeLayout>
 
@@ -119,20 +117,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Nội dung"
-                android:textSize="20dp"
-                />
+                android:textSize="20dp" />
 
             <EditText
                 android:id="@+id/edt_content"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/boder2"
                 android:layout_below="@+id/input_title_content"
-                android:hint="Nhập nội dung"
-                android:height="60dp"
                 android:layout_marginTop="20dp"
-                android:textSize="17dp"
-                android:padding="10dp" />
+                android:height="60dp"
+                android:background="@drawable/background_edt"
+                android:hint="Nhập nội dung"
+                android:padding="10dp"
+                android:textSize="17dp" />
 
         </RelativeLayout>
 
@@ -144,8 +141,8 @@
             android:layout_below="@id/content_container"
             android:layout_marginTop="60dp"
             android:height="70dp"
-            android:text="Lưu"
-            android:onClick="showAlert"/>
+            android:onClick="showAlert"
+            android:text="Lưu" />
 
     </RelativeLayout>
 

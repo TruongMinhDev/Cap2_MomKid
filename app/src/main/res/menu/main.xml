@@ -6,7 +6,8 @@
         android:icon="@drawable/icon_settings"
         android:orderInCategory="10"
         android:title="@string/action_settings"
-        app:showAsAction="never" />
+        app:showAsAction="never"
+        />
     <item
         android:id="@+id/action_notification"
         android:icon="@drawable/baseline_notifications"

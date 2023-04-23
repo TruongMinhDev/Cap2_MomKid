@@ -6,8 +6,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:layout_gravity="center"
-    android:background="@drawable/backgrounf"
-    tools:context=".ui.authentication.RegisterActivity">
+    tools:context=".ui.authentication.RegisterActivity"
+    android:background="@drawable/backgroud_authentication">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -45,14 +45,14 @@
 
         <EditText
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:id="@+id/edt_register_name"
             android:hint="Enter your full name"
             android:inputType="textPersonName"
-            android:textSize="16sp"
+            android:textSize="14sp"
             android:padding="6dp"
             android:layout_below="@+id/text_register_name"
-            android:background="@drawable/boderregister"/>
+            android:background="@drawable/customer_edittext"/>
 
         <!--        mật khẩu-->
         <TextView
@@ -68,19 +68,19 @@
 
         <EditText
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:id="@+id/edt_register_pass"
             android:hint="Enter your password"
             android:inputType="textPersonName"
-            android:textSize="16sp"
+            android:textSize="14sp"
             android:padding="6dp"
             android:layout_below="@+id/text_register_pass"
-            android:background="@drawable/boderregister"/>
+            android:background="@drawable/customer_edittext"/>
 
         <!--        Nhập lại mật khẩu-->
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:id="@+id/text_register_confirmpass"
             android:layout_below="@+id/edt_register_pass"
             android:text="Confirm Password"
@@ -91,14 +91,14 @@
 
         <EditText
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:id="@+id/edt_register_confirmpass"
             android:hint="Enter your confirm password"
             android:inputType="textPersonName"
-            android:textSize="16sp"
+            android:textSize="14sp"
             android:padding="6dp"
             android:layout_below="@+id/text_register_confirmpass"
-            android:background="@drawable/boderregister"/>
+            android:background="@drawable/customer_edittext"/>
 
         <!--        Email-->
         <TextView
@@ -114,14 +114,14 @@
 
         <EditText
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:id="@+id/edt_register_email"
             android:hint="Enter your email"
             android:inputType="textPersonName"
-            android:textSize="16sp"
+            android:textSize="14sp"
             android:padding="6dp"
             android:layout_below="@+id/text_register_email"
-            android:background="@drawable/boderregister"/>
+            android:background="@drawable/customer_edittext"/>
         <!--        Phone-->
         <TextView
             android:layout_width="match_parent"
@@ -136,14 +136,14 @@
 
         <EditText
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:id="@+id/edt_register_phone"
             android:hint="Enter your phone"
             android:inputType="textPersonName"
-            android:textSize="16sp"
+            android:textSize="14sp"
             android:padding="6dp"
             android:layout_below="@+id/text_register_phone"
-            android:background="@drawable/boderregister"/>
+            android:background="@drawable/customer_edittext"/>
 
         <!--        Địa chỉ-->
         <TextView
@@ -159,14 +159,14 @@
 
         <EditText
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:id="@+id/edt_register_address"
             android:hint="Enter your address"
             android:inputType="textPersonName"
-            android:textSize="16sp"
+            android:textSize="14sp"
             android:padding="6dp"
             android:layout_below="@+id/text_register_address"
-            android:background="@drawable/boderregister"/>
+            android:background="@drawable/customer_edittext"/>
 
         <CheckBox
             android:id="@+id/my_checkbox"
@@ -177,14 +177,14 @@
 
         <!--        button-->
         <Button
-            android:id="@+id/btn_register"
+            android:id="@+id/btn_registerDone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="70dp"
             android:layout_marginRight="70dp"
             android:layout_below="@id/edt_register_address"
             android:layout_marginTop="50dp"
-            android:backgroundTint="@color/pink"
+            android:background="@drawable/backgroud_btn"
             android:text="Register"/>
 
         <ProgressBar

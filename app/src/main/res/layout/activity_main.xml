@@ -1,25 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:openDrawer="start">
+    android:orientation="vertical"
+    android:background="@drawable/backgroud_wellcome">
 
-    <include
-        android:id="@+id/app_bar_main"
-        layout="@layout/app_bar_main"
+
+    <ImageView
+        android:id="@+id/imageView3"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="430dp"
+        app:srcCompat="@drawable/momandkid" />
 
-    <com.google.android.material.navigation.NavigationView
-        android:id="@+id/nav_view"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:fitsSystemWindows="true"
-        app:headerLayout="@layout/nav_header_main"
-        app:menu="@menu/activity_main_drawer" />
-</androidx.drawerlayout.widget.DrawerLayout>
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Chào Mừng Bạn "
+        android:textColor="#FFFFFF"
+        android:textSize="20dp"
+        android:textStyle="bold|italic"
+        android:textAlignment="center"/>
+
+    <Button
+        android:id="@+id/btn_nextApp"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/backgroud_btn"
+        android:text="Tiếp Tục" />
+</LinearLayout>
