@@ -11,8 +11,8 @@
     <color name="startColor">#0189ff</color>
     <color name="xam">#F3E4E4</color>
     <color name="lavender">#8692f7</color>
-    <color name="pink">#FF2272</color>
+    <color name="pink">#F48FB1</color>
     <color name="nono">#F5FFFA</color>
     <color name="time">#C9F3DE</color>
-    <color name="background">#F5F5F5</color>
+    <color name="boder">#E6E6E6</color>
 </resources>

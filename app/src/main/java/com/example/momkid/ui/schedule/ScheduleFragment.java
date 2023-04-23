@@ -10,26 +10,14 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.momkid.R;
 import com.example.momkid.databinding.FragmentScheduleBinding;
 
 public class ScheduleFragment extends Fragment {
 
-    private FragmentScheduleBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        ScheduleViewModel scheduleViewModel =
-                new ViewModelProvider(this).get(ScheduleViewModel.class);
-
-        binding = FragmentScheduleBinding.inflate(inflater, container, false);
-        View root = binding.getRoot();
-
-        return root;
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        binding = null;
+        return inflater.inflate(R.layout.fragment_schedule,container,false);
     }
 }

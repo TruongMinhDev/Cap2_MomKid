@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.profile.ProfileUserActivity"
-    android:background="@drawable/backgrondchung">
+    >
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -52,7 +52,7 @@
             android:textSize="16sp"
             android:padding="6dp"
             android:layout_below="@+id/text_edit_name"
-            android:background="@drawable/boder"/>
+            android:background="@drawable/background_edt"/>
 
         <!--        mật khẩu-->
         <TextView
@@ -76,7 +76,7 @@
             android:textSize="16sp"
             android:padding="6dp"
             android:layout_below="@+id/text_edit_pass"
-            android:background="@drawable/boder"/>
+            android:background="@drawable/background_edt"/>
 
         <!--        Nhập lại mật khẩu-->
         <TextView
@@ -100,7 +100,7 @@
             android:textSize="16sp"
             android:padding="6dp"
             android:layout_below="@+id/text_edit_confirmpass"
-            android:background="@drawable/boder"/>
+            android:background="@drawable/background_edt"/>
 
         <!--        Email-->
         <TextView
@@ -124,7 +124,7 @@
             android:textSize="16sp"
             android:padding="6dp"
             android:layout_below="@+id/text_edit_email"
-            android:background="@drawable/boder"/>
+            android:background="@drawable/background_edt"/>
         <!--        Phone-->
         <TextView
             android:textStyle="bold"
@@ -147,7 +147,7 @@
             android:textSize="16sp"
             android:padding="6dp"
             android:layout_below="@+id/text_edit_phone"
-            android:background="@drawable/boder"/>
+            android:background="@drawable/background_edt"/>
 
         <!--        Địa chỉ-->
         <TextView
@@ -171,7 +171,7 @@
             android:textSize="16sp"
             android:padding="6dp"
             android:layout_below="@+id/text_edit_address"
-            android:background="@drawable/boder"/>
+            android:background="@drawable/background_edt"/>
 
         <!--        button-->
         <Button
@@ -182,7 +182,7 @@
             android:layout_marginRight="70dp"
             android:backgroundTint="@color/pink"
             android:layout_below="@id/edt_edit_address"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="20dp"
             android:text="Lưu"
             android:onClick="showAlertEdit"/>
 
