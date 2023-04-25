@@ -15,32 +15,6 @@
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="16dp" />
 
-    <ImageView
-        android:id="@+id/img_hinhtron1"
-        android:layout_width="193dp"
-        android:layout_height="138dp"
-        tools:layout_editor_absoluteX="326dp"
-        tools:layout_editor_absoluteY="-5dp"
-        tools:ignore="MissingConstraints" />
-
-    <ImageView
-        android:id="@+id/img_hinhtron2"
-        android:layout_width="123dp"
-        android:layout_height="113dp"
-        android:rotationX="-8"
-        tools:layout_editor_absoluteX="372dp"
-        tools:layout_editor_absoluteY="-5dp"
-        tools:ignore="MissingConstraints" />
-
-    <ImageView
-        android:id="@+id/img_hinhnen"
-        android:layout_width="833dp"
-        android:layout_height="648dp"
-        android:scaleType="centerCrop"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="-44dp"
-        tools:layout_editor_absoluteY="108dp" />
-
     <EditText
         android:id="@+id/edt_nhapchieucao"
         android:layout_width="318dp"

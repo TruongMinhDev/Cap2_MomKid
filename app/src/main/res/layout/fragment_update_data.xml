@@ -1,54 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="250dp"
-    android:layout_height="250dp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:layout_gravity="center"
+    android:background="@drawable/layout_background"
     android:orientation="vertical"
-    tools:context=".ui.update_data.UpdateDataFragment"
-    android:background="@drawable/layout_background">
+    tools:context=".ui.update_data.UpdateDataFragment">
 
     <TextView
         android:id="@+id/txt_updateFormTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/bg_corner"
         android:padding="20dp"
         android:text="Cập Nhật Số Tháng Tuổi"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="20dp" />
 
-    <TextView
-        android:id="@+id/txt_updateForm"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:text="Số tháng tuổi của bé hiện tại"
-        android:textColor="#121111"
-        android:textSize="16dp" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="14dp">
 
-    <EditText
-        android:id="@+id/edt_updateForm"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/background_edt"
-        android:ems="10"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
-        android:inputType="textPersonName"
-        android:text="Nhập số tháng tuổi"
-        android:textColor="#9C9B9B"
-        android:textSize="16sp" />
+        <TextView
+            android:id="@+id/txt_updateForm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="Số tháng tuổi của bé hiện tại"
+            android:textColor="#121111"
+            android:textSize="16dp"
+            android:gravity="center"/>
 
-    <Button
-        android:id="@+id/btn_updateForm"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="right"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="20dp"
-        android:background="@drawable/backgroud_btn"
-        android:text="Xác Nhận" />
+        <EditText
+            android:id="@+id/edt_updateData"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/background_edt"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="Nhập số tháng tuổi"
+            android:textColor="#9C9B9B"
+            android:textSize="16sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="16dp">
+
+            <Button
+                android:id="@+id/btn_updateData"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/backgroud_btn"
+                android:backgroundTint="#C53939"
+                android:text="Xác Nhận"
+                android:textSize="14sp" />
+
+            <Button
+                android:id="@+id/btn_cancelForm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="14dp"
+                android:backgroundTint="#AFAFAF"
+                android:text="Trở lại"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
 </LinearLayout>
