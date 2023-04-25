@@ -69,7 +69,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         replaceFragment(new HomeFragment());
         navigationView.getMenu().findItem(R.id.nav_home).setChecked(true);
     }
-
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
