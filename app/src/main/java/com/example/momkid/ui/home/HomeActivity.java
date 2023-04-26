@@ -14,6 +14,7 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.Menu;
@@ -28,6 +29,7 @@ import com.example.momkid.ui.blog.BlogFragment;
 import com.example.momkid.ui.book_doctor.BookDoctorFragment;
 import com.example.momkid.ui.increase.IncreaseFragment;
 import com.example.momkid.ui.schedule.ScheduleFragment;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -42,6 +44,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     private int currentFragment = FRAGMENT_HOME;
 
     DrawerLayout drawer;
+    private FloatingActionButton fab_chatGPT;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +59,15 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 //                        .setAction("Action", null).show();
 //            }
 //        });
+        fab_chatGPT=findViewById(R.id.fab_ChatGPT);
+        fab_chatGPT.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Here's a Snackbar", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
+
         Toolbar toolbar = findViewById(R.id.toolbar2);
         setSupportActionBar(toolbar);
 
