@@ -28,11 +28,11 @@ public class UpdateDataFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_update_data, container, false);
     }
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(UpdateDataViewModel.class);
-        // TODO: Use the ViewModel
-    }
+//    @Override
+//    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+//        super.onActivityCreated(savedInstanceState);
+//        mViewModel = new ViewModelProvider(this).get(UpdateDataViewModel.class);
+//        // TODO: Use the ViewModel
+//    }
 
 }

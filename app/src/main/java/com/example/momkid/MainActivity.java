@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
+import com.example.momkid.chatgpt.ChatGPTActivity;
 import com.example.momkid.ui.authentication.LoginActivity;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
@@ -33,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         nextApp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                Intent intent = new Intent(MainActivity.this, ChatGPTActivity.class);
                 startActivity(intent);
             }
         });
