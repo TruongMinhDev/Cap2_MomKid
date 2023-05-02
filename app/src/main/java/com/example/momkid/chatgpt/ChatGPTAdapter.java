@@ -1,5 +1,6 @@
 package com.example.momkid.chatgpt;
 
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -22,7 +23,9 @@ public class ChatGPTAdapter extends RecyclerView.Adapter<ChatGPTAdapter.MyViewHo
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return null;
+        View chatView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_chatgpt,null);
+        MyViewHolder myViewHolder =new MyViewHolder(chatView);
+        return myViewHolder;
     }
 
     @Override
