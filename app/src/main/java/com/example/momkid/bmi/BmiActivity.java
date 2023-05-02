@@ -15,7 +15,7 @@ import com.example.momkid.R;
 
 import java.text.DecimalFormat;
 
-public class bmiActivity extends AppCompatActivity {
+public class BmiActivity extends AppCompatActivity {
 
     EditText editCC, editCN;
     RadioGroup radioGroupGT;
@@ -57,7 +57,7 @@ public class bmiActivity extends AppCompatActivity {
                 double CC = Double.parseDouble(editCC.getText() + "");
                 double CN = Double.parseDouble(editCN.getText() + "");
                 DecimalFormat dcf = new DecimalFormat("0.00"); // Định dạng lấy đến 2 con số
-                double BMI = CN / Math.pow(CC, 2) * 10000;
+                double BMI = CN / CC*CC;
                 if ((CC == 0) || (CN == 0)) {
                     Toast.makeText(this, "Chiều cao, cân nặng phải khác 0", Toast.LENGTH_SHORT).show();
                 } else {

@@ -56,6 +56,8 @@
             android:name=".chatgpt.ChatGPTActivity"
             android:exported="false" />
 
+        <activity android:name=".bmi.BmiActivity"
+            android:exported="false"/>
     </application>
 
 </manifest>
