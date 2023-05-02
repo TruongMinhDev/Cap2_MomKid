@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TÍNH CHỈ SỐ BMI DỰA VÀO CÂN NĂNG CHIỀU CAO"
+        android:textAlignment="textStart"
+        android:textColor="#F44336"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.636"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.042" />
+
+    <TextView
+
+        android:layout_width="102dp"
+        android:layout_height="33dp"
+        android:text="Chiều cao"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.08"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:layout_constraintVertical_bias="0.054" />
+
+    <TextView
+
+        android:layout_width="98dp"
+        android:layout_height="26dp"
+        android:layout_marginTop="28dp"
+        android:text="Cân nặng"
+        android:textStyle="bold"
+
+        tools:layout_editor_absoluteX="25dp" />
+
+    <EditText
+        android:id="@+id/editCC"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Nhập chiều cao ( cm)"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.818"
+
+        tools:layout_editor_absoluteY="74dp" />
+
+    <EditText
+        android:id="@+id/editCN"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Nhập cân nặng (kg)"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.823"
+
+        tools:layout_editor_absoluteY="129dp" />
+
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="99dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="36dp"
+        android:text="Giới tính"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        tools:layout_editor_absoluteX="25dp" />
+
+    <RadioGroup
+        android:id="@+id/radioGroupGT"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="170dp"
+        tools:layout_editor_absoluteY="206dp">
+
+        <RadioButton
+            android:id="@+id/radioButtonNam"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Nam" />
+
+        <RadioButton
+            android:id="@+id/radioButtonNu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Nữ" />
+
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/btn_DG"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="ĐÁNH GIÁ"
+        tools:layout_editor_absoluteX="148dp"
+        tools:layout_editor_absoluteY="284dp" />
+
+    <TextView
+        android:id="@+id/textViewBMI"
+        android:layout_width="288dp"
+        android:layout_height="36dp"
+        android:text="TextView"
+        tools:layout_editor_absoluteX="49dp"
+        tools:layout_editor_absoluteY="356dp" />
+
+    <TextView
+        android:id="@+id/textViewDG"
+        android:layout_width="287dp"
+        android:layout_height="52dp"
+        android:text="TextView"
+        tools:layout_editor_absoluteX="49dp"
+        tools:layout_editor_absoluteY="422dp" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
