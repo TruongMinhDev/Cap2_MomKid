@@ -60,8 +60,8 @@
 
     <EditText
         android:id="@+id/edt_username"
-        android:layout_width="301dp"
-        android:layout_height="63dp"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
         android:background="@drawable/customer_edittext"
         android:drawableLeft="@drawable/baseline_person_24"
         android:drawablePadding="12dp"
@@ -76,8 +76,8 @@
 
     <EditText
         android:id="@+id/edt_password"
-        android:layout_width="301dp"
-        android:layout_height="63dp"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
         android:background="@drawable/customer_edittext"
         android:drawableLeft="@drawable/baseline_lock_24"
         android:drawablePadding="12dp"

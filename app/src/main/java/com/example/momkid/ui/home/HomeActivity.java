@@ -23,6 +23,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.momkid.R;
+import com.example.momkid.chatgpt.ChatGPTActivity;
 import com.example.momkid.databinding.ActivityHomeBinding;
 import com.example.momkid.databinding.ActivityMainBinding;
 import com.example.momkid.ui.blog.BlogFragment;
@@ -51,20 +52,12 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-//        setSupportActionBar(binding.appBarMain.toolbar);
-//        binding.appBarMain.fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
         fab_chatGPT=findViewById(R.id.fab_ChatGPT);
         fab_chatGPT.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Here's a Snackbar", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Intent intent = new Intent(HomeActivity.this,ChatGPTActivity.class);
+                startActivity(intent);
             }
         });
 
