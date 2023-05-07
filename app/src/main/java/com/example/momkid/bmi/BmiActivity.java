@@ -63,14 +63,14 @@ public class BmiActivity extends AppCompatActivity {
                 } else {
                     textViewBMI.setText("Chỉ số BMI của bạn:" + dcf.format(BMI));
                     if (BMI < 18.5)
-                        textViewDG.setText("Bạn quá gầy, cần bổ sung thêm chất dinh dưỡng hơn nữa nhé");
-                    else if (18.5 <= BMI && BMI < 25) textViewDG.setText("BODY CHUẨN");
-                    else if (20 <= BMI && BMI < 30)
-                        textViewDG.setText("Bạn đang béo phì cấp độ I, cần có chế độ giảm cân hợp lý");
-                    else if (30 <= BMI && BMI < 35)
-                        textViewDG.setText("Bạn đang béo phì cấp độ II, cần có chế độ giảm cân hợp lý");
+                        textViewDG.setText("Trẻ có dấu hiệu suy dinh dưỡng,thiếu cân");
+                    else if (18.5 <= BMI && BMI < 22.9) textViewDG.setText("Trẻ có thể trạng cân đối,sức khỏe tốt,ít bệnh");
+                    else if (23 <= BMI && BMI < 24.9)
+                        textViewDG.setText("Trẻ có dấu hiệu thừa cân");
+                    else if (25 <= BMI && BMI < 29.9)
+                        textViewDG.setText("Trẻ có dấu hiệu gần béo phì");
                     else
-                        textViewDG.setText("Bạn đang béo phì cấp độ III, cần có chế độ giảm cân hợp lý");
+                        textViewDG.setText("Trẻ có chỉ đố đang bị béo phì,chỉ số báo động");
                 }
             }
         });
