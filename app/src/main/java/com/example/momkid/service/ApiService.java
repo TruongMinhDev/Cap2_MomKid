@@ -1,6 +1,7 @@
 package com.example.momkid.service;
 
 import com.example.momkid.model.request.auth.LoginRequest;
+import com.example.momkid.model.request.auth.RegisterRequest;
 import com.example.momkid.model.response.auth.LoginResponse;
 import com.example.momkid.model.response.auth.RegisterResponse;
 
@@ -18,11 +19,6 @@ public interface ApiService {
 
     @FormUrlEncoded
     @POST("api/v1/auth/register")
-    Call<RegisterResponse> registerApi(@Field("firstName") String firstName,
-                                       @Field("lastName") String lastName,
-                                       @Field("email") String email,
-                                       @Field("password") String password,
-                                       @Field("phoneNumber") String phoneNumber,
-                                       @Field("role") String role);
+    Call<RegisterResponse> registerApi(@Body RegisterRequest registerRequest);
 
 }
