@@ -14,7 +14,7 @@
 
         <RelativeLayout
             android:id="@+id/rlHeader"
-            android:layout_width="300dp"
+            android:layout_width="241dp"
             android:layout_height="wrap_content">
 
             <TextView
@@ -90,5 +90,10 @@
 
         </LinearLayout>
     </LinearLayout>
+
+    <ListView
+        android:id="@+id/lv_schedule"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </LinearLayout>
