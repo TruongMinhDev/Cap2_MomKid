@@ -11,7 +11,7 @@
         android:id="@+id/imageView6"
         android:layout_width="225dp"
         android:layout_height="246dp"
-        app:layout_constraintBottom_toTopOf="@+id/edt_username"
+        app:layout_constraintBottom_toTopOf="@+id/edt_email"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -59,9 +59,9 @@
 
 
     <EditText
-        android:id="@+id/edt_username"
-        android:layout_width="301dp"
-        android:layout_height="63dp"
+        android:id="@+id/edt_email"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
         android:background="@drawable/customer_edittext"
         android:drawableLeft="@drawable/baseline_person_24"
         android:drawablePadding="12dp"
@@ -76,8 +76,8 @@
 
     <EditText
         android:id="@+id/edt_password"
-        android:layout_width="301dp"
-        android:layout_height="63dp"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
         android:background="@drawable/customer_edittext"
         android:drawableLeft="@drawable/baseline_lock_24"
         android:drawablePadding="12dp"
@@ -91,7 +91,7 @@
         app:layout_constraintVertical_bias="0.543" />
 
     <Button
-        android:id="@+id/btn_dangky"
+        android:id="@+id/btn_register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"

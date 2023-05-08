@@ -1,19 +1,30 @@
 package com.example.momkid.ui.schedule;
 
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
 
-public class ScheduleViewModel extends ViewModel {
 
-    private final MutableLiveData<String> mText;
+public class ScheduleViewModel {
 
-    public ScheduleViewModel() {
-        mText = new MutableLiveData<>();
-        mText.setValue("Đây là trang lịch trình");
+    private String timeSchedule;
+    private String contentSchedule;
+
+    public ScheduleViewModel(String timeSchedule, String contentSchedule) {
+        this.timeSchedule = timeSchedule;
+        this.contentSchedule = contentSchedule;
     }
 
-    public LiveData<String> getText() {
-        return mText;
+    public String getTimeSchedule() {
+        return timeSchedule;
+    }
+
+    public void setTimeSchedule(String timeSchedule) {
+        this.timeSchedule = timeSchedule;
+    }
+
+    public String getContentSchedule() {
+        return contentSchedule;
+    }
+
+    public void setContentSchedule(String contentSchedule) {
+        this.contentSchedule = contentSchedule;
     }
 }

@@ -54,22 +54,19 @@
                 android:id="@+id/txt_agesss"
                 android:layout_width="match_parent"
                 android:layout_height="25dp"
-                android:text="Số Tháng Tuổi" />
+                android:text="Số Tháng Tuổi"
+                android:textSize="16sp"
+                android:textStyle="bold"/>
 
             <TextView
-                android:id="@+id/txt_age"
+                android:id="@+id/txt_birthdate"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Số liệu" />
+                android:text="Số liệu"
+                android:textStyle="italic"
+                />
         </LinearLayout>
 
-        <ImageButton
-            android:id="@+id/btn_age_update"
-            android:layout_width="30dp"
-            android:layout_height="35dp"
-            android:layout_margin="10dp"
-            android:backgroundTint="#00FFFFFF"
-            android:src="@drawable/icons_edit" />
     </LinearLayout>
 
     <LinearLayout
@@ -104,22 +101,18 @@
                 android:id="@+id/textView1"
                 android:layout_width="match_parent"
                 android:layout_height="25dp"
-                android:text="Chiều Cao" />
+                android:text="Chiều Cao"
+                android:textSize="16sp"
+                android:textStyle="bold"/>
 
             <TextView
                 android:id="@+id/txt_height"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Số liệu" />
+                android:text="Số liệu"
+                android:textStyle="italic"/>
         </LinearLayout>
 
-        <ImageButton
-            android:id="@+id/btn_height_update"
-            android:layout_width="30dp"
-            android:layout_height="35dp"
-            android:layout_margin="10dp"
-            android:backgroundTint="#00FFFFFF"
-            android:src="@drawable/icons_edit" />
     </LinearLayout>
 
 
@@ -154,22 +147,19 @@
                 android:id="@+id/textView11"
                 android:layout_width="match_parent"
                 android:layout_height="25dp"
-                android:text="Số Tháng Tuổi" />
+                android:text="Cân Nặng"
+                android:textSize="16sp"
+                android:textStyle="bold"/>
 
             <TextView
                 android:id="@+id/txt_weight"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Số liệu" />
+                android:text="Số liệu"
+                android:textStyle="italic"/>
         </LinearLayout>
 
-        <ImageButton
-            android:id="@+id/btn_weight_update"
-            android:layout_width="30dp"
-            android:layout_height="35dp"
-            android:layout_margin="10dp"
-            android:backgroundTint="#00FFFFFF"
-            android:src="@drawable/icons_edit" />
+
     </LinearLayout>
 
 
