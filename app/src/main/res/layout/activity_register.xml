@@ -35,32 +35,31 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/text_register_name"
-            android:layout_below="@+id/registerhead"
-            android:text="Full name"
+            android:id="@+id/text1"
+            android:layout_below="@+id/registerdescription"
+            android:text="First name"
             android:textColor="#555555"
             android:padding="6dp"
             android:textSize="16sp"
-            android:layout_marginTop="50dp"/>
+            android:layout_marginTop="30dp"/>
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:id="@+id/edt_register_name"
-            android:hint="Enter your full name"
+            android:id="@+id/edt_firstName"
+            android:hint="Enter your first name"
             android:inputType="textPersonName"
             android:textSize="14sp"
             android:padding="6dp"
-            android:layout_below="@+id/text_register_name"
+            android:layout_below="@+id/text1"
             android:background="@drawable/customer_edittext"/>
 
-        <!--        mật khẩu-->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/text_register_pass"
-            android:layout_below="@+id/edt_register_name"
-            android:text="Password"
+            android:id="@+id/text2"
+            android:layout_below="@+id/edt_firstName"
+            android:text="Last name"
             android:textColor="#555555"
             android:padding="6dp"
             android:textSize="16sp"
@@ -69,20 +68,68 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:id="@+id/edt_register_pass"
-            android:hint="Enter your password"
+            android:id="@+id/edt_lastName"
+            android:hint="Enter your first name"
             android:inputType="textPersonName"
             android:textSize="14sp"
             android:padding="6dp"
-            android:layout_below="@+id/text_register_pass"
+            android:layout_below="@+id/text2"
             android:background="@drawable/customer_edittext"/>
 
-        <!--        Nhập lại mật khẩu-->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/text3"
+            android:layout_below="@+id/edt_lastName"
+            android:text="Email"
+            android:textColor="#555555"
+            android:padding="6dp"
+            android:textSize="16sp"
+            android:layout_marginTop="10dp"/>
+
+        <EditText
+            android:id="@+id/edt_email"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:ems="10"
+            android:inputType="textEmailAddress"
+            android:hint="Enter your email"
+            android:textSize="14sp"
+            android:padding="6dp"
+            android:layout_below="@+id/text3"
+            android:background="@drawable/customer_edittext"/>
+
+
+        <!--        mật khẩu-->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/text4"
+            android:layout_below="@+id/edt_email"
+            android:text="Password"
+            android:textColor="#555555"
+            android:padding="6dp"
+            android:textSize="16sp"
+            android:layout_marginTop="10dp"/>
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:id="@+id/edt_password"
+            android:hint="Enter your password"
+            android:inputType="textPassword"
+            android:textSize="14sp"
+            android:padding="6dp"
+            android:layout_below="@+id/text4"
+            android:background="@drawable/customer_edittext"/>
+
+<!--        &lt;!&ndash;        Nhập lại mật khẩu&ndash;&gt;-->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:id="@+id/text_register_confirmpass"
-            android:layout_below="@+id/edt_register_pass"
+            android:id="@+id/text5"
+            android:layout_below="@+id/edt_password"
             android:text="Confirm Password"
             android:textColor="#555555"
             android:padding="6dp"
@@ -92,42 +139,19 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:id="@+id/edt_register_confirmpass"
+            android:id="@+id/edt_password_confirm"
             android:hint="Enter your confirm password"
-            android:inputType="textPersonName"
+            android:inputType="textPassword"
             android:textSize="14sp"
             android:padding="6dp"
-            android:layout_below="@+id/text_register_confirmpass"
+            android:layout_below="@+id/text5"
             android:background="@drawable/customer_edittext"/>
 
-        <!--        Email-->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/text_register_email"
-            android:layout_below="@+id/edt_register_confirmpass"
-            android:text="Email"
-            android:textColor="#555555"
-            android:padding="6dp"
-            android:textSize="16sp"
-            android:layout_marginTop="10dp"/>
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:id="@+id/edt_register_email"
-            android:hint="Enter your email"
-            android:inputType="textPersonName"
-            android:textSize="14sp"
-            android:padding="6dp"
-            android:layout_below="@+id/text_register_email"
-            android:background="@drawable/customer_edittext"/>
-        <!--        Phone-->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/text_register_phone"
-            android:layout_below="@+id/edt_register_email"
+            android:id="@+id/text6"
+            android:layout_below="@+id/edt_password_confirm"
             android:text="Phone"
             android:textColor="#555555"
             android:padding="6dp"
@@ -137,64 +161,57 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:id="@+id/edt_register_phone"
+            android:id="@+id/edt_phone"
             android:hint="Enter your phone"
             android:inputType="textPersonName"
             android:textSize="14sp"
             android:padding="6dp"
-            android:layout_below="@+id/text_register_phone"
+            android:layout_below="@+id/text6"
             android:background="@drawable/customer_edittext"/>
 
-        <!--        Địa chỉ-->
+
+<!--        <CheckBox-->
+<!--            android:id="@+id/my_checkbox"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_below="@id/edt_phone"-->
+<!--            android:text="Bạn có phải là bác sĩ hay không?" />-->
+
+
         <TextView
-            android:layout_width="match_parent"
+            android:id="@+id/text7"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/text_register_address"
-            android:layout_below="@+id/edt_register_phone"
-            android:text="Address"
+            android:text="Role"
+            android:layout_below="@+id/edt_phone"
             android:textColor="#555555"
             android:padding="6dp"
             android:textSize="16sp"
             android:layout_marginTop="10dp"/>
 
         <EditText
+            android:id="@+id/edt_role"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:id="@+id/edt_register_address"
-            android:hint="Enter your address"
-            android:inputType="textPersonName"
+            android:ems="10"
+            android:inputType="text"
+            android:hint="Enter your role"
             android:textSize="14sp"
             android:padding="6dp"
-            android:layout_below="@+id/text_register_address"
+            android:layout_below="@+id/text7"
             android:background="@drawable/customer_edittext"/>
 
-        <CheckBox
-            android:id="@+id/my_checkbox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/edt_register_address"
-            android:text="Bạn có phải là bác sĩ hay không?" />
-
-        <!--        button-->
         <Button
-            android:id="@+id/btn_registerDone"
+            android:id="@+id/btn_signUp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="70dp"
             android:layout_marginRight="70dp"
-            android:layout_below="@id/edt_register_address"
-            android:layout_marginTop="50dp"
+            android:layout_below="@id/edt_role"
+            android:layout_marginTop="30dp"
             android:background="@drawable/backgroud_btn"
             android:text="Register"/>
 
-        <ProgressBar
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/progressBar"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:elevation="10dp"
-            android:visibility="gone"/>
 
 
 
