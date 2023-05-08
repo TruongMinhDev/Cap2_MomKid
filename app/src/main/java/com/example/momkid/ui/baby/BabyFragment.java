@@ -1,41 +1,43 @@
-package com.example.momkid.ui.blog;
+package com.example.momkid.ui.baby;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.example.momkid.R;
+import com.example.momkid.ui.blog.BlogAdapter;
+import com.example.momkid.ui.blog.BlogDto;
+import com.example.momkid.ui.blog.BlogFragment;
 
 import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
 
-
-public class BlogFragment extends Fragment {
-    private RecyclerView rcvBlogs ;
+public class BabyFragment extends Fragment {
+    private RecyclerView rcvKid ;
     private ProgressDialog nDialog;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         loadData();
-        View view = inflater.inflate(R.layout.fragment_blog,container,false);
-        rcvBlogs = view.findViewById(R.id.rcvBlog);
-        rcvBlogs.setLayoutManager(new LinearLayoutManager(view.getContext()));
+        View view = inflater.inflate(R.layout.fragment_list_kid,container,false);
+        rcvKid = view.findViewById(R.id.rcvKid);
+        rcvKid.setLayoutManager(new LinearLayoutManager(view.getContext()));
 
 
         nDialog = new ProgressDialog(getContext());
@@ -48,7 +50,7 @@ public class BlogFragment extends Fragment {
     }
 
     private void log(String mess){
-        Log.d(BlogFragment.class.getName(), mess);
+        Log.d(BabyFragment.class.getName(), mess);
     }
 
     private void loadData() {
@@ -60,17 +62,17 @@ public class BlogFragment extends Fragment {
                 nDialog.cancel();
                 log(String.valueOf(response));
 
-                List<BlogDto> blogs = new ArrayList<>();
-                BlogDto temp = null;
+                List<BabyDto> babys = new ArrayList<>();
+                BabyDto temp = null;
                 for (int i = 0; i < 3; i++) {
-                    temp = new BlogDto();
-                    temp.setContent(String.format("Content %d", i));
-                    temp.setId(i);
-                    temp.setName(String.format("Name %d", i));
-                    blogs.add(temp);
+                    temp = new BabyDto();
+                    temp.setNameKid(String.format("Tên trẻ %d", i));
+                    temp.setBirthDay(String.format("Ngày sinh %d", i));
+                    temp.setSexKid(String.format("Giới tính %d", i));
+                    babys.add(temp);
                 }
-                BlogAdapter adapter = new BlogAdapter(blogs, getContext());
-                rcvBlogs.setAdapter(adapter);
+                BabyAdapter adapter = new BabyAdapter(babys, getContext());
+                rcvKid.setAdapter(adapter);
             }
 
             @Override
@@ -79,4 +81,5 @@ public class BlogFragment extends Fragment {
             }
         });
     }
+
 }

@@ -42,6 +42,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     private static final int FRAGMENT_BLOG = 3;
     private static final int FRAGMENT_BOOK_DOCTOR = 4;
 
+    private static final int FRAGMENT_LIST_KID = 5;
+
     private int currentFragment = FRAGMENT_HOME;
 
     DrawerLayout drawer;
