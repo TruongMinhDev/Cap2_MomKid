@@ -1,5 +1,6 @@
 package com.example.momkid.ui.blog;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -20,19 +21,28 @@ import com.example.momkid.R;
 
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class BlogFragment extends Fragment {
-    private RecyclerView rcvBlogs;
+    private RecyclerView rcvBlogs ;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        loadData();
-
+//        loadData();
         View view = inflater.inflate(R.layout.fragment_blog,container,false);
         rcvBlogs = view.findViewById(R.id.rcvBlog);
         rcvBlogs.setLayoutManager(new LinearLayoutManager(view.getContext()));
 
+        ProgressDialog nDialog;
+        nDialog = new ProgressDialog(getContext());
+        nDialog.setMessage("Loading..");
+        nDialog.setTitle("Get Data");
+        nDialog.setIndeterminate(false);
+        nDialog.setCancelable(true);
+        nDialog.show();
         return view;
     }
 
@@ -46,12 +56,24 @@ public class BlogFragment extends Fragment {
         AndroidNetworking.get(url).build().getAsJSONObject(new JSONObjectRequestListener() {
             @Override
             public void onResponse(JSONObject response) {
-                Log.d("ducnvx", String.valueOf(response));
+                log(String.valueOf(response));
+
+                List<BlogDto> blogs = new ArrayList<>();
+                BlogDto temp = null;
+                for (int i = 0; i < 3; i++) {
+                    temp = new BlogDto();
+                    temp.setContent(String.format("Content %d", i));
+                    temp.setId(i);
+                    temp.setName(String.format("Name %d", i));
+                    blogs.add(temp);
+                }
+                BlogAdapter adapter = new BlogAdapter(blogs, getContext());
+                rcvBlogs.setAdapter(adapter);
             }
 
             @Override
             public void onError(ANError anError) {
-                Log.d("ducnvx", String.valueOf(anError));
+                log( String.valueOf(anError));
             }
         });
     }
