@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:background="@drawable/backgroud_authentication"
+    android:orientation="vertical"
+    tools:context=".ui.authentication.RegisterActivity">
+
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TÍNH CHỈ SỐ BMI DỰA VÀO CÂN NĂNG CHIỀU CAO"
+        android:textAlignment="center"
+        android:textColor="@color/pink"
+        android:textSize="24sp"
+        android:layout_margin="15dp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="383dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:orientation="horizontal"
+        android:padding="15dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:text="Chiều cao"
+            android:textColor="#555555"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/editCC"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/customer_edittext"
+            android:hint="Nhập chiều cao (cm)"
+            android:padding="15dp"
+            android:textSize="14sp" />
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="10sp"
+        android:padding="15dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:text="Cân nặng"
+            android:textColor="#555555"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/editCN"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/customer_edittext"
+            android:hint="Nhập cân nặng (kg)"
+            android:padding="15dp"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+
+
+    <RadioGroup
+        android:id="@+id/radioGroupGT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="22sp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:text="Giới Tính"
+            android:textColor="#555555"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <RadioButton
+            android:id="@+id/radioButtonNam"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="150sp"
+            android:layout_marginTop="-60sp"
+            android:text="Nam"
+            android:textSize="20sp" />
+
+        <RadioButton
+            android:id="@+id/radioButtonNu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="150sp"
+            android:text="Nữ"
+            android:textSize="20sp" />
+
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/btn_DG"
+        android:layout_width="152dp"
+        android:layout_height="63dp"
+        android:layout_marginLeft="150dp"
+        android:text="ĐÁNH GIÁ"
+        android:textColor="@color/boder"
+        android:backgroundTint="@color/pink"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/textViewBMI"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:hint="TextView"
+        android:textColor="@color/black"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/textViewDG"
+        android:layout_width="390dp"
+        android:layout_height="42dp"
+        android:hint="TextView"
+        android:textColor="@color/black"
+        android:textSize="20sp" />
+
+
+</LinearLayout>
