@@ -23,13 +23,13 @@
         tools:layout="@layout/fragment_increase" />
 
     <fragment
-        android:id="@+id/nav_wellcome"
-        android:name="com.example.momkid.ui.wellcome.WellcomeFragment"
-        android:label="fragment_wellcome"
-        tools:layout="@layout/fragment_wellcome" />
-    <fragment
         android:id="@+id/nav_blog"
         android:name="com.example.momkid.ui.blog.BlogFragment"
         android:label="@string/menu_blog"
         tools:layout="@layout/fragment_blog" />
+
+    <fragment android:id="@+id/nav_list_kid"
+        android:name="com.example.momkid.ui.baby.BabyFragment"
+        android:label=""
+        tools:layout="@layout/fragment_list_kid"/>
 </navigation>

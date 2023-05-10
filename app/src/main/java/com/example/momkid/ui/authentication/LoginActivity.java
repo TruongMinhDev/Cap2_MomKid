@@ -38,8 +38,9 @@ public class LoginActivity extends AppCompatActivity {
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-               login("minh@gmail.com", "123456");
+                String email = edtEmail.getText().toString();
+                String pass = edtPassword.getText().toString();
+               login("minh1@gmail.com", "123456");
             }
         });
 

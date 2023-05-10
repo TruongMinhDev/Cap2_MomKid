@@ -22,10 +22,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.androidnetworking.AndroidNetworking;
+import com.androidnetworking.common.Priority;
 import com.example.momkid.R;
 import com.example.momkid.chatgpt.ChatGPTActivity;
 import com.example.momkid.databinding.ActivityHomeBinding;
 import com.example.momkid.databinding.ActivityMainBinding;
+import com.example.momkid.helper.SystemConfig;
+import com.example.momkid.ui.baby.BabyFragment;
 import com.example.momkid.ui.blog.BlogFragment;
 import com.example.momkid.ui.book_doctor.BookDoctorFragment;
 import com.example.momkid.ui.increase.IncreaseFragment;
@@ -53,6 +57,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        checkBabyList();
 
         fab_chatGPT=findViewById(R.id.fab_ChatGPT);
         fab_chatGPT.setOnClickListener(new View.OnClickListener() {
@@ -146,5 +151,10 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
 
+    //check baby list
+    public void checkBabyList(){
+        replaceFragment(new BabyFragment());
+
+    }
 
 }
