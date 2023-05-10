@@ -17,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.momkid.helper.SharedPreferenceHelper;
 import com.example.momkid.ui.authentication.LoginActivity;
+import com.example.momkid.ui.home.HomeActivity;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -30,8 +31,7 @@ public class MainActivity extends AppCompatActivity {
         nextApp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, BmiActivity.class);
-                startActivity(intent);
+                navigateToActivity(new Intent(MainActivity.this, BmiActivity.class));
             }
         });
 

@@ -1,11 +1,13 @@
 package com.example.momkid.ui.baby;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,10 +19,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
+import com.example.momkid.MainActivity;
 import com.example.momkid.R;
+import com.example.momkid.helper.SharedPreferenceHelper;
+import com.example.momkid.helper.SystemConfig;
 import com.example.momkid.ui.blog.BlogAdapter;
 import com.example.momkid.ui.blog.BlogDto;
 import com.example.momkid.ui.blog.BlogFragment;
+import com.example.momkid.ui.profile.ProflieKidActivity;
 
 import org.json.JSONObject;
 
@@ -30,6 +36,8 @@ import java.util.List;
 public class BabyFragment extends Fragment {
     private RecyclerView rcvKid ;
     private ProgressDialog nDialog;
+
+    private Button btnAddKid;
 
     @Nullable
     @Override
@@ -46,6 +54,15 @@ public class BabyFragment extends Fragment {
         nDialog.setIndeterminate(false);
         nDialog.setCancelable(true);
         nDialog.show();
+
+        btnAddKid=view.findViewById(R.id.btn_add_kid);
+        btnAddKid.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                navigateToActivity(new Intent(this, ProflieKidActivity.class));
+            }
+        });
+
         return view;
     }
 
@@ -55,8 +72,11 @@ public class BabyFragment extends Fragment {
 
     private void loadData() {
         log("da vao day");
-        String url = "https://api.ipify.org?format=json";
-        AndroidNetworking.get(url).build().getAsJSONObject(new JSONObjectRequestListener() {
+        String token = SharedPreferenceHelper.getSharedPreferenceString(this,"token","");
+        AndroidNetworking.get(SystemConfig.BASE_URL.concat("/client/babies"))
+                .addHeaders("Authorization","")
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
             @Override
             public void onResponse(JSONObject response) {
                 nDialog.cancel();
@@ -80,6 +100,10 @@ public class BabyFragment extends Fragment {
                 log( String.valueOf(anError));
             }
         });
+    }
+
+    private void navigateToActivity(Intent intent){
+        startActivity(intent);
     }
 
 }
