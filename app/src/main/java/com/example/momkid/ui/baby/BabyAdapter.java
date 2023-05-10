@@ -40,11 +40,14 @@ public class BabyAdapter extends RecyclerView.Adapter<BabyAdapter.ViewHolder>{
     }
 
     @Override
-    public void onBindViewHolder(@NonNull BabyAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         BabyDto baby = mKids.get(position);
-        holder.tvName.setText(baby.getNameKid());
+        holder.tvName.setText(baby.getName());
         holder.tvBirtDay.setText(baby.getBirthDay());
-        holder.tvSex.setText(baby.getSexKid());
+//        if (holder.tvSex.getSexKid() == true){
+//
+//        }
+
     }
 
     @Override
@@ -61,7 +64,7 @@ public class BabyAdapter extends RecyclerView.Adapter<BabyAdapter.ViewHolder>{
             super(itemView);
             tvName = itemView.findViewById(R.id.tvName);
             tvBirtDay = itemView.findViewById(R.id.tvBirtDay);
-            tvSex = itemView.findViewById(R.id.tvSex);
+//            tvSex = itemView.findViewById(R.id.tvSex);
         }
     }
 }

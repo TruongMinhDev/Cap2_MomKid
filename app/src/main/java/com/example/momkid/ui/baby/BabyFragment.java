@@ -1,5 +1,7 @@
 package com.example.momkid.ui.baby;
 
+import static android.content.ContentValues.TAG;
+
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,17 +21,23 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
+import com.androidnetworking.interfaces.ParsedRequestListener;
+import com.androidnetworking.interfaces.StringRequestListener;
 import com.example.momkid.MainActivity;
 import com.example.momkid.R;
+import com.example.momkid.helper.ResponseCommonDto;
 import com.example.momkid.helper.SharedPreferenceHelper;
 import com.example.momkid.helper.SystemConfig;
 import com.example.momkid.ui.blog.BlogAdapter;
 import com.example.momkid.ui.blog.BlogDto;
 import com.example.momkid.ui.blog.BlogFragment;
 import com.example.momkid.ui.profile.ProflieKidActivity;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONObject;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -59,7 +67,7 @@ public class BabyFragment extends Fragment {
         btnAddKid.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                navigateToActivity(new Intent(this, ProflieKidActivity.class));
+                navigateToActivity(new Intent(getContext(), ProflieKidActivity.class));
             }
         });
 
@@ -72,34 +80,45 @@ public class BabyFragment extends Fragment {
 
     private void loadData() {
         log("da vao day");
-        String token = SharedPreferenceHelper.getSharedPreferenceString(this,"token","");
+        String token = SharedPreferenceHelper.getSharedPreferenceString(getContext(),"token","");
         AndroidNetworking.get(SystemConfig.BASE_URL.concat("/client/babies"))
-                .addHeaders("Authorization","")
+                .addHeaders("Authorization", String.format("Bearer  %s",token))
                 .build()
-                .getAsJSONObject(new JSONObjectRequestListener() {
-            @Override
-            public void onResponse(JSONObject response) {
-                nDialog.cancel();
-                log(String.valueOf(response));
+                .getAsString(new StringRequestListener() {
+                    @Override
+                    public void onResponse(String json) {
+                        List<BabyDto> babys = new ArrayList<>();
+                        BabyDto temp = null;
+                        GsonBuilder gson = new GsonBuilder();
+                        Type collectionType = new TypeToken<ResponseCommonDto<BabyDto>>(){}.getType();
 
-                List<BabyDto> babys = new ArrayList<>();
-                BabyDto temp = null;
-                for (int i = 0; i < 3; i++) {
-                    temp = new BabyDto();
-                    temp.setNameKid(String.format("Tên trẻ %d", i));
-                    temp.setBirthDay(String.format("Ngày sinh %d", i));
-                    temp.setSexKid(String.format("Giới tính %d", i));
-                    babys.add(temp);
-                }
-                BabyAdapter adapter = new BabyAdapter(babys, getContext());
-                rcvKid.setAdapter(adapter);
-            }
+                        ResponseCommonDto<BabyDto> response = gson.create().fromJson(json, collectionType);
 
-            @Override
-            public void onError(ANError anError) {
-                log( String.valueOf(anError));
-            }
-        });
+//                        for (int i = 0; i < response.getData().size(); i++) {
+//                            temp = new BabyDto();
+//                            temp.setName(response.getData().stream().map(BabyDto::getName).toString());
+//                            babys.add(temp);
+//                        }
+
+
+                        log(String.format("%d",response.getData().size()));
+                        response.getData().stream().map(BabyDto::getName).forEach(s -> );
+                        response.getData().stream().map(BabyDto::getBirthDay).forEach(s -> temp.setBirthDay(s));
+                        response.getData().stream().map(BabyDto::getUserId).forEach(System.out::println);
+
+
+                        babys.add(temp);
+                        BabyAdapter adapter = new BabyAdapter(babys, getContext());
+                        rcvKid.setAdapter(adapter);
+
+
+                    }
+
+                    @Override
+                    public void onError(ANError anError) {
+                        log(anError.getErrorBody());
+                    }
+                });
     }
 
     private void navigateToActivity(Intent intent){
