@@ -2,31 +2,40 @@ package com.example.momkid.ui.baby;
 
 
 public class BabyDto {
-    private String nameKid;
+    private int userId;
+    private String name;
     private String birthDay;
-    private String sexKid;
+    private boolean isMale;
 
-    public String getNameKid() {
-        return nameKid;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
-    public void setNameKid(String nameKid) {
-        this.nameKid = nameKid;
-    }
-
-    public String getBirthDay() {
-        return birthDay;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public void setBirthDay(String birthDay) {
         this.birthDay = birthDay;
     }
 
-    public String getSexKid() {
-        return sexKid;
+    public void setMale(boolean male) {
+        isMale = male;
     }
 
-    public void setSexKid(String sexKid) {
-        this.sexKid = sexKid;
+    public int getUserId() {
+        return userId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getBirthDay() {
+        return birthDay;
+    }
+
+    public boolean isMale() {
+        return isMale;
     }
 }
