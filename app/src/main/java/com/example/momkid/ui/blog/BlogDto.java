@@ -4,6 +4,15 @@ public class BlogDto {
     private int id;
     private String name;
     private String content;
+    private String img;
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
 
     public int getId() {
         return id;

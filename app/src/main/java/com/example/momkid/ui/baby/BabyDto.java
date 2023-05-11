@@ -38,4 +38,14 @@ public class BabyDto {
     public boolean isMale() {
         return isMale;
     }
+
+    @Override
+    public String toString() {
+        return "BabyDto{" +
+                "userId=" + userId +
+                ", name='" + name + '\'' +
+                ", birthDay='" + birthDay + '\'' +
+                ", isMale=" + isMale +
+                '}';
+    }
 }

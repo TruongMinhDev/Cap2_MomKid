@@ -7,14 +7,12 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.momkid.R;
-import com.example.momkid.ui.blog.BlogAdapter;
-import com.example.momkid.ui.blog.BlogDto;
+
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 
-import java.text.BreakIterator;
 import java.util.List;
 
 public class BabyAdapter extends RecyclerView.Adapter<BabyAdapter.ViewHolder>{
@@ -44,9 +42,10 @@ public class BabyAdapter extends RecyclerView.Adapter<BabyAdapter.ViewHolder>{
         BabyDto baby = mKids.get(position);
         holder.tvName.setText(baby.getName());
         holder.tvBirtDay.setText(baby.getBirthDay());
-//        if (holder.tvSex.getSexKid() == true){
-//
-//        }
+        if(baby.isMale()==true){
+            holder.tvSex.setText("Bé Trai");
+        }else holder.tvSex.setText("Bé Gái");
+
 
     }
 
@@ -64,7 +63,7 @@ public class BabyAdapter extends RecyclerView.Adapter<BabyAdapter.ViewHolder>{
             super(itemView);
             tvName = itemView.findViewById(R.id.tvName);
             tvBirtDay = itemView.findViewById(R.id.tvBirtDay);
-//            tvSex = itemView.findViewById(R.id.tvSex);
+            tvSex = itemView.findViewById(R.id.tvSex);
         }
     }
 }
