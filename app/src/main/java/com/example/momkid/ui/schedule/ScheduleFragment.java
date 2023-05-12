@@ -5,21 +5,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 
 import com.example.momkid.R;
-import com.example.momkid.databinding.FragmentScheduleBinding;
 
 import java.util.ArrayList;
 
 public class ScheduleFragment extends Fragment {
 
     private ListView lvSchedule;
-    private ArrayList<ScheduleViewModel> arrSchedule;
+    private ArrayList<ScheduleDto> arrSchedule;
     private ScheduleAdapter scheduleAdapter;
 
     private View view;
@@ -29,8 +26,8 @@ public class ScheduleFragment extends Fragment {
 
         lvSchedule=(ListView) view.findViewById(R.id.lv_schedule);
         arrSchedule= new ArrayList<>();
-        arrSchedule.add(new ScheduleViewModel("7:00","Cho bé ăn sáng"));
-        arrSchedule.add(new ScheduleViewModel("8:00","Cho bé ngủ"));
+        arrSchedule.add(new ScheduleDto("7:00","Cho bé ăn sáng"));
+        arrSchedule.add(new ScheduleDto("8:00","Cho bé ngủ"));
 
         scheduleAdapter=new ScheduleAdapter(getContext(),R.layout.item_schedule,arrSchedule);
         lvSchedule.setAdapter(scheduleAdapter);

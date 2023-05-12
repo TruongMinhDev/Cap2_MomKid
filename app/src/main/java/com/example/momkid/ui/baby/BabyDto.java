@@ -1,11 +1,22 @@
 package com.example.momkid.ui.baby;
 
 
+import java.sql.Timestamp;
+import java.util.Date;
+
 public class BabyDto {
     private int userId;
     private String name;
-    private String birthDay;
+    private Date birthDay;
     private boolean isMale;
+
+    public Date getBirthDay() {
+        return birthDay;
+    }
+
+    public void setBirthDay(Date birthDay) {
+        this.birthDay = birthDay;
+    }
 
     public void setUserId(int userId) {
         this.userId = userId;
@@ -15,9 +26,6 @@ public class BabyDto {
         this.name = name;
     }
 
-    public void setBirthDay(String birthDay) {
-        this.birthDay = birthDay;
-    }
 
     public void setMale(boolean male) {
         isMale = male;
@@ -31,9 +39,6 @@ public class BabyDto {
         return name;
     }
 
-    public String getBirthDay() {
-        return birthDay;
-    }
 
     public boolean isMale() {
         return isMale;

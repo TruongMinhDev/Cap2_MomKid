@@ -28,6 +28,7 @@ import com.example.momkid.R;
 import com.example.momkid.helper.ResponseCommonDto;
 import com.example.momkid.helper.SharedPreferenceHelper;
 import com.example.momkid.helper.SystemConfig;
+import com.example.momkid.ui.authentication.UserDto;
 import com.example.momkid.ui.blog.BlogAdapter;
 import com.example.momkid.ui.blog.BlogDto;
 import com.example.momkid.ui.blog.BlogFragment;
@@ -80,6 +81,7 @@ public class BabyFragment extends Fragment {
 
     private void loadData() {
         log("da vao day");
+        String id = String.valueOf(UserDto.getId());
         String token = SharedPreferenceHelper.getSharedPreferenceString(getContext(),"token","");
         AndroidNetworking.get(SystemConfig.BASE_URL.concat("/client/babies"))
                 .addHeaders("Authorization", String.format("Bearer  %s",token))

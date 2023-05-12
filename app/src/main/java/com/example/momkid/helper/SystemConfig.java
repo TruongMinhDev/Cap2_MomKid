@@ -1,7 +1,7 @@
 package com.example.momkid.helper;
 
 public class SystemConfig {
-    public static final String BASE_URL = "https://6ab4-14-241-131-118.ngrok-free.app/api/v1";
+    public static final String BASE_URL = "https://a297-118-69-176-254.ngrok-free.app/api/v1";
 
 
 }

@@ -1,6 +1,7 @@
 package com.example.momkid.ui.home;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
@@ -14,6 +15,7 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -29,6 +31,8 @@ import com.example.momkid.chatgpt.ChatGPTActivity;
 import com.example.momkid.databinding.ActivityHomeBinding;
 import com.example.momkid.databinding.ActivityMainBinding;
 import com.example.momkid.helper.SystemConfig;
+import com.example.momkid.ui.authentication.LoginActivity;
+import com.example.momkid.ui.authentication.UserDto;
 import com.example.momkid.ui.baby.BabyFragment;
 import com.example.momkid.ui.blog.BlogFragment;
 import com.example.momkid.ui.book_doctor.BookDoctorFragment;
@@ -153,7 +157,18 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
     //check baby list
     public void checkBabyList(){
-        replaceFragment(new BabyFragment());
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Vui thêm thông tin về bé nhé :3");
+        builder.setCancelable(false);
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                // code khi người dùng nhấn nút OK
+                replaceFragment(new BabyFragment());
+            }
+        });
+        AlertDialog alert = builder.create();
+        alert.show();
+
 
     }
 

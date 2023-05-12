@@ -14,9 +14,9 @@ import java.util.List;
 public class ScheduleAdapter extends BaseAdapter {
     private Context context;
     private int layout;
-    private List<ScheduleViewModel> scheduleList;
+    private List<ScheduleDto> scheduleList;
 
-    public ScheduleAdapter(Context context, int layout, List<ScheduleViewModel> scheduleList) {
+    public ScheduleAdapter(Context context, int layout, List<ScheduleDto> scheduleList) {
         this.context = context;
         this.layout = layout;
         this.scheduleList = scheduleList;
@@ -60,7 +60,7 @@ public class ScheduleAdapter extends BaseAdapter {
         }
 
         //gán giá trị
-        ScheduleViewModel scheduleModel = scheduleList.get(position);
+        ScheduleDto scheduleModel = scheduleList.get(position);
         holder.txtTime.setText(scheduleModel.getTimeSchedule());
         holder.txtContent.setText(scheduleModel.getContentSchedule());
 

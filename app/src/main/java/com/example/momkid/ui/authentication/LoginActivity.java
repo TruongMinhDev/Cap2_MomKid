@@ -30,7 +30,6 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
         btn_login = findViewById(R.id.btn_login);
         btn_register = findViewById(R.id.btn_register);
         edtEmail = findViewById(R.id.edt_email);
@@ -40,7 +39,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String email = edtEmail.getText().toString();
                 String pass = edtPassword.getText().toString();
-               login("minh1@gmail.com", "123456");
+               login(email, pass);
             }
         });
 
@@ -54,7 +53,6 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void login(String userName, String password) {
-
         JSONObject jsonObject = new JSONObject();
         try {
             jsonObject.put("email", userName);
@@ -71,6 +69,7 @@ public class LoginActivity extends AppCompatActivity {
                     public void onResponse(JSONObject response) {
                         log(String.valueOf(response));
                         try {
+                            getDataUser(response);
                             String token = response.getString("accessToken");
                             SharedPreferenceHelper.setSharedPreferenceString(LoginActivity.this,"token",token);
                             startActivity(new Intent(LoginActivity.this, HomeActivity.class));
@@ -87,5 +86,13 @@ public class LoginActivity extends AppCompatActivity {
 
     private void log(String mess){
         Log.d(TAG,mess);
+    }
+
+    public void getDataUser(JSONObject response) throws JSONException {
+        UserDto.setId(response.getJSONObject("data").get("id").hashCode());
+        UserDto.setFirstName(response.getJSONObject("data").get("firstName").toString());
+        UserDto.setLastName(response.getJSONObject("data").get("lastName").toString());
+        UserDto.setEmail(response.getJSONObject("data").get("email").toString());
+        UserDto.setRole(response.getJSONObject("data").get("role").toString());
     }
 }
