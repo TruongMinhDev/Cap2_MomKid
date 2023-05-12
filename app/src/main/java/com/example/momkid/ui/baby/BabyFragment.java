@@ -28,6 +28,7 @@ import com.example.momkid.R;
 import com.example.momkid.helper.ResponseCommonDto;
 import com.example.momkid.helper.SharedPreferenceHelper;
 import com.example.momkid.helper.SystemConfig;
+import com.example.momkid.ui.authentication.UserDto;
 import com.example.momkid.ui.blog.BlogAdapter;
 import com.example.momkid.ui.blog.BlogDto;
 import com.example.momkid.ui.blog.BlogFragment;
@@ -80,6 +81,7 @@ public class BabyFragment extends Fragment {
 
     private void loadData() {
         log("da vao day");
+        String id = String.valueOf(UserDto.getId());
         String token = SharedPreferenceHelper.getSharedPreferenceString(getContext(),"token","");
         AndroidNetworking.get(SystemConfig.BASE_URL.concat("/client/babies"))
                 .addHeaders("Authorization", String.format("Bearer  %s",token))
@@ -87,33 +89,23 @@ public class BabyFragment extends Fragment {
                 .getAsString(new StringRequestListener() {
                     @Override
                     public void onResponse(String json) {
+                        nDialog.cancel();
                         List<BabyDto> babys = new ArrayList<>();
                         BabyDto temp = null;
                         GsonBuilder gson = new GsonBuilder();
                         Type collectionType = new TypeToken<ResponseCommonDto<BabyDto>>(){}.getType();
-
                         ResponseCommonDto<BabyDto> response = gson.create().fromJson(json, collectionType);
-
-//                        for (int i = 0; i < response.getData().size(); i++) {
-//                            temp = new BabyDto();
-//                            temp.setName(response.getData().stream().map(BabyDto::getName).toString());
-//                            babys.add(temp);
-//                        }
-
-
-                        log(String.format("%d",response.getData().size()));
-                        response.getData().stream().map(BabyDto::getName).forEach(s -> );
-                        response.getData().stream().map(BabyDto::getBirthDay).forEach(s -> temp.setBirthDay(s));
-                        response.getData().stream().map(BabyDto::getUserId).forEach(System.out::println);
-
-
-                        babys.add(temp);
+                        for (int i = 0; i<response.getData().size(); i ++){
+                            temp=new BabyDto();
+                            temp.setName(response.getData().get(i).getName());
+                            temp.setBirthDay(response.getData().get(i).getBirthDay());
+                            temp.setMale(response.getData().get(i).isMale());
+                            temp.setUserId(response.getData().get(i).getUserId());
+                            babys.add(temp);
+                        }
                         BabyAdapter adapter = new BabyAdapter(babys, getContext());
                         rcvKid.setAdapter(adapter);
-
-
                     }
-
                     @Override
                     public void onError(ANError anError) {
                         log(anError.getErrorBody());

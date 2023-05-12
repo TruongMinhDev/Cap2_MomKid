@@ -64,23 +64,33 @@
             android:textColor="@color/black"
             tools:ignore="MissingConstraints" />
 
-        <RadioButton
-            android:id="@+id/btn_sex_female"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Nữ"
-            android:layout_marginLeft="10dp"
-            android:textSize="20sp"
-            tools:ignore="MissingConstraints" />
+        <RadioGroup
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <RadioButton
-            android:id="@+id/btn_sex_male"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Nam"
-            android:layout_marginLeft="10dp"
-            android:textSize="20sp"
-            tools:ignore="MissingConstraints" />
+            <RadioButton
+                android:id="@+id/btn_sex_female"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="Nữ"
+                android:textSize="20sp"
+                tools:ignore="MissingConstraints" />
+
+            <RadioButton
+                android:id="@+id/btn_sex_male"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginLeft="10dp"
+                android:text="Nam"
+                android:textSize="20sp"
+                tools:ignore="MissingConstraints" />
+
+        </RadioGroup>
+
+
     </LinearLayout>
 
     <EditText

@@ -2,12 +2,12 @@ package com.example.momkid.ui.schedule;
 
 
 
-public class ScheduleViewModel {
+public class ScheduleDto {
 
     private String timeSchedule;
     private String contentSchedule;
 
-    public ScheduleViewModel(String timeSchedule, String contentSchedule) {
+    public ScheduleDto(String timeSchedule, String contentSchedule) {
         this.timeSchedule = timeSchedule;
         this.contentSchedule = contentSchedule;
     }
