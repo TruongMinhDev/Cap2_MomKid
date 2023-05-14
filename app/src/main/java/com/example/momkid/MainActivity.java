@@ -31,7 +31,12 @@ public class MainActivity extends AppCompatActivity {
         nextApp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                navigateToActivity(new Intent(MainActivity.this, BmiActivity.class));
+                String token = SharedPreferenceHelper.getSharedPreferenceString(MainActivity.this, "token", "");
+                if (!"".equals(token)){
+                    navigateToActivity( new Intent(MainActivity.this, HomeActivity.class));
+                } else {
+                    navigateToActivity( new Intent(MainActivity.this, LoginActivity.class));
+                }
             }
         });
 

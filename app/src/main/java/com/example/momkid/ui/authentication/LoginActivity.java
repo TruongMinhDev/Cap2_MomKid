@@ -39,7 +39,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String email = edtEmail.getText().toString();
                 String pass = edtPassword.getText().toString();
-               login(email, pass);
+               login("minh@gmail.com", "123456");
             }
         });
 
