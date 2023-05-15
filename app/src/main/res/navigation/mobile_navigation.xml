@@ -18,9 +18,9 @@
 
     <fragment
         android:id="@+id/nav_increase"
-        android:name="com.example.momkid.ui.increase.IncreaseFragment"
+        android:name="com.example.momkid.ui.bmi.BmiFragment"
         android:label="@string/menu_increase"
-        tools:layout="@layout/fragment_increase" />
+        tools:layout="@layout/fragment_bmi" />
 
     <fragment
         android:id="@+id/nav_blog"
