@@ -51,8 +51,9 @@ public class BabyFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        loadData();
         View view = inflater.inflate(R.layout.fragment_list_kid,container,false);
+        loadData();
+
         rcvKid = view.findViewById(R.id.rcvKid);
         rcvKid.setLayoutManager(new LinearLayoutManager(view.getContext()));
 
@@ -85,6 +86,7 @@ public class BabyFragment extends Fragment {
         String token = SharedPreferenceHelper.getSharedPreferenceString(getContext(),"token","");
         AndroidNetworking.get(SystemConfig.BASE_URL.concat("/client/babies"))
                 .addHeaders("Authorization", String.format("Bearer  %s",token))
+
                 .build()
                 .getAsString(new StringRequestListener() {
                     @Override
@@ -95,7 +97,7 @@ public class BabyFragment extends Fragment {
                         GsonBuilder gson = new GsonBuilder();
                         Type collectionType = new TypeToken<ResponseCommonDto<BabyDto>>(){}.getType();
                         ResponseCommonDto<BabyDto> response = gson.create().fromJson(json, collectionType);
-                        for (int i = 0; i<response.getData().size(); i ++){
+                        for (int i = 0; i < response.getData().size(); i ++){
                             temp=new BabyDto();
                             temp.setName(response.getData().get(i).getName());
                             temp.setBirthDay(response.getData().get(i).getBirthDay());
