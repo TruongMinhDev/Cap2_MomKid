@@ -39,7 +39,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String email = edtEmail.getText().toString();
                 String pass = edtPassword.getText().toString();
-               login("minh@gmail.com", "123456");
+               login(email, pass);
             }
         });
 
@@ -69,9 +69,29 @@ public class LoginActivity extends AppCompatActivity {
                     public void onResponse(JSONObject response) {
                         log(String.valueOf(response));
                         try {
-                            getDataUser(response);
                             String token = response.getString("accessToken");
                             SharedPreferenceHelper.setSharedPreferenceString(LoginActivity.this,"token",token);
+
+                            //userId
+                            Integer userId = response.getJSONObject("data").get("id").hashCode();
+                            SharedPreferenceHelper.setSharedPreferenceInt(LoginActivity.this,"userId",userId);
+
+                            //first name
+                            String firstName = response.getJSONObject("data").get("firstName").toString();
+                            SharedPreferenceHelper.setSharedPreferenceString(LoginActivity.this,"firstName",firstName);
+
+                            //last name
+                            String lastName = response.getJSONObject("data").get("lastName").toString();
+                            SharedPreferenceHelper.setSharedPreferenceString(LoginActivity.this,"lastName",lastName);
+
+                            //email
+                            String email = response.getJSONObject("data").get("email").toString();
+                            SharedPreferenceHelper.setSharedPreferenceString(LoginActivity.this,"email",email);
+
+                            //role
+                            String role = response.getJSONObject("data").get("role").toString();
+                            SharedPreferenceHelper.setSharedPreferenceString(LoginActivity.this,"role",role);
+
                             startActivity(new Intent(LoginActivity.this, HomeActivity.class));
                         } catch (JSONException e) {
                             throw new RuntimeException(e);
