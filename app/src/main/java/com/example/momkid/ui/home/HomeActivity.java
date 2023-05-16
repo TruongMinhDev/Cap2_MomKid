@@ -49,7 +49,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        checkBabyList();
+
 
         fab_chatGPT=findViewById(R.id.fab_ChatGPT);
         fab_chatGPT.setOnClickListener(new View.OnClickListener() {
@@ -143,21 +143,5 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
 
-    //check baby list
-    public void checkBabyList(){
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("Vui lòng thêm thông tin về bé nhé :3");
-        builder.setCancelable(false);
-        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int id) {
-                // code khi người dùng nhấn nút OK
-                replaceFragment(new BabyFragment());
-            }
-        });
-        AlertDialog alert = builder.create();
-        alert.show();
-
-
-    }
 
 }

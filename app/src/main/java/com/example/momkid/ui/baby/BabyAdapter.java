@@ -20,6 +20,12 @@ public class BabyAdapter extends RecyclerView.Adapter<BabyAdapter.ViewHolder>{
     private List<BabyDto> mKids;
     private Context context;
 
+    private ClickItem clickItem;
+
+    public interface ClickItem{
+        void onClickItemBaby(BabyDto babyDto);
+    }
+
 
     public BabyAdapter(List<BabyDto> mKids, Context context) {
         this.mKids = mKids;
