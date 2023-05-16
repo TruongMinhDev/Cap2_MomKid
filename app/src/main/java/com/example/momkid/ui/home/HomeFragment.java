@@ -36,34 +36,17 @@ public class HomeFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_home,container,false);
-        checkBabyList();
+
         return view;
 
     }
-    private void replaceFragment(Fragment fragment){
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.content_frame,fragment);
-        transaction.commit();
-    }
+//    private void replaceFragment(Fragment fragment){
+//        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+//        transaction.replace(R.id.content_frame,fragment);
+//        transaction.commit();
+//    }
 
     //check baby list
-    public void checkBabyList(){
-        androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(this);
-        builder.setMessage("Vui lòng thêm thông tin về bé nhé :3");
-        builder.setCancelable(false);
-        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int id) {
-                // code khi người dùng nhấn nút OK
-                BabyFragment babyFragment = new BabyFragment();
-                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.content_frame,babyFragment);
-                transaction.commit();
-            }
-        });
-        AlertDialog alert = builder.create();
-        alert.show();
 
-
-    }
 
 }

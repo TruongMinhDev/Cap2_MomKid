@@ -1,7 +1,5 @@
 package com.example.momkid.ui.baby;
 
-import static android.content.ContentValues.TAG;
-
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,30 +11,21 @@ import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
-import com.androidnetworking.interfaces.JSONObjectRequestListener;
-import com.androidnetworking.interfaces.ParsedRequestListener;
 import com.androidnetworking.interfaces.StringRequestListener;
-import com.example.momkid.MainActivity;
 import com.example.momkid.R;
 import com.example.momkid.helper.ResponseCommonDto;
 import com.example.momkid.helper.SharedPreferenceHelper;
 import com.example.momkid.helper.SystemConfig;
 import com.example.momkid.ui.authentication.UserDto;
-import com.example.momkid.ui.blog.BlogAdapter;
-import com.example.momkid.ui.blog.BlogDto;
-import com.example.momkid.ui.blog.BlogFragment;
 import com.example.momkid.ui.profile.ProflieKidActivity;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
-
-import org.json.JSONObject;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -47,6 +36,12 @@ public class BabyFragment extends Fragment {
     private ProgressDialog nDialog;
 
     private Button btnAddKid;
+
+    private INavigate listener;
+
+    public BabyFragment(INavigate listener) {
+        this.listener = listener;
+    }
 
     @Nullable
     @Override
@@ -79,14 +74,13 @@ public class BabyFragment extends Fragment {
     private void log(String mess){
         Log.d(BabyFragment.class.getName(), mess);
     }
-
     private void loadData() {
         log("da vao day");
         String id = String.valueOf(UserDto.getId());
         String token = SharedPreferenceHelper.getSharedPreferenceString(getContext(),"token","");
-        AndroidNetworking.get(SystemConfig.BASE_URL.concat("/client/babies"))
+        AndroidNetworking.get(SystemConfig.BASE_URL.concat("/client/babies").concat("?filter=userId||$eq||{userId}"))
                 .addHeaders("Authorization", String.format("Bearer  %s",token))
-
+                .addPathParameter("userId","46")
                 .build()
                 .getAsString(new StringRequestListener() {
                     @Override
@@ -114,9 +108,16 @@ public class BabyFragment extends Fragment {
                     }
                 });
     }
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        Log.d("FragmentA.java","onActivityResult called");
+        listener.navigate();
+    }
+
 
     private void navigateToActivity(Intent intent){
-        startActivity(intent);
+//        startActivity(intent);
+        startActivityForResult(intent,123);
     }
 
 }
