@@ -18,11 +18,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.StringRequestListener;
+import com.example.momkid.MainActivity;
 import com.example.momkid.R;
 import com.example.momkid.helper.ResponseCommonDto;
 import com.example.momkid.helper.SharedPreferenceHelper;
 import com.example.momkid.helper.SystemConfig;
 import com.example.momkid.ui.authentication.UserDto;
+import com.example.momkid.ui.home.HomeActivity;
 import com.example.momkid.ui.profile.ProflieKidActivity;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
@@ -39,6 +41,8 @@ public class BabyFragment extends Fragment {
 
     private INavigate listener;
 
+    private HomeActivity homeActivity;
+
     public BabyFragment(INavigate listener) {
         this.listener = listener;
     }
@@ -48,6 +52,8 @@ public class BabyFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_list_kid,container,false);
         loadData();
+
+        homeActivity = (HomeActivity) getActivity();
 
         rcvKid = view.findViewById(R.id.rcvKid);
         rcvKid.setLayoutManager(new LinearLayoutManager(view.getContext()));
@@ -75,12 +81,13 @@ public class BabyFragment extends Fragment {
         Log.d(BabyFragment.class.getName(), mess);
     }
     private void loadData() {
+        String userId = SharedPreferenceHelper.getSharedPreferenceString(getContext(),"userId","");
         log("da vao day");
         String id = String.valueOf(UserDto.getId());
         String token = SharedPreferenceHelper.getSharedPreferenceString(getContext(),"token","");
         AndroidNetworking.get(SystemConfig.BASE_URL.concat("/client/babies").concat("?filter=userId||$eq||{userId}"))
                 .addHeaders("Authorization", String.format("Bearer  %s",token))
-                .addPathParameter("userId","46")
+                .addPathParameter("userId",userId)
                 .build()
                 .getAsString(new StringRequestListener() {
                     @Override
@@ -96,10 +103,15 @@ public class BabyFragment extends Fragment {
                             temp.setName(response.getData().get(i).getName());
                             temp.setBirthDay(response.getData().get(i).getBirthDay());
                             temp.setMale(response.getData().get(i).isMale());
-                            temp.setUserId(response.getData().get(i).getUserId());
+                            temp.setBabyId(response.getData().get(i).getBabyId());
                             babys.add(temp);
                         }
-                        BabyAdapter adapter = new BabyAdapter(babys, getContext());
+                        BabyAdapter adapter = new BabyAdapter(babys, getContext(), new BabyAdapter.IClickItem() {
+                            @Override
+                            public void onClickItemBaby(BabyDto babyDto) {
+                                homeActivity.goToHomeFragment(babyDto);
+                            }
+                        });
                         rcvKid.setAdapter(adapter);
                     }
                     @Override

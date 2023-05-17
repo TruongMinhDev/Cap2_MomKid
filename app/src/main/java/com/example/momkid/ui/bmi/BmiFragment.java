@@ -1,6 +1,7 @@
 package com.example.momkid.ui.bmi;
 
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
@@ -23,18 +24,29 @@ import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.StringRequestListener;
 import com.example.momkid.R;
+import com.example.momkid.helper.ResponseCommonDto;
 import com.example.momkid.helper.SharedPreferenceHelper;
 import com.example.momkid.helper.SystemConfig;
+import com.example.momkid.ui.authentication.UserDto;
+import com.example.momkid.ui.baby.BabyAdapter;
+import com.example.momkid.ui.baby.BabyDto;
 import com.example.momkid.ui.profile.ProflieKidActivity;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.lang.reflect.Type;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class BmiFragment extends Fragment {
     public static final String TAG = BmiFragment.class.getName();
+
+    private ProgressDialog nDialog;
     EditText editCC, editCN;
     Button btn_DG;
     TextView textViewBMI, textViewDG;
@@ -58,6 +70,13 @@ public class BmiFragment extends Fragment {
 
         // Lấy ngày hiện tại lưu cho startTime
         currentDay=view.findViewById(R.id.currentDay);
+
+        nDialog = new ProgressDialog(getContext());
+        nDialog.setMessage("Loading..");
+        nDialog.setTitle("Get Data");
+        nDialog.setIndeterminate(false);
+        nDialog.setCancelable(true);
+        nDialog.show();
 
 
         btn_DG.setOnClickListener(v -> {
@@ -105,13 +124,13 @@ public class BmiFragment extends Fragment {
                 }
             }
             bmiDto.setStartTime(currentDay.getTimeZone());
-            loadData(bmiDto.getWeight(),bmiDto.getHeight(),bmiDto.getBmi(),bmiDto.getContent(), String.valueOf(bmiDto.getStartTime()));
+            addData(bmiDto.getWeight(),bmiDto.getHeight(),bmiDto.getBmi(),bmiDto.getContent(), String.valueOf(bmiDto.getStartTime()));
         });
 
         return view;
     }
 
-    private void loadData(String weight, String height, String bmi, String content, String startTime) {
+    private void addData(String weight, String height, String bmi, String content, String startTime) {
         log("Tới đay roi ne");
         JSONObject jsonObject = new JSONObject();
         try {
@@ -144,6 +163,47 @@ public class BmiFragment extends Fragment {
                         AlertDialog alert = builder.create();
                         alert.show();
 
+                    }
+                    @Override
+                    public void onError(ANError anError) {
+                        log(anError.getErrorBody());
+                    }
+                });
+    }
+
+    private void loadData() {
+        String babyId = SharedPreferenceHelper.getSharedPreferenceString(getContext(),"userId","");
+        log("da vao day");
+        String id = String.valueOf(UserDto.getId());
+        String token = SharedPreferenceHelper.getSharedPreferenceString(getContext(),"token","");
+        AndroidNetworking.get(SystemConfig.BASE_URL.concat("/client/babies").concat("?filter=userId||$eq||{userId}"))
+                .addHeaders("Authorization", String.format("Bearer  %s",token))
+                .addPathParameter("userId",babyId)
+                .build()
+                .getAsString(new StringRequestListener() {
+                    @Override
+                    public void onResponse(String json) {
+                        nDialog.cancel();
+                        List<BabyDto> babys = new ArrayList<>();
+                        BabyDto temp = null;
+                        GsonBuilder gson = new GsonBuilder();
+                        Type collectionType = new TypeToken<ResponseCommonDto<BabyDto>>(){}.getType();
+                        ResponseCommonDto<BabyDto> response = gson.create().fromJson(json, collectionType);
+                        for (int i = 0; i < response.getData().size(); i ++){
+                            temp=new BabyDto();
+                            temp.setName(response.getData().get(i).getName());
+                            temp.setBirthDay(response.getData().get(i).getBirthDay());
+                            temp.setMale(response.getData().get(i).isMale());
+                            temp.setBabyId(response.getData().get(i).getBabyId());
+                            babys.add(temp);
+                        }
+                        BabyAdapter adapter = new BabyAdapter(babys, getContext(), new BabyAdapter.IClickItem() {
+                            @Override
+                            public void onClickItemBaby(BabyDto babyDto) {
+                                homeActivity.goToHomeFragment(babyDto);
+                            }
+                        });
+                        rcvKid.setAdapter(adapter);
                     }
                     @Override
                     public void onError(ANError anError) {
