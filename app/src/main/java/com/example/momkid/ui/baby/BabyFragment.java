@@ -83,10 +83,11 @@ public class BabyFragment extends Fragment {
     private void loadData() {
         log("da vao day");
         String id = String.valueOf(UserDto.getId());
+        String userId = SharedPreferenceHelper.getSharedPreferenceString(getContext(),"userId","");
         String token = SharedPreferenceHelper.getSharedPreferenceString(getContext(),"token","");
-        AndroidNetworking.get(SystemConfig.BASE_URL.concat("/client/babies"))
+        AndroidNetworking.get(SystemConfig.BASE_URL.concat("/client/babies/{id}"))
                 .addHeaders("Authorization", String.format("Bearer  %s",token))
-
+                .addPathParameter("id",userId)
                 .build()
                 .getAsString(new StringRequestListener() {
                     @Override
