@@ -3,6 +3,7 @@ package com.example.momkid.ui.bmi;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -36,7 +37,11 @@ public class BmiAdapter extends RecyclerView.Adapter<BmiAdapter.ViewHolder>{
         if(bmiDto == null){
             return;
         }
-        holder.
+        holder.txtheight.setText(bmiDto.getHeight());
+        holder.txtweight.setText(bmiDto.getWeight());
+        holder.txtbmi.setText(bmiDto.getBmi());
+        holder.txtcontent.setText(bmiDto.getContent());
+        holder.dateAddBmi.setText(bmiDto.getStartTime());
     }
 
     @Override
@@ -48,9 +53,20 @@ public class BmiAdapter extends RecyclerView.Adapter<BmiAdapter.ViewHolder>{
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
+        public TextView txtheight;
+        public TextView txtweight;
+        public TextView txtbmi;
+        public TextView txtcontent;
+        public TextView dateAddBmi;
+
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            txtheight=itemView.findViewById(R.id.tv_height);
+            txtweight=itemView.findViewById(R.id.tv_weight);
+            txtbmi=itemView.findViewById(R.id.tv_bmi);
+            txtcontent=itemView.findViewById(R.id.tv_content);
+            dateAddBmi=itemView.findViewById(R.id.tv_dateAddBmi);
         }
     }
 }
