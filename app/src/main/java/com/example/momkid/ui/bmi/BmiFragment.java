@@ -19,6 +19,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
@@ -30,6 +32,7 @@ import com.example.momkid.helper.SystemConfig;
 import com.example.momkid.ui.authentication.UserDto;
 import com.example.momkid.ui.baby.BabyAdapter;
 import com.example.momkid.ui.baby.BabyDto;
+import com.example.momkid.ui.home.HomeActivity;
 import com.example.momkid.ui.profile.ProflieKidActivity;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
@@ -55,11 +58,21 @@ public class BmiFragment extends Fragment {
 
     BmiDto bmiDto;
 
+    RecyclerView rcvBmi;
+
+    private HomeActivity homeActivity;
+
     @SuppressLint("SuspiciousIndentation")
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_bmi,container,false);
+
+        rcvBmi= view.findViewById(R.id.rcvBmi);
+        homeActivity= (HomeActivity) getActivity();
+
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(homeActivity);
+        rcvBmi.setLayoutManager(linearLayoutManager);
 
         editCC = (EditText) view.findViewById(R.id.editCC);
         editCN = (EditText) view.findViewById(R.id.editCN);
@@ -197,13 +210,13 @@ public class BmiFragment extends Fragment {
                             temp.setBabyId(response.getData().get(i).getBabyId());
                             babys.add(temp);
                         }
-                        BabyAdapter adapter = new BabyAdapter(babys, getContext(), new BabyAdapter.IClickItem() {
-                            @Override
-                            public void onClickItemBaby(BabyDto babyDto) {
-                                homeActivity.goToHomeFragment(babyDto);
-                            }
-                        });
-                        rcvKid.setAdapter(adapter);
+//                        BabyAdapter adapter = new BabyAdapter(babys, getContext(), new BabyAdapter.IClickItem() {
+//                            @Override
+//                            public void onClickItemBaby(BabyDto babyDto) {
+//                                homeActivity.goToHomeFragment(babyDto);
+//                            }
+//                        });
+//                        rcvBmi.setAdapter(adapter);
                     }
                     @Override
                     public void onError(ANError anError) {

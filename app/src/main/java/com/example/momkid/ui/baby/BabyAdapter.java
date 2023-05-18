@@ -46,7 +46,7 @@ public class BabyAdapter extends RecyclerView.Adapter<BabyAdapter.ViewHolder>{
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        BabyDto baby = mKids.get(position);
+        final BabyDto baby = mKids.get(position);
         holder.tvName.setText(baby.getName());
         holder.tvBirtDay.setText(String.valueOf(baby.getBirthDay()));
         if(baby.isMale()==true){

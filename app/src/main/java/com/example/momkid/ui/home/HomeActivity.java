@@ -156,6 +156,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.content_frame,babyFragment);
                 transaction.commit();
+//                replaceFragment(new BabyFragment());
             }
         });
         AlertDialog alert = builder.create();
@@ -170,7 +171,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     }
 
     public void goToHomeFragment(BabyDto babyDto){
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         HomeFragment homeFragment = new HomeFragment();
 
         Bundle bundle = new Bundle();
@@ -178,7 +178,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         homeFragment.setArguments(bundle);
 
-        transaction.replace(R.id.content_frame, homeFragment);
-        transaction.commit();
+        replaceFragment(homeFragment);
+
+
     }
 }
