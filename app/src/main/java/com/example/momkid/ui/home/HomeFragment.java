@@ -26,6 +26,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.momkid.R;
 import com.example.momkid.databinding.FragmentHomeBinding;
+import com.example.momkid.ui.baby.BabyDto;
 import com.example.momkid.ui.baby.BabyFragment;
 
 public class HomeFragment extends Fragment {
@@ -37,16 +38,23 @@ public class HomeFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_home,container,false);
 
+        txt_birthdate=view.findViewById(R.id.txt_birthdate);
+        txt_height = view.findViewById(R.id.txt_height);
+        txt_weight = view.findViewById(R.id.txt_weight);
+
+        Bundle bundle = getArguments();
+        if(bundle != null){
+            BabyDto babyDto = (BabyDto) bundle.get("object_baby");
+            txt_birthdate.setText(babyDto.getBirthDay().toString());
+        }
+
+
+
+
         return view;
 
     }
-//    private void replaceFragment(Fragment fragment){
-//        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-//        transaction.replace(R.id.content_frame,fragment);
-//        transaction.commit();
-//    }
 
-    //check baby list
 
 
 }

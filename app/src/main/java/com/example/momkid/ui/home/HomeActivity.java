@@ -22,6 +22,7 @@ import android.widget.Toast;
 
 import com.example.momkid.R;
 import com.example.momkid.chatgpt.ChatGPTActivity;
+import com.example.momkid.ui.baby.BabyDto;
 import com.example.momkid.ui.baby.BabyFragment;
 import com.example.momkid.ui.baby.INavigate;
 import com.example.momkid.ui.blog.BlogFragment;
@@ -166,5 +167,18 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public void navigate() {
         replaceFragment(new BmiFragment());
+    }
+
+    public void goToHomeFragment(BabyDto babyDto){
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        HomeFragment homeFragment = new HomeFragment();
+
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("object_baby",babyDto);
+
+        homeFragment.setArguments(bundle);
+
+        transaction.replace(R.id.content_frame, homeFragment);
+        transaction.commit();
     }
 }
