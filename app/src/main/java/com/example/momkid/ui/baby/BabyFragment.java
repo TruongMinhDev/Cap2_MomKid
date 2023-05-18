@@ -56,7 +56,7 @@ public class BabyFragment extends Fragment {
         homeActivity = (HomeActivity) getActivity();
 
         rcvKid = view.findViewById(R.id.rcvKid);
-        rcvKid.setLayoutManager(new LinearLayoutManager(view.getContext()));
+        rcvKid.setLayoutManager(new LinearLayoutManager(homeActivity));
 
 
         nDialog = new ProgressDialog(getContext());
@@ -81,7 +81,7 @@ public class BabyFragment extends Fragment {
         Log.d(BabyFragment.class.getName(), mess);
     }
     private void loadData() {
-        String userId = SharedPreferenceHelper.getSharedPreferenceString(getContext(),"userId","");
+        String userId = String.valueOf(SharedPreferenceHelper.getSharedPreferenceInt(getContext(),"userId",0));
         log("da vao day");
         String id = String.valueOf(UserDto.getId());
         String token = SharedPreferenceHelper.getSharedPreferenceString(getContext(),"token","");

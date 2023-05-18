@@ -45,7 +45,10 @@ public class HomeFragment extends Fragment {
         Bundle bundle = getArguments();
         if(bundle != null){
             BabyDto babyDto = (BabyDto) bundle.get("object_baby");
-            txt_birthdate.setText(babyDto.getBirthDay().toString());
+            if(babyDto != null){
+                txt_birthdate.setText(babyDto.getBirthDay().toString());
+            }
+
         }
 
 
