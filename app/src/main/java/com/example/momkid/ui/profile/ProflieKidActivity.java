@@ -174,13 +174,15 @@ public class ProflieKidActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(String json) {
                         nDialog.cancel();
+                        log("ok");
                         AlertDialog.Builder builder = new AlertDialog.Builder(ProflieKidActivity.this);
                         builder.setMessage("Tiếp theo sẽ cập nhật chỉ số BMI cho bé nào :3 ");
                         builder.setCancelable(false);
                         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 // code khi người dùng nhấn nút OK
-                                replaceFragment(new BmiFragment());
+//                                replaceFragment(new BmiFragment());
+                                ProflieKidActivity.this.finish();
                             }
                         });
                         AlertDialog alert = builder.create();

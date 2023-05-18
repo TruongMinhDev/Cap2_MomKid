@@ -22,7 +22,9 @@ import android.widget.Toast;
 
 import com.example.momkid.R;
 import com.example.momkid.chatgpt.ChatGPTActivity;
+import com.example.momkid.ui.baby.BabyDto;
 import com.example.momkid.ui.baby.BabyFragment;
+import com.example.momkid.ui.baby.INavigate;
 import com.example.momkid.ui.blog.BlogFragment;
 import com.example.momkid.ui.book_doctor.BookDoctorFragment;
 import com.example.momkid.ui.bmi.BmiFragment;
@@ -30,7 +32,7 @@ import com.example.momkid.ui.schedule.ScheduleFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 
-public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, INavigate {
 
     private static final int FRAGMENT_HOME = 0;
     private static final int FRAGMENT_SCHEDULE = 1;
@@ -72,6 +74,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setNavigationItemSelectedListener(this);
 
         replaceFragment(new HomeFragment());
+//        replaceFragment(new BmiFragment());
         navigationView.getMenu().findItem(R.id.nav_home).setChecked(true);
     }
     @Override
@@ -142,16 +145,17 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         }
         return true;
     }
-
-    //check baby list
     public void checkBabyList(){
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(this);
         builder.setMessage("Vui lòng thêm thông tin về bé nhé :3");
         builder.setCancelable(false);
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 // code khi người dùng nhấn nút OK
-                replaceFragment(new BabyFragment());
+                BabyFragment babyFragment = new BabyFragment(HomeActivity.this);
+                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.content_frame,babyFragment);
+                transaction.commit();
             }
         });
         AlertDialog alert = builder.create();
@@ -160,4 +164,21 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
     }
 
+    @Override
+    public void navigate() {
+        replaceFragment(new BmiFragment());
+    }
+
+    public void goToHomeFragment(BabyDto babyDto){
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        HomeFragment homeFragment = new HomeFragment();
+
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("object_baby",babyDto);
+
+        homeFragment.setArguments(bundle);
+
+        transaction.replace(R.id.content_frame, homeFragment);
+        transaction.commit();
+    }
 }

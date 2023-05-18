@@ -1,11 +1,12 @@
 package com.example.momkid.ui.baby;
 
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.Date;
 
-public class BabyDto {
-    private int userId;
+public class BabyDto implements Serializable {
+    private int babyId;
     private String name;
     private Date birthDay;
     private boolean isMale;
@@ -18,8 +19,8 @@ public class BabyDto {
         this.birthDay = birthDay;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setBabyId(int babyId) {
+        this.babyId = babyId;
     }
 
     public void setName(String name) {
@@ -31,8 +32,8 @@ public class BabyDto {
         isMale = male;
     }
 
-    public int getUserId() {
-        return userId;
+    public int getBabyId() {
+        return babyId;
     }
 
     public String getName() {
@@ -47,7 +48,7 @@ public class BabyDto {
     @Override
     public String toString() {
         return "BabyDto{" +
-                "userId=" + userId +
+                "userId=" + babyId +
                 ", name='" + name + '\'' +
                 ", birthDay='" + birthDay + '\'' +
                 ", isMale=" + isMale +

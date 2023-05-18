@@ -20,10 +20,17 @@ public class BabyAdapter extends RecyclerView.Adapter<BabyAdapter.ViewHolder>{
     private List<BabyDto> mKids;
     private Context context;
 
+    private IClickItem clickItem;
 
-    public BabyAdapter(List<BabyDto> mKids, Context context) {
+    public interface IClickItem{
+        void onClickItemBaby(BabyDto babyDto);
+    }
+
+
+    public BabyAdapter(List<BabyDto> mKids, Context context, IClickItem clickItem) {
         this.mKids = mKids;
         this.context = context;
+        this.clickItem = clickItem;
     }
 
     @NonNull
@@ -46,6 +53,12 @@ public class BabyAdapter extends RecyclerView.Adapter<BabyAdapter.ViewHolder>{
             holder.tvSex.setText("Bé Trai");
         }else holder.tvSex.setText("Bé Gái");
 
+        holder.tvName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clickItem.onClickItemBaby(baby);
+            }
+        });
 
     }
 

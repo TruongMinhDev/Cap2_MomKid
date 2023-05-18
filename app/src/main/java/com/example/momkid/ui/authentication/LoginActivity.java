@@ -12,7 +12,6 @@ import android.widget.EditText;
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
-import com.example.momkid.MainActivity;
 import com.example.momkid.R;
 import com.example.momkid.helper.SharedPreferenceHelper;
 import com.example.momkid.helper.SystemConfig;
