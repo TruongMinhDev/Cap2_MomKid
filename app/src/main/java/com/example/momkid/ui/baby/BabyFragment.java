@@ -85,6 +85,7 @@ public class BabyFragment extends Fragment {
         log("da vao day");
         String id = String.valueOf(UserDto.getId());
         String token = SharedPreferenceHelper.getSharedPreferenceString(getContext(),"token","");
+
         AndroidNetworking.get(SystemConfig.BASE_URL.concat("/client/babies").concat("?filter=userId||$eq||{userId}"))
                 .addHeaders("Authorization", String.format("Bearer  %s",token))
                 .addPathParameter("userId",userId)
