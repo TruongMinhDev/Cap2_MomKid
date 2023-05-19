@@ -22,6 +22,7 @@ import android.widget.Toast;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
+import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.androidnetworking.interfaces.StringRequestListener;
 import com.example.momkid.R;
 import com.example.momkid.helper.ResponseCommonDto;
@@ -170,11 +171,17 @@ public class ProflieKidActivity extends AppCompatActivity {
                 .addHeaders("Authorization", String.format("Bearer  %s",token))
                 .addJSONObjectBody(jsonObject)
                 .build()
-                .getAsString(new StringRequestListener() {
+                .getAsJSONObject(new JSONObjectRequestListener() {
                     @Override
-                    public void onResponse(String json) {
+                    public void onResponse(JSONObject response) {
                         nDialog.cancel();
                         log("ok");
+                        try {
+                            Integer babyId= Integer.valueOf(response.getString("id"));
+                            SharedPreferenceHelper.setSharedPreferenceInt(ProflieKidActivity.this,"babyId",babyId);
+                        } catch (JSONException e) {
+                            throw new RuntimeException(e);
+                        }
                         AlertDialog.Builder builder = new AlertDialog.Builder(ProflieKidActivity.this);
                         builder.setMessage("Tiếp theo sẽ cập nhật chỉ số BMI cho bé nào :3 ");
                         builder.setCancelable(false);

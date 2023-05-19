@@ -41,7 +41,7 @@
             android:id="@+id/currentDay"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:format24Hour="d-M-yyyy"
+            android:format24Hour="dd-MM-yyyy"
             android:textStyle="bold"
             android:textSize="18sp"/>
 

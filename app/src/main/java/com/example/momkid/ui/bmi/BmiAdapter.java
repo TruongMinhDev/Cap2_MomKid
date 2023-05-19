@@ -19,6 +19,7 @@ public class BmiAdapter extends RecyclerView.Adapter<BmiAdapter.ViewHolder>{
     private List<BmiDto> bmiDtos;
 
 
+
     public BmiAdapter(List<BmiDto> bmiDtos) {
         this.bmiDtos = bmiDtos;
     }

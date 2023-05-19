@@ -19,6 +19,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -84,6 +85,9 @@ public class BmiFragment extends Fragment {
         // Lấy ngày hiện tại lưu cho startTime
         currentDay=view.findViewById(R.id.currentDay);
 
+        // Lấy dữ liệu list bmi của baby ID
+        loadData();
+
         nDialog = new ProgressDialog(getContext());
         nDialog.setMessage("Loading..");
         nDialog.setTitle("Get Data");
@@ -145,6 +149,7 @@ public class BmiFragment extends Fragment {
 
     private void addData(String weight, String height, String bmi, String content, String startTime) {
         log("Tới đay roi ne");
+        Integer babyID = SharedPreferenceHelper.getSharedPreferenceInt(getContext(),"babyId",0);
         JSONObject jsonObject = new JSONObject();
         try {
             jsonObject.put("weight", weight);
@@ -152,6 +157,7 @@ public class BmiFragment extends Fragment {
             jsonObject.put("bmi",bmi);
             jsonObject.put("content",content);
             jsonObject.put("startTime",startTime);
+            jsonObject.put("babyId",babyID);
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -166,11 +172,11 @@ public class BmiFragment extends Fragment {
                     @Override
                     public void onResponse(String json) {
                         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                        builder.setMessage("Chỉ số BMI của " + content);
+                        builder.setMessage("Chỉ số BMI của trẻ là: " + bmi +content);
                         builder.setCancelable(false);
                         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
-                                // code khi người dùng nhấn nút OK
+                                getFragmentManager().beginTransaction().detach(BmiFragment.this).attach(BmiFragment.this).commit();
                             }
                         });
                         AlertDialog alert = builder.create();
@@ -185,38 +191,36 @@ public class BmiFragment extends Fragment {
     }
 
     private void loadData() {
-        String babyId = SharedPreferenceHelper.getSharedPreferenceString(getContext(),"userId","");
-        log("da vao day");
+        String babyId = String.valueOf(SharedPreferenceHelper.getSharedPreferenceInt(getContext(),"babyId",0));
+        log("da vao day BMI");
         String id = String.valueOf(UserDto.getId());
         String token = SharedPreferenceHelper.getSharedPreferenceString(getContext(),"token","");
-        AndroidNetworking.get(SystemConfig.BASE_URL.concat("/client/babies").concat("?filter=userId||$eq||{userId}"))
+        AndroidNetworking.get(SystemConfig.BASE_URL.concat("/client/bmi-kid").concat("?filter=babyId||$eq||{babyId}"))
                 .addHeaders("Authorization", String.format("Bearer  %s",token))
-                .addPathParameter("userId",babyId)
+                .addPathParameter("babyId",babyId)
                 .build()
                 .getAsString(new StringRequestListener() {
                     @Override
                     public void onResponse(String json) {
                         nDialog.cancel();
-                        List<BabyDto> babys = new ArrayList<>();
-                        BabyDto temp = null;
+                        List<BmiDto> bmiDtos = new ArrayList<>();
+                        BmiDto temp = null;
                         GsonBuilder gson = new GsonBuilder();
-                        Type collectionType = new TypeToken<ResponseCommonDto<BabyDto>>(){}.getType();
-                        ResponseCommonDto<BabyDto> response = gson.create().fromJson(json, collectionType);
+                        Type collectionType = new TypeToken<ResponseCommonDto<BmiDto>>(){}.getType();
+                        ResponseCommonDto<BmiDto> response = gson.create().fromJson(json, collectionType);
                         for (int i = 0; i < response.getData().size(); i ++){
-                            temp=new BabyDto();
-                            temp.setName(response.getData().get(i).getName());
-                            temp.setBirthDay(response.getData().get(i).getBirthDay());
-                            temp.setMale(response.getData().get(i).isMale());
-                            temp.setBabyId(response.getData().get(i).getBabyId());
-                            babys.add(temp);
+                            temp=new BmiDto();
+                            temp.setHeight(response.getData().get(i).getHeight());
+                            temp.setWeight(response.getData().get(i).getWeight());
+                            temp.setBmi(response.getData().get(i).getBmi());
+                            temp.setStartTime(response.getData().get(i).getStartTime());
+                            temp.setContent(response.getData().get(i).getContent());
+                            bmiDtos.add(temp);
                         }
-//                        BabyAdapter adapter = new BabyAdapter(babys, getContext(), new BabyAdapter.IClickItem() {
-//                            @Override
-//                            public void onClickItemBaby(BabyDto babyDto) {
-//                                homeActivity.goToHomeFragment(babyDto);
-//                            }
-//                        });
-//                        rcvBmi.setAdapter(adapter);
+
+                        BmiAdapter bmiAdapter = new BmiAdapter(bmiDtos);
+                        rcvBmi.setAdapter(bmiAdapter);
+
                     }
                     @Override
                     public void onError(ANError anError) {
