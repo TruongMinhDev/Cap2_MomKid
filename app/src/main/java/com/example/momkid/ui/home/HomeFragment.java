@@ -1,7 +1,7 @@
 package com.example.momkid.ui.home;
 
-import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -18,13 +18,18 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.models.SlideModel;
 import com.example.momkid.R;
 import com.example.momkid.databinding.FragmentHomeBinding;
+import com.example.momkid.ui.baby.BabyDto;
+import com.example.momkid.ui.baby.BabyFragment;
 
 import java.util.ArrayList;
 
@@ -39,6 +44,7 @@ public class HomeFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_home,container,false);
 
+
         imageSlider = view.findViewById(R.id.image_slider);
 
         ArrayList<SlideModel> imageList=new ArrayList<>();
@@ -49,6 +55,23 @@ public class HomeFragment extends Fragment {
         imageList.add(new SlideModel(R.drawable.imgthree,null));
         imageList.add(new SlideModel(R.drawable.imgfour,null));
         imageList.add(new SlideModel(R.drawable.imgfive,null));
+
+        txt_birthdate=view.findViewById(R.id.txt_birthdate);
+        txt_height = view.findViewById(R.id.txt_height);
+        txt_weight = view.findViewById(R.id.txt_weight);
+
+        Bundle bundle = getArguments();
+        if(bundle != null){
+            BabyDto babyDto = (BabyDto) bundle.get("object_baby");
+            if(babyDto != null){
+                txt_birthdate.setText(babyDto.getBirthDay().toString());
+            }
+
+        }
+
+
+
+
 
         imageSlider.setImageList(imageList);
         return view;
