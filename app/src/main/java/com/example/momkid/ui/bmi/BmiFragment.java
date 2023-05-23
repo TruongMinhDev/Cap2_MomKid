@@ -197,13 +197,6 @@ public class BmiFragment extends Fragment {
                             temp.setBabyId(response.getData().get(i).getBabyId());
                             babys.add(temp);
                         }
-                        BabyAdapter adapter = new BabyAdapter(babys, getContext(), new BabyAdapter.IClickItem() {
-                            @Override
-                            public void onClickItemBaby(BabyDto babyDto) {
-                                homeActivity.goToHomeFragment(babyDto);
-                            }
-                        });
-                        rcvKid.setAdapter(adapter);
                     }
                     @Override
                     public void onError(ANError anError) {
