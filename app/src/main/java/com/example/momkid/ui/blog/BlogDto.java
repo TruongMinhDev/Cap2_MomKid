@@ -6,6 +6,8 @@ public class BlogDto {
     private String content;
     private String img;
 
+    private UserDto user;
+
     public String getImg() {
         return img;
     }
@@ -36,5 +38,13 @@ public class BlogDto {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public UserDto getUser() {
+        return user;
+    }
+
+    public void setUser(UserDto user) {
+        this.user = user;
     }
 }

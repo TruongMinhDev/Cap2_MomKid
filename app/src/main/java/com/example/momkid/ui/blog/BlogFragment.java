@@ -92,7 +92,7 @@ public class BlogFragment extends Fragment {
             e.printStackTrace();
         }
 
-        AndroidNetworking.post(SystemConfig.BASE_URL.concat("/client/blog"))
+        AndroidNetworking.post(SystemConfig.BASE_URL.concat("/client/blogs"))
                 .addJSONObjectBody(jsonObject) // posting json
                 .addHeaders("Authorization", String.format("Bearer  %s",token))
                 .build()
@@ -118,7 +118,7 @@ public class BlogFragment extends Fragment {
     private void loadData() {
         log("da vao day");
         String token = SharedPreferenceHelper.getSharedPreferenceString(getContext(),"token","");
-        AndroidNetworking.get(SystemConfig.BASE_URL.concat("/client/blog"))
+        AndroidNetworking.get(SystemConfig.BASE_URL.concat("/client/blogs?fields=&join=user"))
                 .addHeaders("Authorization", String.format("Bearer  %s",token))
                 .build()
                 .getAsString(new StringRequestListener() {
@@ -134,9 +134,9 @@ public class BlogFragment extends Fragment {
                         for (int i = 0; i < response.getData().size(); i ++){
                             temp = new BlogDto();
                             temp.setContent(response.getData().get(i).getContent());
-                            temp.setName(response.getData().get(i).getName());
-                            temp.setId(response.getData().get(i).getId());
-                            temp.setImg(response.getData().get(i).getImg());
+                            temp.setName(response.getData().get(i).getUser().getFirstName().concat(response.getData().get(i).getUser().getLastName()));
+//                            temp.setId(response.getData().get(i).getUser().getFirstName());
+//                            temp.setImg(response.getData().get(i).getImg());
                             blogs.add(temp);
                         }
                         BlogAdapter adapter = new BlogAdapter(blogs, getContext());

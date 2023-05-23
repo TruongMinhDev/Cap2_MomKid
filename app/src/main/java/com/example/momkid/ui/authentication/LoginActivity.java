@@ -6,9 +6,11 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
@@ -42,13 +44,21 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String email = edtEmail.getText().toString();
                 String pass = edtPassword.getText().toString();
-                login(email, pass);
+
+                if (isEmailValid(email)) {
+                    login(email, pass);
+                } else {
+                    edtEmail.setError("Email không hợp lệ!");
+                    edtEmail.requestFocus();
+                }
+
 //                nDialog = new ProgressDialog(LoginActivity.this);
 //                nDialog.setMessage("Loading..");
 //                nDialog.setTitle("Get Data");
 //                nDialog.setIndeterminate(false);
 //                nDialog.setCancelable(true);
 //                nDialog.show();
+
             }
         });
 
@@ -61,12 +71,16 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
+    public boolean isEmailValid(CharSequence email) {
+        return Patterns.EMAIL_ADDRESS.matcher(email).matches();
+    }
     private void login(String userName, String password) {
         JSONObject jsonObject = new JSONObject();
         try {
             jsonObject.put("email", userName);
             jsonObject.put("password", password);
         } catch (JSONException e) {
+            Toast.makeText(getApplicationContext(), "Tài khoản hoặc mật khẩu không chính xác", Toast.LENGTH_SHORT).show();
             e.printStackTrace();
         }
 
@@ -103,11 +117,13 @@ public class LoginActivity extends AppCompatActivity {
 
                             startActivity(new Intent(LoginActivity.this, HomeActivity.class));
                         } catch (JSONException e) {
+
                             throw new RuntimeException(e);
                         }
                     }
                     @Override
                     public void onError(ANError anError) {
+                        Toast.makeText(getApplicationContext(), "Tài khoản hoặc mật khẩu không chính xác", Toast.LENGTH_SHORT).show();
                         log(String.valueOf(anError));
                     }
                 });
