@@ -127,22 +127,22 @@ public class BmiFragment extends Fragment {
                 double CN = Double.parseDouble(editCN.getText() + "");
                 bmiDto.setWeight(String.valueOf(CN));
                 DecimalFormat dcf = new DecimalFormat("0.00"); // Định dạng lấy đến 2 con số
-                double BMI = CN / CC*CC;
+                double BMI = CN /Math.pow(CC,2);
                 bmiDto.setBmi(String.valueOf(BMI));
                 if ((CC == 0) || (CN == 0)) {
                     Toast.makeText(getContext(), "Chiều cao, cân nặng phải khác 0", Toast.LENGTH_SHORT).show();
                 } else {
                     textViewBMI.setText("Chỉ số BMI của bạn:" + dcf.format(BMI));
-                    if (BMI < 18.5){
+                    if (BMI < 3){
                         textViewDG.setText("Trẻ có dấu hiệu suy dinh dưỡng,thiếu cân");
                         bmiDto.setContent(textViewDG.getText().toString());
-                    } else if (18.5 <= BMI && BMI < 22.9){
-                        textViewDG.setText("Trẻ có thể trạng cân đối,sức khỏe tốt,ít bệnh");
+                    } else if (3 <= BMI && BMI < 15){
+                        textViewDG.setText("Trẻ có dấu hiệu nguy cơ thiếu cân");
                         bmiDto.setContent(textViewDG.getText().toString());
-                    } else if (23 <= BMI && BMI < 24.9){
-                        textViewDG.setText("Trẻ có dấu hiệu thừa cân");
+                    } else if (15 <= BMI && BMI < 85){
+                        textViewDG.setText("trẻ có thể trạng tốt");
                         bmiDto.setContent(textViewDG.getText().toString());
-                    } else if (25 <= BMI && BMI < 29.9){
+                    } else if (85 <= BMI && BMI < 97){
                         textViewDG.setText("Trẻ có dấu hiệu gần béo phì");
                         bmiDto.setContent(textViewDG.getText().toString());
                     } else
