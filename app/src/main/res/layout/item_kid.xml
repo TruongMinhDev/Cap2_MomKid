@@ -7,6 +7,7 @@
     android:layout_marginTop="10dp"
     android:layout_marginEnd="10dp">
     <RelativeLayout
+        android:id="@+id/kidItem"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp">
@@ -42,7 +43,7 @@
             android:id="@+id/tvSex"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="150dp"
+            android:layout_marginStart="130dp"
             android:layout_toEndOf="@+id/tvBirtDay"
             android:layout_centerVertical="true"
             android:text="Bé trai"

@@ -34,6 +34,7 @@ import com.example.momkid.ui.baby.BabyAdapter;
 import com.example.momkid.ui.baby.BabyDto;
 import com.example.momkid.ui.baby.BabyFragment;
 import com.example.momkid.ui.bmi.BmiFragment;
+import com.example.momkid.utils.DateFormatTime;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
@@ -142,7 +143,7 @@ public class ProflieKidActivity extends AppCompatActivity {
                 nDialog.setCancelable(true);
                 nDialog.show();
 
-                loadData(name,birthDate,sex);
+                addData(name,birthDate,sex);
 
             }
         });
@@ -155,7 +156,7 @@ public class ProflieKidActivity extends AppCompatActivity {
     };
 
 
-    private void loadData(String name, String birthDate, Boolean sex) {
+    private void addData(String name, String birthDate, Boolean sex) {
 
         JSONObject jsonObject = new JSONObject();
         try {
@@ -176,6 +177,13 @@ public class ProflieKidActivity extends AppCompatActivity {
                     public void onResponse(JSONObject response) {
                         nDialog.cancel();
                         log("ok");
+                        try {
+                            String birthDateKid = response.getString("birthDate");
+                            SharedPreferenceHelper.setSharedPreferenceString(ProflieKidActivity.this,"birthDateKid", DateFormatTime.formatTime(birthDateKid));
+                        } catch (JSONException e) {
+                            throw new RuntimeException(e);
+                        }
+
                         try {
                             Integer babyId= Integer.valueOf(response.getString("id"));
                             SharedPreferenceHelper.setSharedPreferenceInt(ProflieKidActivity.this,"babyId",babyId);

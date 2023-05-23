@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    app:cardCornerRadius="8dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginEnd="10dp"
+    >
 
     <RelativeLayout
+        android:id="@+id/doctorItem"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginVertical="10dp">
@@ -17,41 +22,43 @@
             android:orientation="horizontal">
 
             <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/imageId"
+                android:id="@+id/imageDoctor"
                 android:layout_width="75dp"
                 android:layout_height="75dp"
                 android:layout_marginStart="20dp"
                 android:src="@drawable/bs"/>
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/personName"
-                    android:layout_width="197dp"
+                    android:id="@+id/tv_clinicName"
+                    android:layout_width="250dp"
                     android:layout_height="wrap_content"
-                    android:text="Phòng khám Nhi khoa tốt BS. Nguyễn Mậu Du"
+                    android:text="Phòng khám Nhi khoa tốt"
                     android:textColor="@color/black"
-                    android:textSize="16sp"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
                 <TextView
-                    android:id="@+id/lastMessage"
+                    android:id="@+id/tv_doctorName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="Bs Nguyen Van A"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"/>
+                <TextView
+                    android:id="@+id/tv_address"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:text="115 Lê Đình lý" />
             </LinearLayout>
-            <TextView
-                android:id="@+id/msgstatus"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="15dp"
-                android:layout_alignParentRight="true"
-                android:text="trạng thái" />
 
         </LinearLayout>
     </RelativeLayout>
-</LinearLayout>
+</androidx.cardview.widget.CardView>

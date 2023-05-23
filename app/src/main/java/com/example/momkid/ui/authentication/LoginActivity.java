@@ -2,6 +2,7 @@ package com.example.momkid.ui.authentication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -25,6 +26,9 @@ public class LoginActivity extends AppCompatActivity {
     public static final String TAG = LoginActivity.class.getName();
     Button btn_login,btn_register;
     EditText edtEmail,edtPassword;
+
+    private ProgressDialog nDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,7 +42,13 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String email = edtEmail.getText().toString();
                 String pass = edtPassword.getText().toString();
-               login(email, pass);
+                login(email, pass);
+//                nDialog = new ProgressDialog(LoginActivity.this);
+//                nDialog.setMessage("Loading..");
+//                nDialog.setTitle("Get Data");
+//                nDialog.setIndeterminate(false);
+//                nDialog.setCancelable(true);
+//                nDialog.show();
             }
         });
 
@@ -101,6 +111,7 @@ public class LoginActivity extends AppCompatActivity {
                         log(String.valueOf(anError));
                     }
                 });
+//        nDialog.cancel();
     }
 
     private void log(String mess){

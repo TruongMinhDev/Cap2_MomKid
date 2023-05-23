@@ -3,6 +3,7 @@ package com.example.momkid.ui.bmi;
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -19,6 +20,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -43,7 +45,9 @@ import org.json.JSONObject;
 
 import java.lang.reflect.Type;
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -84,6 +88,12 @@ public class BmiFragment extends Fragment {
 
         // Lấy ngày hiện tại lưu cho startTime
         currentDay=view.findViewById(R.id.currentDay);
+        currentDay.setFormat12Hour("dd-MM-yyyy");
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        String Date = simpleDateFormat.format(calendar.getTime());
+
+        currentDay.getTimeZone();
 
         // Lấy dữ liệu list bmi của baby ID
         loadData();
@@ -140,7 +150,7 @@ public class BmiFragment extends Fragment {
                         bmiDto.setContent(textViewDG.getText().toString());
                 }
             }
-            bmiDto.setStartTime(currentDay.getTimeZone());
+            bmiDto.setStartTime(Date);
             addData(bmiDto.getWeight(),bmiDto.getHeight(),bmiDto.getBmi(),bmiDto.getContent(), String.valueOf(bmiDto.getStartTime()));
         });
 
@@ -176,7 +186,11 @@ public class BmiFragment extends Fragment {
                         builder.setCancelable(false);
                         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
-                                getFragmentManager().beginTransaction().detach(BmiFragment.this).attach(BmiFragment.this).commit();
+                                FragmentTransaction ft = getFragmentManager().beginTransaction();
+                                if (Build.VERSION.SDK_INT >= 26) {
+                                    ft.setReorderingAllowed(false);
+                                }
+                                ft.detach(BmiFragment.this).attach(BmiFragment.this).commit();
                             }
                         });
                         AlertDialog alert = builder.create();
@@ -232,4 +246,15 @@ public class BmiFragment extends Fragment {
     private void log(String mess){
         Log.d(TAG, mess);
     }
+
+    private void Reloadcurrentfragment(){
+        Fragment frg = null;
+        frg = getFragmentManager().findFragmentByTag(TAG);
+        final FragmentTransaction ft = getFragmentManager().beginTransaction();
+        ft.detach(frg);
+        ft.attach(frg);
+        ft.commit();
+    }
+
+
 }

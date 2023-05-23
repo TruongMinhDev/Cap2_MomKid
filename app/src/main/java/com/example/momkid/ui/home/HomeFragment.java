@@ -27,9 +27,10 @@ import androidx.lifecycle.ViewModelProvider;
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.models.SlideModel;
 import com.example.momkid.R;
-import com.example.momkid.databinding.FragmentHomeBinding;
+import com.example.momkid.helper.SharedPreferenceHelper;
 import com.example.momkid.ui.baby.BabyDto;
 import com.example.momkid.ui.baby.BabyFragment;
+import com.example.momkid.utils.DateFormatTime;
 
 import java.util.ArrayList;
 
@@ -45,16 +46,15 @@ public class HomeFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_home,container,false);
 
 
+        //Hiển thị quảng cáo
         imageSlider = view.findViewById(R.id.image_slider);
-
         ArrayList<SlideModel> imageList=new ArrayList<>();
-//        imageList.add(new SlideModel("https://fastly.picsum.photos/id/20/200/300.jpg?hmac=DFzxrn8j8N0vtdAloI4hYTGWP-nNrDqMbVcWjF2BLwA", "description 1", null));imageList.add(new SlideModel("https://fastly.picsum.photos/id/20/200/300.jpg?hmac=DFzxrn8j8N0vtdAloI4hYTGWP-nNrDqMbVcWjF2BLwA", "description 1", null));
-//        imageList.add(new SlideModel("https://fastly.picsum.photos/id/89/200/300.jpg?hmac=Mkt49bCquTyq1IBgwbLmaT43TeyQgXNig052fowQB1M", "description 1", null));imageList.add(new SlideModel("https://fastly.picsum.photos/id/20/200/300.jpg?hmac=DFzxrn8j8N0vtdAloI4hYTGWP-nNrDqMbVcWjF2BLwA", "description 2", null));
         imageList.add(new SlideModel(R.drawable.imgone,null));
         imageList.add(new SlideModel(R.drawable.imgtwo,null));
         imageList.add(new SlideModel(R.drawable.imgthree,null));
         imageList.add(new SlideModel(R.drawable.imgfour,null));
         imageList.add(new SlideModel(R.drawable.imgfive,null));
+
 
         txt_birthdate=view.findViewById(R.id.txt_birthdate);
         txt_height = view.findViewById(R.id.txt_height);
@@ -64,20 +64,18 @@ public class HomeFragment extends Fragment {
         if(bundle != null){
             BabyDto babyDto = (BabyDto) bundle.get("object_baby");
             if(babyDto != null){
-                txt_birthdate.setText(babyDto.getBirthDay().toString());
+                txt_birthdate.setText(DateFormatTime.formatTime(babyDto.getBirthDate()));
+                String age = DateFormatTime.formatTime(babyDto.getBirthDate());
+                SharedPreferenceHelper.setSharedPreferenceString(getContext(),"birthDateKid",age);
+                Integer babyId = babyDto.getId();
+                SharedPreferenceHelper.setSharedPreferenceInt(getContext(),"babyId",babyId);
             }
 
         }
-
-
-
-
 
         imageSlider.setImageList(imageList);
         return view;
 
     }
-
-
 
 }

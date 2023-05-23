@@ -9,9 +9,14 @@
 
     <string name="menu_home">Trang Chủ</string>
     <string name="menu_schedule">Lịch Trình</string>
-    <string name="menu_increase">Thống Kê</string>
+    <string name="menu_increase">BMI</string>
     <string name="menu_blog">Blog</string>
     <string name="menu_book">Đặt Lịch Hẹn</string>
+    <string name="menu_profile">Thông Tin</string>
+    <string name="menu_baby">Em Bé</string>
+    <string name="menu_logout">Đăng Xuất</string>
+
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_login">LoginActivity</string>
