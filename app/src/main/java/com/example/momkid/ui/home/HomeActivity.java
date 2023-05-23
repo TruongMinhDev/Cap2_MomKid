@@ -28,6 +28,11 @@ import com.example.momkid.ui.baby.INavigate;
 import com.example.momkid.ui.blog.BlogFragment;
 import com.example.momkid.ui.book_doctor.BookDoctorFragment;
 import com.example.momkid.ui.bmi.BmiFragment;
+import com.example.momkid.ui.book_doctor.DoctorDetailFragment;
+import com.example.momkid.ui.book_doctor.DoctorDto;
+import com.example.momkid.ui.profile.ProfileUserFragment;
+import com.example.momkid.ui.schedule.ScheduleDetailFragment;
+import com.example.momkid.ui.schedule.ScheduleDto;
 import com.example.momkid.ui.schedule.ScheduleFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
@@ -41,6 +46,10 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     private static final int FRAGMENT_BOOK_DOCTOR = 4;
 
     private static final int FRAGMENT_LIST_KID = 5;
+
+    private static final int FRAGMENT_PROFILE_USER = 6;
+
+    private static final int FRAGMENT_BABY = 7;
 
     private int currentFragment = FRAGMENT_HOME;
 
@@ -105,6 +114,16 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 replaceFragment(new BookDoctorFragment());
                 currentFragment = FRAGMENT_BOOK_DOCTOR;
             }
+        }else if(id == R.id.nav_profile){
+            if(currentFragment != FRAGMENT_PROFILE_USER){
+                replaceFragment(new ProfileUserFragment());
+                currentFragment = FRAGMENT_PROFILE_USER;
+            }
+        }else if (id == R.id.nav_baby){
+            if(currentFragment != FRAGMENT_BABY){
+                replaceFragment(new BabyFragment());
+                currentFragment = FRAGMENT_BABY;
+            }
         }
         drawer.closeDrawer(GravityCompat.START);
         return true;
@@ -156,6 +175,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.content_frame,babyFragment);
                 transaction.commit();
+//                replaceFragment(new BabyFragment());
             }
         });
         AlertDialog alert = builder.create();
@@ -170,15 +190,44 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     }
 
     public void goToHomeFragment(BabyDto babyDto){
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         HomeFragment homeFragment = new HomeFragment();
+
 
         Bundle bundle = new Bundle();
         bundle.putSerializable("object_baby",babyDto);
 
         homeFragment.setArguments(bundle);
 
-        transaction.replace(R.id.content_frame, homeFragment);
-        transaction.commit();
+        replaceFragment(homeFragment);
+
+
+    }
+
+    public void goToDetailSchedule(ScheduleDto scheduleDto){
+        ScheduleDetailFragment scheduleDetailFragment = new ScheduleDetailFragment();
+
+
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("object_schedule",scheduleDto);
+
+        scheduleDetailFragment.setArguments(bundle);
+
+        replaceFragment(scheduleDetailFragment);
+
+
+    }
+
+    public void goToDetailDoctor(DoctorDto doctorDto){
+        DoctorDetailFragment doctorDetailFragment = new DoctorDetailFragment();
+
+
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("object_doctor",doctorDto);
+
+        doctorDetailFragment.setArguments(bundle);
+
+        replaceFragment(doctorDetailFragment);
+
+
     }
 }

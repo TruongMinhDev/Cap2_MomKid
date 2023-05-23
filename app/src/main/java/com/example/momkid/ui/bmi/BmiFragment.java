@@ -3,6 +3,7 @@ package com.example.momkid.ui.bmi;
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -19,6 +20,10 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
@@ -30,6 +35,7 @@ import com.example.momkid.helper.SystemConfig;
 import com.example.momkid.ui.authentication.UserDto;
 import com.example.momkid.ui.baby.BabyAdapter;
 import com.example.momkid.ui.baby.BabyDto;
+import com.example.momkid.ui.home.HomeActivity;
 import com.example.momkid.ui.profile.ProflieKidActivity;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
@@ -39,7 +45,9 @@ import org.json.JSONObject;
 
 import java.lang.reflect.Type;
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -55,11 +63,21 @@ public class BmiFragment extends Fragment {
 
     BmiDto bmiDto;
 
+    RecyclerView rcvBmi;
+
+    private HomeActivity homeActivity;
+
     @SuppressLint("SuspiciousIndentation")
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_bmi,container,false);
+
+        rcvBmi= view.findViewById(R.id.rcvBmi);
+        homeActivity= (HomeActivity) getActivity();
+
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(homeActivity);
+        rcvBmi.setLayoutManager(linearLayoutManager);
 
         editCC = (EditText) view.findViewById(R.id.editCC);
         editCN = (EditText) view.findViewById(R.id.editCN);
@@ -70,6 +88,15 @@ public class BmiFragment extends Fragment {
 
         // Lấy ngày hiện tại lưu cho startTime
         currentDay=view.findViewById(R.id.currentDay);
+        currentDay.setFormat12Hour("dd-MM-yyyy");
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        String Date = simpleDateFormat.format(calendar.getTime());
+
+        currentDay.getTimeZone();
+
+        // Lấy dữ liệu list bmi của baby ID
+        loadData();
 
         nDialog = new ProgressDialog(getContext());
         nDialog.setMessage("Loading..");
@@ -100,22 +127,22 @@ public class BmiFragment extends Fragment {
                 double CN = Double.parseDouble(editCN.getText() + "");
                 bmiDto.setWeight(String.valueOf(CN));
                 DecimalFormat dcf = new DecimalFormat("0.00"); // Định dạng lấy đến 2 con số
-                double BMI = CN / CC*CC;
+                double BMI = CN /Math.pow(CC,2);
                 bmiDto.setBmi(String.valueOf(BMI));
                 if ((CC == 0) || (CN == 0)) {
                     Toast.makeText(getContext(), "Chiều cao, cân nặng phải khác 0", Toast.LENGTH_SHORT).show();
                 } else {
                     textViewBMI.setText("Chỉ số BMI của bạn:" + dcf.format(BMI));
-                    if (BMI < 18.5){
+                    if (BMI < 3){
                         textViewDG.setText("Trẻ có dấu hiệu suy dinh dưỡng,thiếu cân");
                         bmiDto.setContent(textViewDG.getText().toString());
-                    } else if (18.5 <= BMI && BMI < 22.9){
-                        textViewDG.setText("Trẻ có thể trạng cân đối,sức khỏe tốt,ít bệnh");
+                    } else if (3 <= BMI && BMI < 15){
+                        textViewDG.setText("Trẻ có dấu hiệu nguy cơ thiếu cân");
                         bmiDto.setContent(textViewDG.getText().toString());
-                    } else if (23 <= BMI && BMI < 24.9){
-                        textViewDG.setText("Trẻ có dấu hiệu thừa cân");
+                    } else if (15 <= BMI && BMI < 85){
+                        textViewDG.setText("trẻ có thể trạng tốt");
                         bmiDto.setContent(textViewDG.getText().toString());
-                    } else if (25 <= BMI && BMI < 29.9){
+                    } else if (85 <= BMI && BMI < 97){
                         textViewDG.setText("Trẻ có dấu hiệu gần béo phì");
                         bmiDto.setContent(textViewDG.getText().toString());
                     } else
@@ -123,7 +150,7 @@ public class BmiFragment extends Fragment {
                         bmiDto.setContent(textViewDG.getText().toString());
                 }
             }
-            bmiDto.setStartTime(currentDay.getTimeZone());
+            bmiDto.setStartTime(Date);
             addData(bmiDto.getWeight(),bmiDto.getHeight(),bmiDto.getBmi(),bmiDto.getContent(), String.valueOf(bmiDto.getStartTime()));
         });
 
@@ -132,6 +159,7 @@ public class BmiFragment extends Fragment {
 
     private void addData(String weight, String height, String bmi, String content, String startTime) {
         log("Tới đay roi ne");
+        Integer babyID = SharedPreferenceHelper.getSharedPreferenceInt(getContext(),"babyId",0);
         JSONObject jsonObject = new JSONObject();
         try {
             jsonObject.put("weight", weight);
@@ -139,6 +167,7 @@ public class BmiFragment extends Fragment {
             jsonObject.put("bmi",bmi);
             jsonObject.put("content",content);
             jsonObject.put("startTime",startTime);
+            jsonObject.put("babyId",babyID);
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -153,11 +182,15 @@ public class BmiFragment extends Fragment {
                     @Override
                     public void onResponse(String json) {
                         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                        builder.setMessage("Chỉ số BMI của " + content);
+                        builder.setMessage("Chỉ số BMI của trẻ là: " + bmi +content);
                         builder.setCancelable(false);
                         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
-                                // code khi người dùng nhấn nút OK
+                                FragmentTransaction ft = getFragmentManager().beginTransaction();
+                                if (Build.VERSION.SDK_INT >= 26) {
+                                    ft.setReorderingAllowed(false);
+                                }
+                                ft.detach(BmiFragment.this).attach(BmiFragment.this).commit();
                             }
                         });
                         AlertDialog alert = builder.create();
@@ -172,31 +205,36 @@ public class BmiFragment extends Fragment {
     }
 
     private void loadData() {
-        String babyId = SharedPreferenceHelper.getSharedPreferenceString(getContext(),"userId","");
-        log("da vao day");
+        String babyId = String.valueOf(SharedPreferenceHelper.getSharedPreferenceInt(getContext(),"babyId",0));
+        log("da vao day BMI");
         String id = String.valueOf(UserDto.getId());
         String token = SharedPreferenceHelper.getSharedPreferenceString(getContext(),"token","");
-        AndroidNetworking.get(SystemConfig.BASE_URL.concat("/client/babies").concat("?filter=userId||$eq||{userId}"))
+        AndroidNetworking.get(SystemConfig.BASE_URL.concat("/client/bmi-kid").concat("?filter=babyId||$eq||{babyId}"))
                 .addHeaders("Authorization", String.format("Bearer  %s",token))
-                .addPathParameter("userId",babyId)
+                .addPathParameter("babyId",babyId)
                 .build()
                 .getAsString(new StringRequestListener() {
                     @Override
                     public void onResponse(String json) {
                         nDialog.cancel();
-                        List<BabyDto> babys = new ArrayList<>();
-                        BabyDto temp = null;
+                        List<BmiDto> bmiDtos = new ArrayList<>();
+                        BmiDto temp = null;
                         GsonBuilder gson = new GsonBuilder();
-                        Type collectionType = new TypeToken<ResponseCommonDto<BabyDto>>(){}.getType();
-                        ResponseCommonDto<BabyDto> response = gson.create().fromJson(json, collectionType);
+                        Type collectionType = new TypeToken<ResponseCommonDto<BmiDto>>(){}.getType();
+                        ResponseCommonDto<BmiDto> response = gson.create().fromJson(json, collectionType);
                         for (int i = 0; i < response.getData().size(); i ++){
-                            temp=new BabyDto();
-                            temp.setName(response.getData().get(i).getName());
-                            temp.setBirthDay(response.getData().get(i).getBirthDay());
-                            temp.setMale(response.getData().get(i).isMale());
-                            temp.setBabyId(response.getData().get(i).getBabyId());
-                            babys.add(temp);
+                            temp=new BmiDto();
+                            temp.setHeight(response.getData().get(i).getHeight());
+                            temp.setWeight(response.getData().get(i).getWeight());
+                            temp.setBmi(response.getData().get(i).getBmi());
+                            temp.setStartTime(response.getData().get(i).getStartTime());
+                            temp.setContent(response.getData().get(i).getContent());
+                            bmiDtos.add(temp);
                         }
+
+                        BmiAdapter bmiAdapter = new BmiAdapter(bmiDtos);
+                        rcvBmi.setAdapter(bmiAdapter);
+
                     }
                     @Override
                     public void onError(ANError anError) {
@@ -208,4 +246,15 @@ public class BmiFragment extends Fragment {
     private void log(String mess){
         Log.d(TAG, mess);
     }
+
+    private void Reloadcurrentfragment(){
+        Fragment frg = null;
+        frg = getFragmentManager().findFragmentByTag(TAG);
+        final FragmentTransaction ft = getFragmentManager().beginTransaction();
+        ft.detach(frg);
+        ft.attach(frg);
+        ft.commit();
+    }
+
+
 }

@@ -4,32 +4,31 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.momkid.R;
+import com.example.momkid.service.IClickItemKid;
+import com.example.momkid.utils.DateFormatTime;
 
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 public class BabyAdapter extends RecyclerView.Adapter<BabyAdapter.ViewHolder>{
 
     private List<BabyDto> mKids;
-    private Context context;
+    private IClickItemKid clickItem;
 
-    private IClickItem clickItem;
-
-    public interface IClickItem{
-        void onClickItemBaby(BabyDto babyDto);
-    }
-
-
-    public BabyAdapter(List<BabyDto> mKids, Context context, IClickItem clickItem) {
+    public BabyAdapter(List<BabyDto> mKids, IClickItemKid clickItem) {
         this.mKids = mKids;
-        this.context = context;
         this.clickItem = clickItem;
     }
 
@@ -48,12 +47,14 @@ public class BabyAdapter extends RecyclerView.Adapter<BabyAdapter.ViewHolder>{
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         BabyDto baby = mKids.get(position);
         holder.tvName.setText(baby.getName());
-        holder.tvBirtDay.setText(String.valueOf(baby.getBirthDay()));
+
+        holder.tvBirtDay.setText(DateFormatTime.formatTime(baby.getBirthDate()));
+
         if(baby.isMale()==true){
             holder.tvSex.setText("Bé Trai");
         }else holder.tvSex.setText("Bé Gái");
 
-        holder.tvName.setOnClickListener(new View.OnClickListener() {
+        holder.kidItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 clickItem.onClickItemBaby(baby);
@@ -68,15 +69,20 @@ public class BabyAdapter extends RecyclerView.Adapter<BabyAdapter.ViewHolder>{
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
+
+        public RelativeLayout kidItem;
         public TextView tvName;
         public TextView tvBirtDay;
         public TextView tvSex;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            kidItem=itemView.findViewById(R.id.kidItem);
             tvName = itemView.findViewById(R.id.tvName);
             tvBirtDay = itemView.findViewById(R.id.tvBirtDay);
             tvSex = itemView.findViewById(R.id.tvSex);
         }
     }
+
+
 }

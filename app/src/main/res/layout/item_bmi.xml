@@ -5,13 +5,14 @@
     android:layout_height="wrap_content"
     app:cardCornerRadius="8dp"
     android:layout_marginTop="10dp"
-    android:layout_marginEnd="10dp">
+    android:layout_marginEnd="10dp"
+    android:background="@drawable/layout_update1">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:padding="10dp"
-        android:background="@drawable/layout_update1">
+        >
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/img_user"

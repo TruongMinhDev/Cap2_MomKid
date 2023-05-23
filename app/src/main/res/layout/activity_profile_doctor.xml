@@ -59,10 +59,32 @@
         </LinearLayout>
 
         <RelativeLayout
-            android:id="@+id/layout_address_doctor"
+            android:id="@+id/layout_name_doctor"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@+id/layout_vote_doctor"
+            android:minHeight="40dp">
+
+            <ImageView
+                android:id="@+id/imageView10"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="0dp"
+                app:srcCompat="@drawable/baseline_person_24" />
+            <TextView
+                android:id="@+id/txt_nameDoctor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nguyen Van A"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="50dp"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/layout_address_doctor"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/layout_name_doctor"
             android:minHeight="40dp">
 
             <ImageView
@@ -72,6 +94,7 @@
                 android:layout_marginLeft="0dp"
                 app:srcCompat="@drawable/address" />
             <TextView
+                android:id="@+id/txt_address"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="59 Phan Thanh, Thạc Gián, Đà nẵng"
@@ -93,6 +116,7 @@
                 android:layout_marginLeft="0dp"
                 app:srcCompat="@drawable/clock" />
             <TextView
+                android:id="@+id/txt_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="7h00-21h00"
@@ -114,6 +138,7 @@
                 android:layout_marginLeft="0dp"
                 app:srcCompat="@drawable/phone" />
             <TextView
+                android:id="@+id/txt_phone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="+84366009104"
@@ -135,6 +160,7 @@
                 android:layout_marginLeft="0dp"
                 app:srcCompat="@drawable/education" />
             <TextView
+                android:id="@+id/txt_medicalDegree"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Tốt nghiệm bác sĩ trường đại học y huế"
@@ -151,6 +177,7 @@
             android:layout_marginTop="100dp">
 
             <Button
+                android:id="@+id/btn_bookDoctor"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

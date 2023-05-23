@@ -3,24 +3,27 @@ package com.example.momkid.ui.baby;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
-import java.util.Date;
 
 public class BabyDto implements Serializable {
-    private int babyId;
+    private int id;
     private String name;
-    private Date birthDay;
+    private String birthDate;
     private boolean isMale;
 
-    public Date getBirthDay() {
-        return birthDay;
+    public String getBirthDate() {
+        return birthDate;
     }
 
-    public void setBirthDay(Date birthDay) {
-        this.birthDay = birthDay;
+    public void setBirthDate(String birthDate) {
+        this.birthDate = birthDate;
     }
 
-    public void setBabyId(int babyId) {
-        this.babyId = babyId;
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setName(String name) {
@@ -32,9 +35,6 @@ public class BabyDto implements Serializable {
         isMale = male;
     }
 
-    public int getBabyId() {
-        return babyId;
-    }
 
     public String getName() {
         return name;
@@ -48,9 +48,9 @@ public class BabyDto implements Serializable {
     @Override
     public String toString() {
         return "BabyDto{" +
-                "userId=" + babyId +
+                "babyId=" + id +
                 ", name='" + name + '\'' +
-                ", birthDay='" + birthDay + '\'' +
+                ", birthDay='" + birthDate + '\'' +
                 ", isMale=" + isMale +
                 '}';
     }
