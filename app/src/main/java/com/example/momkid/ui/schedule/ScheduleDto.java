@@ -1,30 +1,44 @@
 package com.example.momkid.ui.schedule;
 
 
+import java.io.Serializable;
 
-public class ScheduleDto {
+public class ScheduleDto implements Serializable {
 
-    private String timeSchedule;
-    private String contentSchedule;
+    private String beginTime;
+    private String endTime;
+    private String content;
+    private String note;
 
-    public ScheduleDto(String timeSchedule, String contentSchedule) {
-        this.timeSchedule = timeSchedule;
-        this.contentSchedule = contentSchedule;
+    public String getBeginTime() {
+        return beginTime;
     }
 
-    public String getTimeSchedule() {
-        return timeSchedule;
+    public void setBeginTime(String beginTime) {
+        this.beginTime = beginTime;
     }
 
-    public void setTimeSchedule(String timeSchedule) {
-        this.timeSchedule = timeSchedule;
+    public String getEndTime() {
+        return endTime;
     }
 
-    public String getContentSchedule() {
-        return contentSchedule;
+    public void setEndTime(String endTime) {
+        this.endTime = endTime;
     }
 
-    public void setContentSchedule(String contentSchedule) {
-        this.contentSchedule = contentSchedule;
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public String getNote() {
+        return note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
     }
 }

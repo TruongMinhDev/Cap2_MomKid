@@ -23,6 +23,7 @@ import com.example.momkid.R;
 import com.example.momkid.helper.ResponseCommonDto;
 import com.example.momkid.helper.SharedPreferenceHelper;
 import com.example.momkid.helper.SystemConfig;
+import com.example.momkid.service.IClickItemKid;
 import com.example.momkid.ui.authentication.UserDto;
 import com.example.momkid.ui.home.HomeActivity;
 import com.example.momkid.ui.profile.ProflieKidActivity;
@@ -46,6 +47,8 @@ public class BabyFragment extends Fragment {
     public BabyFragment(INavigate listener) {
         this.listener = listener;
     }
+
+    public BabyFragment() {}
 
     @Nullable
     @Override
@@ -83,7 +86,7 @@ public class BabyFragment extends Fragment {
     private void loadData() {
         String userId = String.valueOf(SharedPreferenceHelper.getSharedPreferenceInt(getContext(),"userId",0));
         log("da vao day");
-        String id = String.valueOf(UserDto.getId());
+
         String token = SharedPreferenceHelper.getSharedPreferenceString(getContext(),"token","");
 
         AndroidNetworking.get(SystemConfig.BASE_URL.concat("/client/babies").concat("?filter=userId||$eq||{userId}"))
@@ -102,17 +105,18 @@ public class BabyFragment extends Fragment {
                         for (int i = 0; i < response.getData().size(); i ++){
                             temp=new BabyDto();
                             temp.setName(response.getData().get(i).getName());
-                            temp.setBirthDay(response.getData().get(i).getBirthDay());
+                            temp.setBirthDate(response.getData().get(i).getBirthDate());
                             temp.setMale(response.getData().get(i).isMale());
-                            temp.setBabyId(response.getData().get(i).getBabyId());
+                            temp.setId(response.getData().get(i).getId());
                             babys.add(temp);
                         }
-                        BabyAdapter adapter = new BabyAdapter(babys, getContext(), new BabyAdapter.IClickItem() {
+                        BabyAdapter adapter = new BabyAdapter(babys, new IClickItemKid() {
                             @Override
                             public void onClickItemBaby(BabyDto babyDto) {
                                 homeActivity.goToHomeFragment(babyDto);
                             }
                         });
+
                         rcvKid.setAdapter(adapter);
                     }
                     @Override
