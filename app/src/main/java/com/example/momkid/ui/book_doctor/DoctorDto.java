@@ -2,7 +2,7 @@ package com.example.momkid.ui.book_doctor;
 
 import java.io.Serializable;
 
-public class DoctorDto implements Serializable {
+public class DoctorDto implements Serializable{
 
     private String firstName;
     private String lastName;
@@ -12,6 +12,20 @@ public class DoctorDto implements Serializable {
     private String roomName;
     private String businessHours;
     private String medicalDegree;
+
+    @Override
+    public String toString() {
+        return "DoctorDto{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", address='" + address + '\'' +
+                ", image='" + image + '\'' +
+                ", roomName='" + roomName + '\'' +
+                ", businessHours='" + businessHours + '\'' +
+                ", medicalDegree='" + medicalDegree + '\'' +
+                '}';
+    }
 
     public String getFirstName() {
         return firstName;

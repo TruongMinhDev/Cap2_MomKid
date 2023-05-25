@@ -1,35 +1,17 @@
 package com.example.momkid.ui.home;
 
-import android.app.Dialog;
-import android.content.DialogInterface;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
-
-import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.lifecycle.ViewModelProvider;
-
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.models.SlideModel;
 import com.example.momkid.R;
 import com.example.momkid.helper.SharedPreferenceHelper;
 import com.example.momkid.ui.baby.BabyDto;
-import com.example.momkid.ui.baby.BabyFragment;
 import com.example.momkid.utils.DateFormatTime;
 
 import java.util.ArrayList;
@@ -69,6 +51,8 @@ public class HomeFragment extends Fragment {
                 SharedPreferenceHelper.setSharedPreferenceString(getContext(),"birthDateKid",age);
                 Integer babyId = babyDto.getId();
                 SharedPreferenceHelper.setSharedPreferenceInt(getContext(),"babyId",babyId);
+                String nameKid = babyDto.getName();
+                SharedPreferenceHelper.setSharedPreferenceString(getContext(),"nameKid",nameKid);
             }
 
         }

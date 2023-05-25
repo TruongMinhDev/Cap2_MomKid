@@ -128,11 +128,11 @@ public class BmiFragment extends Fragment {
                 bmiDto.setWeight(String.valueOf(CN));
                 DecimalFormat dcf = new DecimalFormat("0.00"); // Định dạng lấy đến 2 con số
                 double BMI = CN /Math.pow(CC,2);
-                bmiDto.setBmi(String.valueOf(BMI));
+                bmiDto.setBmi(dcf.format(BMI));
                 if ((CC == 0) || (CN == 0)) {
                     Toast.makeText(getContext(), "Chiều cao, cân nặng phải khác 0", Toast.LENGTH_SHORT).show();
                 } else {
-                    textViewBMI.setText("Chỉ số BMI của bạn:" + dcf.format(BMI));
+                    textViewBMI.setText("Chỉ số BMI của bạn: " + dcf.format(BMI));
                     if (BMI < 3){
                         textViewDG.setText("Trẻ có dấu hiệu suy dinh dưỡng,thiếu cân");
                         bmiDto.setContent(textViewDG.getText().toString());
@@ -181,16 +181,13 @@ public class BmiFragment extends Fragment {
                 .getAsString(new StringRequestListener() {
                     @Override
                     public void onResponse(String json) {
+                        SharedPreferenceHelper.setSharedPreferenceString(getContext(),"bmi",bmi);
                         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
                         builder.setMessage("Chỉ số BMI của trẻ là: " + bmi +content);
                         builder.setCancelable(false);
                         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
-                                FragmentTransaction ft = getFragmentManager().beginTransaction();
-                                if (Build.VERSION.SDK_INT >= 26) {
-                                    ft.setReorderingAllowed(false);
-                                }
-                                ft.detach(BmiFragment.this).attach(BmiFragment.this).commit();
+                                getFragmentManager().beginTransaction().detach(BmiFragment.this).attach(BmiFragment.this).commit();
                             }
                         });
                         AlertDialog alert = builder.create();
@@ -247,14 +244,6 @@ public class BmiFragment extends Fragment {
         Log.d(TAG, mess);
     }
 
-    private void Reloadcurrentfragment(){
-        Fragment frg = null;
-        frg = getFragmentManager().findFragmentByTag(TAG);
-        final FragmentTransaction ft = getFragmentManager().beginTransaction();
-        ft.detach(frg);
-        ft.attach(frg);
-        ft.commit();
-    }
 
 
 }

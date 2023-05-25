@@ -38,8 +38,8 @@ public class BmiAdapter extends RecyclerView.Adapter<BmiAdapter.ViewHolder>{
         if(bmiDto == null){
             return;
         }
-        holder.txtheight.setText(bmiDto.getHeight());
-        holder.txtweight.setText(bmiDto.getWeight());
+        holder.txtheight.setText(bmiDto.getHeight().concat(" m"));
+        holder.txtweight.setText(bmiDto.getWeight().concat(" kg"));
         holder.txtbmi.setText(bmiDto.getBmi());
         holder.txtcontent.setText(bmiDto.getContent());
         holder.dateAddBmi.setText(bmiDto.getStartTime());

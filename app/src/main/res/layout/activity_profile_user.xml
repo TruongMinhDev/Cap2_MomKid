@@ -1,201 +1,167 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.profile.ProfileUserActivity"
-    android:background="@drawable/backgroud_authentication"
-    >
+    android:orientation="vertical"
+    android:background="#F6F5F5"
+    tools:context=".ui.profile.ProfileUserFragment">
+
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="15dp"
-        android:layout_margin="15dp">
+        android:layout_height="331dp">
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/edithead"
-            android:text="Edit Profile"
-            android:layout_marginTop="10dp"
-            android:textSize="25dp"
-            android:textStyle="bold"
-            android:layout_marginLeft="110dp"
-            android:layout_marginRight="90dp"
-            />
+            android:layout_height="259dp"
+            android:background="@color/pink"
+            android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/image_edit_profile"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            app:srcCompat="@drawable/img_3" />
+            <androidx.cardview.widget.CardView
+                android:layout_width="140dp"
+                android:layout_height="140dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:foregroundGravity="center_horizontal"
+                app:cardCornerRadius="100dp">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/text_edit_name"
-            android:layout_below="@+id/edithead"
-            android:text="Full name"
-            android:textStyle="bold"
-            android:textColor="#555555"
-            android:padding="6dp"
-            android:textSize="16sp"
-            android:layout_marginTop="150dp"/>
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/momandkid" />
+            </androidx.cardview.widget.CardView>
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/edt_edit_name"
-            android:hint="Enter your full name"
-            android:inputType="textPersonName"
-            android:textSize="16sp"
-            android:padding="6dp"
-            android:layout_below="@+id/text_edit_name"
-            android:background="@drawable/background_edt"/>
+            <TextView
+                android:id="@+id/tv_nameMom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:text="KG Official"
+                android:textColor="#fff"
+                android:textSize="23dp"
+                android:textStyle="bold" />
+        </LinearLayout>
 
-        <!--        mật khẩu-->
-        <TextView
-            android:textStyle="bold"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/text_edit_pass"
-            android:layout_below="@+id/edt_edit_name"
-            android:text="Password"
-            android:textColor="#555555"
-            android:padding="6dp"
-            android:textSize="16sp"
-            android:layout_marginTop="10dp"/>
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/edt_edit_pass"
-            android:hint="Enter your password"
-            android:inputType="textPersonName"
-            android:textSize="16sp"
-            android:padding="6dp"
-            android:layout_below="@+id/text_edit_pass"
-            android:background="@drawable/background_edt"/>
-
-        <!--        Nhập lại mật khẩu-->
-        <TextView
-            android:textStyle="bold"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/text_edit_confirmpass"
-            android:layout_below="@+id/edt_edit_pass"
-            android:text="Confirm Password"
-            android:textColor="#555555"
-            android:padding="6dp"
-            android:textSize="16sp"
-            android:layout_marginTop="10dp"/>
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/edt_edit_confirmpass"
-            android:hint="Enter your confirm password"
-            android:inputType="textPersonName"
-            android:textSize="16sp"
-            android:padding="6dp"
-            android:layout_below="@+id/text_edit_confirmpass"
-            android:background="@drawable/background_edt"/>
-
-        <!--        Email-->
-        <TextView
-            android:textStyle="bold"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/text_edit_email"
-            android:layout_below="@+id/edt_edit_confirmpass"
-            android:text="Email"
-            android:textColor="#555555"
-            android:padding="6dp"
-            android:textSize="16sp"
-            android:layout_marginTop="10dp"/>
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/edt_edit_email"
-            android:hint="Enter your email"
-            android:inputType="textPersonName"
-            android:textSize="16sp"
-            android:padding="6dp"
-            android:layout_below="@+id/text_edit_email"
-            android:background="@drawable/background_edt"/>
-        <!--        Phone-->
-        <TextView
-            android:textStyle="bold"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/text_edit_phone"
-            android:layout_below="@+id/edt_edit_email"
-            android:text="Phone"
-            android:textColor="#555555"
-            android:padding="6dp"
-            android:textSize="16sp"
-            android:layout_marginTop="10dp"/>
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/edt_edit_phone"
-            android:hint="Enter your phone"
-            android:inputType="textPersonName"
-            android:textSize="16sp"
-            android:padding="6dp"
-            android:layout_below="@+id/text_edit_phone"
-            android:background="@drawable/background_edt"/>
-
-        <!--        Địa chỉ-->
-        <TextView
-            android:textStyle="bold"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/text_edit_address"
-            android:layout_below="@+id/edt_edit_phone"
-            android:text="Address"
-            android:textColor="#555555"
-            android:padding="6dp"
-            android:textSize="16sp"
-            android:layout_marginTop="10dp"/>
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/edt_edit_address"
-            android:hint="Enter your address"
-            android:inputType="textPersonName"
-            android:textSize="16sp"
-            android:padding="6dp"
-            android:layout_below="@+id/text_edit_address"
-            android:background="@drawable/background_edt"/>
-
-        <!--        button-->
-        <Button
-            android:id="@+id/btn_save_edit_profile"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="70dp"
-            android:layout_marginRight="70dp"
-            android:backgroundTint="@color/pink"
-            android:layout_below="@id/edt_edit_address"
-            android:layout_marginTop="20dp"
-            android:text="Lưu"
-            android:onClick="showAlertEdit"/>
-
-        <ProgressBar
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/progressBar"
+        <androidx.cardview.widget.CardView
+            android:layout_width="356dp"
+            android:layout_height="93dp"
+            android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:elevation="10dp"
-            android:visibility="gone"/>
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="27dp"
+            app:cardCornerRadius="5dp">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="91dp"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+
+                <LinearLayout
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Em Bé"
+                        android:textColor="#000"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/tv_nameKid"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Nguyen Van A"
+                        android:textColor="#2196F3"
+                        android:textSize="23dp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </androidx.cardview.widget.CardView>
     </RelativeLayout>
 
-</ScrollView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginTop="10dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="25dp">
+            <ImageView
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:src="@drawable/baseline_email_24"/>
+            <TextView
+                android:id="@+id/tv_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="kgofficial@gmail.com"
+                android:textColor="#000"
+                android:textSize="18dp"
+                android:paddingLeft="15dp"
+                android:layout_gravity="center_vertical"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="25dp">
+            <ImageView
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:src="@drawable/phone"/>
+            <TextView
+                android:id="@+id/tv_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Karachi- Pakistan"
+                android:textColor="#000"
+                android:textSize="18dp"
+                android:paddingLeft="15dp"
+                android:layout_gravity="center_vertical"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="25dp">
+            <ImageView
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:src="@drawable/baseline_home_24"/>
+            <TextView
+                android:id="@+id/tv_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Show all comments"
+                android:textColor="#000"
+                android:textSize="18dp"
+                android:paddingLeft="15dp"
+                android:layout_gravity="center_vertical"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+</LinearLayout>

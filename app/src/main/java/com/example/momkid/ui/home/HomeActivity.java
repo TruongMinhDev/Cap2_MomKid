@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 //import androidx.legacy.app.ActionBarDrawerToggle;
@@ -13,6 +14,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -20,16 +22,19 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.momkid.MainActivity;
 import com.example.momkid.R;
 import com.example.momkid.chatgpt.ChatGPTActivity;
+import com.example.momkid.helper.SharedPreferenceHelper;
 import com.example.momkid.ui.baby.BabyDto;
 import com.example.momkid.ui.baby.BabyFragment;
 import com.example.momkid.ui.baby.INavigate;
 import com.example.momkid.ui.blog.BlogFragment;
 import com.example.momkid.ui.book_doctor.BookDoctorFragment;
 import com.example.momkid.ui.bmi.BmiFragment;
-import com.example.momkid.ui.book_doctor.DoctorDetailFragment;
 import com.example.momkid.ui.book_doctor.DoctorDto;
+import com.example.momkid.ui.book_doctor.DoctorFragment;
+import com.example.momkid.ui.profile.ProfileBabyFragment;
 import com.example.momkid.ui.profile.ProfileUserFragment;
 import com.example.momkid.ui.schedule.ScheduleDetailFragment;
 import com.example.momkid.ui.schedule.ScheduleDto;
@@ -50,6 +55,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     private static final int FRAGMENT_PROFILE_USER = 6;
 
     private static final int FRAGMENT_BABY = 7;
+
+    private static final int LOGOUT=8;
 
     private int currentFragment = FRAGMENT_HOME;
 
@@ -121,8 +128,12 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             }
         }else if (id == R.id.nav_baby){
             if(currentFragment != FRAGMENT_BABY){
-                replaceFragment(new BabyFragment());
+                replaceFragment(new ProfileBabyFragment());
                 currentFragment = FRAGMENT_BABY;
+            }
+        }else if(id == R.id.nav_logout){
+            if(currentFragment != LOGOUT){
+                logout();
             }
         }
         drawer.closeDrawer(GravityCompat.START);
@@ -184,6 +195,30 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
     }
 
+    public void logout(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(HomeActivity.this);
+        // Add the buttons
+        builder.setMessage("Bạn có thật sự muốn thoát !!!");
+        builder.setIcon(ContextCompat.getDrawable(HomeActivity.this,R.drawable.baseline_warning_24));
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                // User clicked OK button
+                SharedPreferenceHelper.setSharedPreferenceString(HomeActivity.this,"token","");
+                Intent intent = new Intent(HomeActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+        builder.setNegativeButton("Quay lại", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                // User cancelled the dialog
+            }
+        });
+
+        // Create the AlertDialog
+        AlertDialog alert = builder.create();
+        alert.show();
+    }
+
     @Override
     public void navigate() {
         replaceFragment(new BmiFragment());
@@ -218,16 +253,30 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     }
 
     public void goToDetailDoctor(DoctorDto doctorDto){
-        DoctorDetailFragment doctorDetailFragment = new DoctorDetailFragment();
-
+        DoctorFragment doctorFragment=new DoctorFragment();
 
         Bundle bundle = new Bundle();
         bundle.putSerializable("object_doctor",doctorDto);
 
-        doctorDetailFragment.setArguments(bundle);
+        doctorFragment.setArguments(bundle);
 
-        replaceFragment(doctorDetailFragment);
+        replaceFragment(doctorFragment);
 
 
     }
+    public void goToBabyFragment(){
+        BabyFragment babyFragment =new BabyFragment();
+        replaceFragment(babyFragment);
+
+
+    }
+
+//    public void refresh(Fragment fragment){
+//        android.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
+//        if (Build.VERSION.SDK_INT >= 26) {
+//            ft.setReorderingAllowed(false);
+//        }
+//        BmiFragment bmiFragment = new BmiFragment();
+//        ft.detach(fragment).attach(bmiFragment).commit();
+//    }
 }

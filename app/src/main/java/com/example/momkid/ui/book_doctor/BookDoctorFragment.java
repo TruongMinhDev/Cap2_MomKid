@@ -21,9 +21,6 @@ import com.example.momkid.helper.ResponseCommonDto;
 import com.example.momkid.helper.SharedPreferenceHelper;
 import com.example.momkid.helper.SystemConfig;
 import com.example.momkid.service.IClickItemDoctor;
-import com.example.momkid.service.IClickItemKid;
-import com.example.momkid.ui.baby.BabyAdapter;
-import com.example.momkid.ui.baby.BabyDto;
 import com.example.momkid.ui.baby.BabyFragment;
 import com.example.momkid.ui.home.HomeActivity;
 import com.google.gson.GsonBuilder;
@@ -43,6 +40,7 @@ public class BookDoctorFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_book_doctor,container,false);
+        loadData();
 
         homeActivity = (HomeActivity) getActivity();
 
@@ -50,7 +48,7 @@ public class BookDoctorFragment extends Fragment {
         rcvDoctor = view.findViewById(R.id.rcvDoctor);
         rcvDoctor.setLayoutManager(new LinearLayoutManager(homeActivity));
 
-        loadData();
+
 
         nDialog = new ProgressDialog(getContext());
         nDialog.setMessage("Loading..");
