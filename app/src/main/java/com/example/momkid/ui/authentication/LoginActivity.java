@@ -52,12 +52,12 @@ public class LoginActivity extends AppCompatActivity {
                     edtEmail.requestFocus();
                 }
 
-//                nDialog = new ProgressDialog(LoginActivity.this);
-//                nDialog.setMessage("Loading..");
-//                nDialog.setTitle("Get Data");
-//                nDialog.setIndeterminate(false);
-//                nDialog.setCancelable(true);
-//                nDialog.show();
+                nDialog = new ProgressDialog(LoginActivity.this);
+                nDialog.setMessage("Loading..");
+                nDialog.setTitle("Get Data");
+                nDialog.setIndeterminate(false);
+                nDialog.setCancelable(true);
+                nDialog.show();
 
             }
         });
@@ -91,6 +91,7 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         log(String.valueOf(response));
+                        nDialog.cancel();
                         try {
                             String token = response.getString("accessToken");
                             SharedPreferenceHelper.setSharedPreferenceString(LoginActivity.this,"token",token);
@@ -114,6 +115,10 @@ public class LoginActivity extends AppCompatActivity {
                             //role
                             String role = response.getJSONObject("data").get("role").toString();
                             SharedPreferenceHelper.setSharedPreferenceString(LoginActivity.this,"role",role);
+
+//                            //phone
+//                            String phone= response.getJSONObject("data").get("phoneNumber").toString();
+//                            SharedPreferenceHelper.setSharedPreferenceString(LoginActivity.this,"phone",phone);
 
                             startActivity(new Intent(LoginActivity.this, HomeActivity.class));
                         } catch (JSONException e) {

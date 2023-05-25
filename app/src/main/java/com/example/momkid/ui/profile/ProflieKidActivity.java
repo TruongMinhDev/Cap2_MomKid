@@ -190,6 +190,12 @@ public class ProflieKidActivity extends AppCompatActivity {
                         } catch (JSONException e) {
                             throw new RuntimeException(e);
                         }
+                        try {
+                            String nameKid=response.getString("name");
+                            SharedPreferenceHelper.setSharedPreferenceString(ProflieKidActivity.this,"nameKid",nameKid);
+                        } catch (JSONException e) {
+                            throw new RuntimeException(e);
+                        }
                         AlertDialog.Builder builder = new AlertDialog.Builder(ProflieKidActivity.this);
                         builder.setMessage("Tiếp theo sẽ cập nhật chỉ số BMI cho bé nào :3 ");
                         builder.setCancelable(false);

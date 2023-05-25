@@ -10,19 +10,19 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="350dp">
+        android:layout_height="331dp">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:background="#2196F3"
+            android:layout_height="259dp"
+            android:background="@color/pink"
             android:orientation="vertical">
 
             <androidx.cardview.widget.CardView
                 android:layout_width="140dp"
                 android:layout_height="140dp"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="35dp"
+                android:layout_marginTop="20dp"
                 android:foregroundGravity="center_horizontal"
                 app:cardCornerRadius="100dp">
 
@@ -33,6 +33,7 @@
             </androidx.cardview.widget.CardView>
 
             <TextView
+                android:id="@+id/tv_nameKid"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -44,80 +45,93 @@
         </LinearLayout>
 
         <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="120dp"
+            android:layout_width="356dp"
+            android:layout_height="93dp"
             android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="27dp"
             app:cardCornerRadius="5dp">
+
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:weightSum="3"
+                android:layout_height="91dp"
                 android:orientation="horizontal"
-                android:padding="10dp">
+                android:padding="10dp"
+                android:weightSum="3">
+
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:gravity="center">
+                    android:gravity="center"
+                    android:orientation="vertical">
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Subscribers"
-                        android:textSize="17dp"
-                        android:textColor="#000"/>
+                        android:text="BMI"
+                        android:textColor="#000"
+                        android:textSize="17dp" />
+
                     <TextView
+                        android:id="@+id/tv_bmi"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="1000K+"
-                        android:textSize="27dp"
+                        android:text="100"
                         android:textColor="#2196F3"
-                        android:textStyle="bold"/>
+                        android:textSize="23dp"
+                        android:textStyle="bold" />
 
                 </LinearLayout>
+
                 <LinearLayout
-                    android:layout_width="0dp"
+                    android:layout_width="50dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:gravity="center">
+                    android:gravity="center"
+                    android:orientation="vertical">
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Likes"
-                        android:textSize="17dp"
-                        android:textColor="#000"/>
+                        android:text="Ngày Ngày Tuổi"
+                        android:textColor="#000"
+                        android:textSize="15dp" />
+
                     <TextView
+                        android:id="@+id/tv_timeDay"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="500K+"
-                        android:textSize="27dp"
+                        android:text="20"
                         android:textColor="#2196F3"
-                        android:textStyle="bold"/>
+                        android:textSize="23dp"
+                        android:textStyle="bold" />
 
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:gravity="center">
+                    android:gravity="center"
+                    android:orientation="vertical">
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Shares"
-                        android:textSize="17dp"
-                        android:textColor="#000"/>
+                        android:text="Giới tính"
+                        android:textColor="#000"
+                        android:textSize="17dp" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="33.1K+"
-                        android:textSize="27dp"
+                        android:text="Nam"
                         android:textColor="#2196F3"
-                        android:textStyle="bold"/>
+                        android:textSize="23dp"
+                        android:textStyle="bold" />
 
                 </LinearLayout>
 
@@ -132,7 +146,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="center"
-        android:layout_marginTop="30dp">
+        android:layout_marginTop="10dp">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -141,8 +155,9 @@
             <ImageView
                 android:layout_width="45dp"
                 android:layout_height="45dp"
-                android:src="@drawable/trai"/>
+                android:src="@drawable/icon_mother"/>
             <TextView
+                android:id="@+id/tv_nameMom"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="kgofficial@gmail.com"
@@ -161,11 +176,12 @@
             <ImageView
                 android:layout_width="45dp"
                 android:layout_height="45dp"
-                android:src="@drawable/trai"/>
+                android:src="@drawable/icon_appointment"/>
             <TextView
+                android:id="@+id/tv_birthDay"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="+92345-1234567"
+                android:text="01/01/2023"
                 android:textColor="#000"
                 android:textSize="18dp"
                 android:paddingLeft="15dp"
@@ -181,8 +197,9 @@
             <ImageView
                 android:layout_width="45dp"
                 android:layout_height="45dp"
-                android:src="@drawable/trai"/>
+                android:src="@drawable/phone"/>
             <TextView
+                android:id="@+id/tv_phone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Karachi- Pakistan"
@@ -201,8 +218,9 @@
             <ImageView
                 android:layout_width="45dp"
                 android:layout_height="45dp"
-                android:src="@drawable/trai"/>
+                android:src="@drawable/baseline_home_24"/>
             <TextView
+                android:id="@+id/tv_addressKid"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Show all comments"
@@ -215,9 +233,10 @@
     </LinearLayout>
 
     <Button
+        android:id="@+id/btn_listBaby"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Follow me"
+        android:text="Danh Sách Bé"
         android:layout_gravity="center_horizontal"
         android:textSize="18dp"
         android:layout_marginTop="15dp"/>

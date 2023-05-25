@@ -18,13 +18,7 @@
             android:exported="true"
             android:theme="@style/Theme.MomKid.NoActionBar"/>
         <activity
-            android:name=".ui.book_doctor.BookDoctorActivity"
-            android:exported="false" />
-        <activity
             android:name=".ui.schedule.ScheduleAddActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.profile.ProfileDoctorActivity"
             android:exported="false" />
         <activity
             android:name=".ui.profile.ProfileUserActivity"
