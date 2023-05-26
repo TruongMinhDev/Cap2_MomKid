@@ -7,6 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.TextClock;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -42,6 +44,7 @@ public class ScheduleFragment extends Fragment {
     private ProgressDialog nDialog;
 
     private HomeActivity homeActivity;
+    private TextClock textClock;
 
 
     private View view;
@@ -54,17 +57,24 @@ public class ScheduleFragment extends Fragment {
         rcvSchedule=view.findViewById(R.id.rcvSchedule);
         rcvSchedule.setLayoutManager(new LinearLayoutManager(homeActivity));
 
+        textClock=view.findViewById(R.id.clockTime);
+        textClock.setFormat12Hour("E, dd-MM-yyyy");
+
         //check điều kiện số tháng tuổi
         String birthDate = SharedPreferenceHelper.getSharedPreferenceString(getContext(),"birthDateKid","1");
         int age = DateFormatTime.calculateAge(birthDate);
         if(age>0 && age <= 90){
             loadData("1");
+            Toast.makeText(getContext(), "Áp dụng chuẩn EASY 2", Toast.LENGTH_SHORT).show();
         }else if(age>90 && age <= 210){
             loadData("2");
+            Toast.makeText(getContext(), "Áp dụng chuẩn EASY 3", Toast.LENGTH_SHORT).show();
         }else if(age> 210 && age < 300){
             loadData("3");
+            Toast.makeText(getContext(), "Áp dụng chuẩn EASY 2 3 4", Toast.LENGTH_SHORT).show();
         }else {
             loadData("4");
+            Toast.makeText(getContext(), "Áp dụng chuẩn EASY 5 6", Toast.LENGTH_SHORT).show();
         }
 
 

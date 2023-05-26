@@ -24,9 +24,6 @@
             android:name=".ui.profile.ProfileUserActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.blog.BlogActivity"
-            android:exported="false" />
-        <activity
             android:name=".ui.authentication.RegisterActivity"
             android:exported="false" />
         <activity

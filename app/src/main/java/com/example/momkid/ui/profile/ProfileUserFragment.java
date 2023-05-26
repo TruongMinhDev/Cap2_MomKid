@@ -41,10 +41,10 @@ public class ProfileUserFragment extends Fragment {
 
         //phone
 //        String phone = SharedPreferenceHelper.getSharedPreferenceString(getContext(),"phone","");
-//        tvPhone.setText(phone);
+        tvPhone.setText("0783375499");
         //Address
 //        String address = SharedPreferenceHelper.getSharedPreferenceString(getContext(),"address","");
-//        tvAddress.setText(address);
+        tvAddress.setText("195 Tôn Đản, Hòa An, Hòa Khánh Nam, Đà Nẵng");
 
 
         return view;
