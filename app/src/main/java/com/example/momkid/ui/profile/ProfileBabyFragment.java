@@ -54,10 +54,10 @@ public class ProfileBabyFragment extends Fragment {
         tvNameMom.setText(nameMom);
         //phone
 //        String phone = SharedPreferenceHelper.getSharedPreferenceString(getContext(),"phone","");
-//        tvPhone.setText(phone);
+        tvPhone.setText("0783375499");
         //Address
 //        String address = SharedPreferenceHelper.getSharedPreferenceString(getContext(),"address","");
-//        tvAddress.setText(address);
+        tvAddress.setText("195 Tôn Đản, Hòa An, Hòa Khánh Nam, Đà Nẵng");
         //bmi
         String bmi = SharedPreferenceHelper.getSharedPreferenceString(getContext(),"bmi","");
         tvBmi.setText(bmi);

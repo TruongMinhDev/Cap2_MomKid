@@ -8,6 +8,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -26,8 +27,10 @@ import com.example.momkid.R;
 import com.example.momkid.helper.ResponseCommonDto;
 import com.example.momkid.helper.SharedPreferenceHelper;
 import com.example.momkid.helper.SystemConfig;
+import com.example.momkid.service.IClickItemBlog;
 import com.example.momkid.ui.baby.BabyAdapter;
 import com.example.momkid.ui.baby.BabyDto;
+import com.example.momkid.ui.home.HomeActivity;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
@@ -44,8 +47,15 @@ public class BlogFragment extends Fragment {
     private RecyclerView rcvBlogs ;
     private ProgressDialog nDialog;
 
-    private EditText edtContent;
+    private EditText edtContent,edtNameBlog;
     private Button btnAddBlog;
+
+    private HomeActivity homeActivity;
+
+    private SwipeRefreshLayout swipeRefreshLayout;
+
+    private BlogAdapter blogAdapter;
+
 
     @Nullable
     @Override
@@ -55,6 +65,9 @@ public class BlogFragment extends Fragment {
         rcvBlogs = view.findViewById(R.id.rcvBlog);
         rcvBlogs.setLayoutManager(new LinearLayoutManager(view.getContext()));
 
+        homeActivity = (HomeActivity) getActivity();
+
+
 
         nDialog = new ProgressDialog(getContext());
         nDialog.setMessage("Loading..");
@@ -63,15 +76,17 @@ public class BlogFragment extends Fragment {
         nDialog.setCancelable(true);
         nDialog.show();
 
+        edtNameBlog=view.findViewById(R.id.edt_nameblog);
         edtContent=view.findViewById(R.id.edt_content);
         btnAddBlog=view.findViewById(R.id.btn_add_blog);
         btnAddBlog.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                addDataBlog();
+                String nameBlog = edtNameBlog.getText().toString();
+                String content = edtContent.getText().toString();
+                addDataBlog(nameBlog,content,"");
             }
         });
-
 
 
 
@@ -79,11 +94,10 @@ public class BlogFragment extends Fragment {
     }
 
     //Sử lý thêm blog
-    private void addDataBlog(String id, String name, String content, String img) {
+    private void addDataBlog( String name, String content, String img) {
         String token = SharedPreferenceHelper.getSharedPreferenceString(getContext(),"token","");
         JSONObject jsonObject = new JSONObject();
         try {
-            jsonObject.put("id", id);
             jsonObject.put("name", name);
             jsonObject.put("content", content);
             jsonObject.put("images", img);
@@ -99,7 +113,7 @@ public class BlogFragment extends Fragment {
                 .getAsJSONArray(new JSONArrayRequestListener() {
                     @Override
                     public void onResponse(JSONArray response) {
-                        loadData();
+//                        loadData();
                         Toast.makeText(getContext(),"Bạn đã thêm bài viết thành công",Toast.LENGTH_SHORT).show();
                     }
                     @Override
@@ -118,7 +132,7 @@ public class BlogFragment extends Fragment {
     private void loadData() {
         log("da vao day");
         String token = SharedPreferenceHelper.getSharedPreferenceString(getContext(),"token","");
-        AndroidNetworking.get(SystemConfig.BASE_URL.concat("/client/blogs?fields=&join=user"))
+        AndroidNetworking.get(SystemConfig.BASE_URL.concat("/client/blogs?fields=&join=user").concat("&sort=id,DESC"))
                 .addHeaders("Authorization", String.format("Bearer  %s",token))
                 .build()
                 .getAsString(new StringRequestListener() {
@@ -134,13 +148,19 @@ public class BlogFragment extends Fragment {
                         for (int i = 0; i < response.getData().size(); i ++){
                             temp = new BlogDto();
                             temp.setContent(response.getData().get(i).getContent());
-                            temp.setName(response.getData().get(i).getUser().getFirstName().concat(response.getData().get(i).getUser().getLastName()));
+                            temp.setName(response.getData().get(i).getName());
+                            temp.setNameUser(response.getData().get(i).getUser().getFirstName().concat(" ").concat(response.getData().get(i).getUser().getLastName()));
 //                            temp.setId(response.getData().get(i).getUser().getFirstName());
 //                            temp.setImg(response.getData().get(i).getImg());
                             blogs.add(temp);
                         }
-                        BlogAdapter adapter = new BlogAdapter(blogs, getContext());
-                        rcvBlogs.setAdapter(adapter);
+                        blogAdapter = new BlogAdapter(blogs, new IClickItemBlog() {
+                            @Override
+                            public void onClickItemBlog(BlogDto blogDto) {
+                                homeActivity.goToDetailBlog(blogDto);
+                            }
+                        });
+                        rcvBlogs.setAdapter(blogAdapter);
                     }
                     @Override
                     public void onError(ANError anError) {

@@ -1,12 +1,24 @@
 package com.example.momkid.ui.blog;
 
-public class BlogDto {
+import java.io.Serializable;
+
+public class BlogDto implements Serializable {
     private int id;
     private String name;
+    private String nameUser;
+
     private String content;
     private String img;
 
     private UserDto user;
+
+    public String getNameUser() {
+        return nameUser;
+    }
+
+    public void setNameUser(String nameUser) {
+        this.nameUser = nameUser;
+    }
 
     public String getImg() {
         return img;

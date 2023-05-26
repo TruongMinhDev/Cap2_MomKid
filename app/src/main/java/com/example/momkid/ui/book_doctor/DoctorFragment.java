@@ -29,7 +29,7 @@ public class DoctorFragment extends Fragment {
         txtPhone=view.findViewById(R.id.txt_phone);
         txtTime=view.findViewById(R.id.txt_time);
         txtMedicalDegree=view.findViewById(R.id.txt_medicalDegree);
-        btnBook=view.findViewById(R.id.btn_book);
+        btnBook=view.findViewById(R.id.btn_bookDoctor);
 
         Bundle bundle= getArguments();
         if(bundle != null){

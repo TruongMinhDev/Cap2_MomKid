@@ -29,6 +29,8 @@ import com.example.momkid.helper.SharedPreferenceHelper;
 import com.example.momkid.ui.baby.BabyDto;
 import com.example.momkid.ui.baby.BabyFragment;
 import com.example.momkid.ui.baby.INavigate;
+import com.example.momkid.ui.blog.BlogDetailFragment;
+import com.example.momkid.ui.blog.BlogDto;
 import com.example.momkid.ui.blog.BlogFragment;
 import com.example.momkid.ui.book_doctor.BookDoctorFragment;
 import com.example.momkid.ui.bmi.BmiFragment;
@@ -226,57 +228,38 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
     public void goToHomeFragment(BabyDto babyDto){
         HomeFragment homeFragment = new HomeFragment();
-
-
         Bundle bundle = new Bundle();
         bundle.putSerializable("object_baby",babyDto);
-
         homeFragment.setArguments(bundle);
-
         replaceFragment(homeFragment);
-
-
     }
 
     public void goToDetailSchedule(ScheduleDto scheduleDto){
         ScheduleDetailFragment scheduleDetailFragment = new ScheduleDetailFragment();
-
-
         Bundle bundle = new Bundle();
         bundle.putSerializable("object_schedule",scheduleDto);
-
         scheduleDetailFragment.setArguments(bundle);
-
         replaceFragment(scheduleDetailFragment);
-
-
     }
 
     public void goToDetailDoctor(DoctorDto doctorDto){
         DoctorFragment doctorFragment=new DoctorFragment();
-
         Bundle bundle = new Bundle();
         bundle.putSerializable("object_doctor",doctorDto);
-
         doctorFragment.setArguments(bundle);
-
         replaceFragment(doctorFragment);
-
-
     }
     public void goToBabyFragment(){
         BabyFragment babyFragment =new BabyFragment();
         replaceFragment(babyFragment);
-
-
     }
 
-//    public void refresh(Fragment fragment){
-//        android.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
-//        if (Build.VERSION.SDK_INT >= 26) {
-//            ft.setReorderingAllowed(false);
-//        }
-//        BmiFragment bmiFragment = new BmiFragment();
-//        ft.detach(fragment).attach(bmiFragment).commit();
-//    }
+
+    public void goToDetailBlog(BlogDto blogDto){
+        BlogDetailFragment blogDetailFragment=new BlogDetailFragment();
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("object_blog",blogDto);
+        blogDetailFragment.setArguments(bundle);
+        replaceFragment(blogDetailFragment);
+    }
 }
