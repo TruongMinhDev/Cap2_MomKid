@@ -51,8 +51,6 @@ public class DoctorFragment extends Fragment {
 
             }
         });
-
-
         return view;
     }
 }

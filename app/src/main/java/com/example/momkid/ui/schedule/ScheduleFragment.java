@@ -1,6 +1,7 @@
 package com.example.momkid.ui.schedule;
 
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,7 +12,9 @@ import android.widget.TextClock;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -64,28 +67,41 @@ public class ScheduleFragment extends Fragment {
         String birthDate = SharedPreferenceHelper.getSharedPreferenceString(getContext(),"birthDateKid","1");
         int age = DateFormatTime.calculateAge(birthDate);
         if(age>0 && age <= 90){
-            loadData("1");
-            Toast.makeText(getContext(), "Áp dụng chuẩn EASY 2", Toast.LENGTH_SHORT).show();
+            nDialog = new ProgressDialog(getContext());
+            nDialog.setMessage("Loading..");
+            nDialog.setTitle("Get Data");
+            nDialog.setIndeterminate(false);
+            nDialog.setCancelable(true);
+            nDialog.show();
+            checkScheduleList("1","Áp dụng chuẩn EASY 2");
         }else if(age>90 && age <= 210){
-            loadData("2");
-            Toast.makeText(getContext(), "Áp dụng chuẩn EASY 3", Toast.LENGTH_SHORT).show();
+            nDialog = new ProgressDialog(getContext());
+            nDialog.setMessage("Loading..");
+            nDialog.setTitle("Get Data");
+            nDialog.setIndeterminate(false);
+            nDialog.setCancelable(true);
+            nDialog.show();
+            checkScheduleList("2","Áp dụng chuẩn EASY 3");
+
         }else if(age> 210 && age < 300){
-            loadData("3");
-            Toast.makeText(getContext(), "Áp dụng chuẩn EASY 2 3 4", Toast.LENGTH_SHORT).show();
+
+            nDialog = new ProgressDialog(getContext());
+            nDialog.setMessage("Loading..");
+            nDialog.setTitle("Get Data");
+            nDialog.setIndeterminate(false);
+            nDialog.setCancelable(true);
+            nDialog.show();
+            checkScheduleList("3","Áp dụng chuẩn EASY 2 3 4");
+
         }else {
-            loadData("4");
-            Toast.makeText(getContext(), "Áp dụng chuẩn EASY 5 6", Toast.LENGTH_SHORT).show();
+            nDialog = new ProgressDialog(getContext());
+            nDialog.setMessage("Loading..");
+            nDialog.setTitle("Get Data");
+            nDialog.setIndeterminate(false);
+            nDialog.setCancelable(true);
+            nDialog.show();
+            checkScheduleList("4","Áp dụng chuẩn EASY 5 6");
         }
-
-
-
-        nDialog = new ProgressDialog(getContext());
-        nDialog.setMessage("Loading..");
-        nDialog.setTitle("Get Data");
-        nDialog.setIndeterminate(false);
-        nDialog.setCancelable(true);
-        nDialog.show();
-
 
 
         return view;
@@ -135,5 +151,21 @@ public class ScheduleFragment extends Fragment {
 
     private void log(String mess){
         Log.d(BabyFragment.class.getName(), mess);
+    }
+
+    public void checkScheduleList(String schedule, String toast){
+        androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(getContext());
+        builder.setMessage(toast);
+        builder.setCancelable(false);
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                // code khi người dùng nhấn nút OK
+              loadData(schedule);
+            }
+        });
+        AlertDialog alert = builder.create();
+        alert.show();
+
+
     }
 }
