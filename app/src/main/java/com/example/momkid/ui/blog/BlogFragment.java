@@ -149,7 +149,7 @@ public class BlogFragment extends Fragment {
                             temp = new BlogDto();
                             temp.setContent(response.getData().get(i).getContent());
                             temp.setName(response.getData().get(i).getName());
-                            temp.setNameUser(response.getData().get(i).getUser().getFirstName().concat(" ").concat(response.getData().get(i).getUser().getLastName()));
+//                            temp.setNameUser(response.getData().get(i).getUser().getFirstName().concat(" ").concat(response.getData().get(i).getUser().getLastName()));
 //                            temp.setId(response.getData().get(i).getUser().getFirstName());
 //                            temp.setImg(response.getData().get(i).getImg());
                             blogs.add(temp);

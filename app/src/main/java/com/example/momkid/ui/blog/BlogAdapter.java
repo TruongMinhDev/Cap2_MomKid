@@ -46,7 +46,7 @@ public class BlogAdapter extends RecyclerView.Adapter<BlogAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         BlogDto blog = mBlogs.get(position);
-        holder.tvBlogContent.setText( blog.getContent());
+        holder.tvBlogContent.setText(blog.getContent());
         holder.tvBlogName.setText(blog.getName());
         holder.tvName.setText(blog.getNameUser());
 
